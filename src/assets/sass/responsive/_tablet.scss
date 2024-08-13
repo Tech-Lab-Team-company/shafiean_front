@@ -1,0 +1,42 @@
+
+@media only screen and (max-width: 991.98px) {
+  .accuracy_projects .text-chart {
+    position: absolute;
+    top: 20rem;
+    right: 19rem;
+  }
+  .index_cards {
+    
+    .content {
+      .details_exam_card .list_details{
+        display: block;
+      }
+     
+    }
+    
+  }
+  .card .dropdown-toggle {
+    position: absolute;
+    right: 10rem;
+    border: unset !important;
+}
+.sidebar .nav-pills {
+  width: 60% !important;
+}
+.accuracy_projects .text-chart {
+  position: absolute !important;
+  top: 20rem !important;
+  right: 20rem !important;
+}
+.alltet {
+  flex-wrap: wrap;
+  font-size: 0.7rem;
+}
+.end-page{
+  width: 100%;
+}
+.alltet img {
+  width: 10%;
+}
+ 
+}

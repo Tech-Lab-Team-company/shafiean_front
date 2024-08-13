@@ -1,0 +1,24 @@
+@media only screen and (max-width: 1440px) {
+  
+    .sidebar.open, .sidebar.opened{
+      width: 20%;
+    }
+    .sidebar.open ~ .index_cards,
+    .sidebar.opened ~ .index_cards {
+      width: 80%;
+      margin-inline-start: 20%;
+    }
+    .card .dropdown-toggle {
+      position: absolute;
+      right: 10rem;
+      border: unset !important;
+  }
+  .accuracy_projects{
+    .text-chart {
+      position: absolute;
+      top: 10rem;
+      right: 9rem;
+  }
+  }
+ 
+}

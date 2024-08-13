@@ -1,0 +1,289 @@
+@media only screen and (max-width: 600px) {
+  button.btn.SecondButton.ng.d-block.mb-3.px-5 {
+    width: 100%;
+  }
+  button.btn.PrimaryButton.mio {
+    width: 100%;
+  }
+  .index_cards .content .add_form {
+    width: 100%;
+  }
+ 
+  .accuracy_projects .text-chart {
+    position: absolute;
+    top: 8rem;
+    right: 8rem;
+  }
+  
+   .table_details .nav-tabs .nav-link, .index_cards .content .table_data .nav-tabs .nav-link{
+    padding: 0.5rem !important;
+   
+   }
+ 
+  .nas-responsev{
+    font-size: 0.6rem !important;
+    font-family: bold;
+   
+  }
+  .complaints p {
+    font-size: 0.7rem;
+  }
+  h4.modal_title.complaints {
+    font-size: 0.8rem;
+
+  }
+  .modal_child .modal-dialog .card_child .SecondButton {
+    font-size: 0.5rem;
+  }
+  .d-flex.justify-content-between {
+    font-size: 0.7rem;
+    margin-bottom: 13px;
+  }
+  a.btn.btn_title_page.good {
+    margin-right: 3.5px;
+  }
+  .index_cards .content .table_details .filters .form-group, .index_cards .content .table_data .filters .form-group {
+    width: 100%;
+    margin-top: 10px;
+  }
+  .index_cards .content .table_details .filters .form-group:first-child, .index_cards .content .table_data .filters .form-group:first-child {
+    width: 100%;
+  }
+  .index_cards .content .table_details .filters, .index_cards .content .table_data .filters {
+    display: block;
+  }
+  .modal-dialog {
+    margin-right: 3.5rem;
+  }
+  .percentage_projects .nav-pills {
+    display: contents;
+  }
+  .delet {
+    width: 20rem;
+  }
+  .Help-Center {
+    width: 20rem;
+  }
+  .notifacatin-page {
+    width: 20rem;
+  }
+  .index_cards .content .sitiang {
+    display: block;
+  }
+  .Help-Center .form-group svg {
+    display: none;
+  }
+  .accordion-item h4 {
+    font-size: 0.6rem;
+  }
+  .Help-Center .header p {
+    font-size: 0.6rem;
+  }
+  .notifacatin-page .head h6 {
+    font-size: 0.7rem;
+   
+  }
+  .notifacatin-page .head p {
+    font-size: 0.6rem;
+  }
+  .sitiang .nav-pills {
+    width: 60% !important;
+    border: unset !important;
+    font-size: 0.6rem;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+ margin-right: 0 !important;
+    
+  }
+  .notifacatin-page .form-group label {
+    font-size: 0.6rem;
+  }
+  .notifacatin-page .form-group p {
+    font-size: 0.6rem;
+  }
+  div#nav-tab {
+    font-size: 15px;
+    width: 20rem;
+  }
+  .modal_child .modal-dialog .card_child .info {
+    display: block !important;
+  }
+  .modal_child .modal-dialog .card_child .info img {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  .sidebar .nav-pills .nav-item .nav-link {
+    padding: 10px;
+  }
+ 
+  .sidebar .nav-pills {
+    width: 60%;
+    padding: 0.5rem 0.5rem;
+    
+  }
+  .basic_information .info .title {
+    width: 19rem;
+  }
+  .basic_information .info .text {
+    width: 18rem;
+  }
+  
+  .prises {
+    margin: 0;
+    margin-top: 10px;
+  }
+  .prises-1 {
+    margin: 0;
+    margin-top: 10px;
+  }
+  .prises-2 {
+    margin: 0;
+    margin-top: 10px;
+  }
+  img.imge {
+    width: 17rem;
+    height: 10rem;
+  }
+  .details_exam_card .list_details li {
+    width: unset;
+  }
+  .details_exam_card .list_details{ 
+    display: block;
+
+  }
+  .index_cards .content .btn_title_page {
+    padding: 0.4rem;
+  }
+  ul#myTab {
+    font-size: 0.8rem;
+    
+    padding: 0;
+  }
+  .index_cards .content .add_form .avatar-upload .avatar-edit label.change-pic {
+    margin-top: 9px;
+    margin-inline-start: 103px;
+    font-size: .5rem;
+  }
+  
+  
+  .index_cards .content .table_details table thead tr th, .index_cards .content .table_data table thead tr th{
+    min-width: 150PX;
+  }
+  .table>:not(caption)>*>* {
+    min-width: 76px;
+  }
+  .last_job .card_job {
+    margin-top: 10px;
+  }
+  .statistics {
+    flex-direction: column;
+    .card_statistics {
+      width: 100%;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    margin-bottom: 1rem;
+    }
+  }
+  .card {
+    margin-top: 10px;
+    width: 100%;
+    border: unset;
+    position: relative;
+  
+    .dropdown-toggle::after {
+      content: unset;
+    }
+    .dropdown-toggle {
+      position: absolute;
+      right: 7rem;
+      border: unset !important;
+    }
+  }
+  .tableAllProjects {
+    padding: 1rem 1rem 5rem !important;
+
+    .dataTables_length {
+      position: absolute;
+      bottom: 0;
+      right: 10%;
+      left: 10%;
+      width: 80%;
+    }
+  }
+
+  .sidebar.open {
+    .nav-pills {
+      .nav-item {
+        width: 20%;
+
+        .nav-link {
+          span {
+            font-size: 0.5rem;
+          }
+        }
+
+        &.disable_mobile {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .navbar .d-flex.w-25 {
+    width: 50% !important;
+  }
+
+  .index_cards {
+    .content {
+      .basic_information {
+        display: block;
+      }
+      .title_section {
+        font-size: .9rem;
+     
+      }
+    }
+  }
+  .completion_projects h5 {
+    font-size: 0.7rem;
+    font-family: bold;
+  }
+  button.btn.PrimaryButton.lesson {
+    width: unset;
+  }
+  .step::after{
+    top: 90px;
+  }
+ .sitiang .nav-pills .nav-link.active {
+  border-right: unset !important;
+  font-family: 'bold';
+ }
+ .accuracy_projects .text-chart {
+  position: absolute !important;
+  top: 7rem !important;
+  right: 6rem !important;
+}
+.end-page {
+  width: 100%;
+  position: relative;
+}
+.text-footer {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.alltet {
+display: block;
+  gap: unset;
+  p{
+    font-size: 0.7rem;
+  }
+}
+
+.alltet img {
+  width: 19%;
+}
+.text-footer p {
+  font-size: 0.7rem;
+}
+}
+
