@@ -8,6 +8,20 @@ import stepsIndex from '@/views/dashboard/steps/index.vue'
 import addSteps from '@/views/dashboard/steps/addSteps.vue'
 import subjectsindex from '@/views/dashboard/subjects/index.vue'
 import addSubject from '@/views/dashboard/subjects/addSubject.vue'
+import ExamsIndex from '@/views/dashboard/exams/index.vue'
+import addExam from '@/views/dashboard/exams/addExam.vue'
+import questionsIndex from '@/views/dashboard/questions/index.vue'
+import AddQuestion from '@/views/dashboard/questions/addQuestion.vue'
+import AssignmentIndex from '@/views/dashboard/Assignment/index.vue'
+import addAssignment from '@/views/dashboard/Assignment/addAssignment.vue'
+import QuestionbankIndex from '@/views/dashboard/Questionbank/index.vue'
+import addnewQuestion from '@/views/dashboard/Questionbank/addnewQuestion.vue'
+
+
+
+
+
+import archivesIndex from '@/views/dashboard/archives/index.vue'
 
 const routes = [
   {
@@ -69,8 +83,146 @@ component: subjectsindex
   path: '/addSubject',
   name: 'addSubject',
   component: addSubject
+},
+// end subjects 
+
+// start Exams 
+{
+ path:'/exams',
+ name : 'examsIndex',
+ component: ExamsIndex
+},
+{
+  path: '/addExam',
+  name : 'addExam',
+  component : addExam
+},
+
+
+// end Exmas 
+
+// start Questions
+{
+  path:'/questions',
+  name:'questionsIndex',
+  component : questionsIndex
+},
+{
+  path : '/addQuestion',
+  name : 'addQuestion',
+component : AddQuestion 
+
+},
+
+// end Question
+
+// start Assignment-details
+{
+  path: '/Assignment',
+  name : 'AssignmentIndex',
+  component : AssignmentIndex
+
+},
+{
+  path : '/addAssignment',
+  name : 'addAssignment',
+  component : addAssignment
+},
+// end Assignment-details
+
+// start Questionbank
+{
+  path : '/Questionbank',
+name : 'QuestionbankIndex',
+component : QuestionbankIndex
+},
+{
+  path : '/addnewQuestion',
+name : 'addnewQuestion',
+component : addnewQuestion
 }
-  // end subjects
+// end Questionbank
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+,{
+  path: '/archives',
+  name : 'archivesIndex',
+  component : archivesIndex
+}
+
+
+
+
+
+
+
+
 
 
 ]

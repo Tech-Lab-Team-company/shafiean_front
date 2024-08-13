@@ -16,7 +16,10 @@
           data-bs-toggle="collapse"
           class="nav-link accordion-button align-middle collapsed"
         >
-          <img src="../../assets/media/image/icon/book-2-svgrepo-com.svg" alt="" />
+          <img
+            src="../../assets/media/image/icon/book-2-svgrepo-com.svg"
+            alt=""
+          />
           <span>القسم التعليمي</span>
           <i class="fa-solid fa-angle-up"></i>
         </a>
@@ -26,7 +29,7 @@
           data-bs-parent="#menu"
         >
           <li class="nav-item">
-            <router-link to="/steps"  class="nav-link align-middle">
+            <router-link to="/steps" class="nav-link align-middle">
               <span>المراحل الدراسية</span>
             </router-link>
           </li>
@@ -63,24 +66,24 @@
           data-bs-parent="#menu"
         >
           <li class="nav-item">
-            <a href="exams.html" class="nav-link align-middle">
+            <router-link to="/exams" class="nav-link align-middle">
               <span>الاختبارات</span>
-            </a>
+            </router-link>
           </li>
           <li class="nav-item">
-            <a href="Interactive-question.html" class="nav-link align-middle">
+            <router-link to="/questions" class="nav-link align-middle">
               <span>الاسالة التفاعلية</span>
-            </a>
+            </router-link>
           </li>
           <li class="nav-item">
-            <a href="Assignment-details.html" class="nav-link align-middle">
+            <router-link to="/Assignment" class="nav-link align-middle">
               <span>الواجبات</span>
-            </a>
+            </router-link>
           </li>
           <li class="nav-item">
-            <a href=" Question-bank.html" class="nav-link align-middle">
+            <router-link to="/Questionbank" class="nav-link align-middle">
               <span>بنك الاسئله</span>
-            </a>
+            </router-link>
           </li>
         </ul>
       </li>
@@ -302,13 +305,13 @@
       </li>
 
       <li class="nav-item">
-        <a href="archives.html" class="nav-link align-middle">
+        <router-link to="/archives" class="nav-link align-middle">
           <img
             src="../../assets/media/image/icon/archives-copy-svgrepo-com.svg"
             alt="icon"
           />
           <span>الأرشيف</span>
-        </a>
+        </router-link>
       </li>
       <li class="nav-item">
         <a href="contests.html" class="nav-link align-middle">
@@ -344,6 +347,23 @@
         </a>
       </li>
     </ul>
+    <!-- <script>
+                        $(function () {
+                          $('input[name="daterange"]').daterangepicker(
+                            {
+                              opens: "left",
+                            },
+                            function (start, end, label) {
+                              console.log(
+                                "A new date selection was made: " +
+                                  start.format("YYYY-MM-DD") +
+                                  " to " +
+                                  end.format("YYYY-MM-DD")
+                              );
+                            }
+                          );
+                        });
+                      </script> -->
   </section>
 </template>
 
@@ -351,5 +371,4 @@
 export default {};
 </script>
 
-<style>
-</style>
+<style></style>
