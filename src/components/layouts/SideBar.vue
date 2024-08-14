@@ -28,6 +28,12 @@
           id="submenueducations"
           data-bs-parent="#menu"
         >
+        <!-- <h2>djkhj</h2> -->
+          <li class="nav-item">
+            <router-link to="/steps" class="nav-link align-middle">
+              <span>المراحل الدراسية</span>
+            </router-link>
+          </li>
           <li class="nav-item">
             <router-link to="/steps" class="nav-link align-middle">
               <span>المراحل الدراسية</span>
