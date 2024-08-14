@@ -104,45 +104,45 @@
           data-bs-parent="#menu"
         >
           <li class="nav-item">
-            <a href="students.html" class="nav-link align-middle">
+            <router-link to="/students" class="nav-link align-middle">
               <span>الطلاب</span>
-            </a>
+            </router-link>
           </li>
           <li class="nav-item">
-            <a href="mangestudent.html" class="nav-link align-middle">
+            <router-link to="/mangestudent" class="nav-link align-middle">
               <span>ادارة طلابات التسجيل</span>
-            </a>
+            </router-link>
           </li>
 
           <li class="nav-item">
-            <a href="teachers.html" class="nav-link align-middle">
+            <router-link to="/teachers" class="nav-link align-middle">
               <span>المعلمين</span>
-            </a>
+            </router-link>
           </li>
           <li class="nav-item">
-            <a href="parents.html" class="nav-link align-middle">
+            <router-link to="/parents" class="nav-link align-middle">
               <span>أولياء الامور</span>
-            </a>
+            </router-link>
           </li>
           <li class="nav-item">
-            <a href="Moderators.html" class="nav-link align-middle">
+            <router-link to="/moderatots" class="nav-link align-middle">
               <span>المشرفين</span>
-            </a>
+            </router-link>
           </li>
           <li class="nav-item">
-            <a href="manage.html" class="nav-link align-middle">
+            <router-link to="/manage" class="nav-link align-middle">
               <span>الاداره</span>
-            </a>
+            </router-link>
           </li>
           <li class="nav-item">
-            <a href="Jobs.html" class="nav-link align-middle">
+            <router-link to="/jobs" class="nav-link align-middle">
               <span>الوظائف</span>
-            </a>
+            </router-link>
           </li>
           <li class="nav-item">
-            <a href="permations.html" class="nav-link align-middle">
+            <router-link to="/permations" class="nav-link align-middle">
               <span>الادوار</span>
-            </a>
+            </router-link>
           </li>
         </ul>
       </li>
@@ -166,36 +166,35 @@
           data-bs-parent="#menu"
         >
           <li>
-            <a href="slider.html" class="nav-link">
-              <span>اضافة اسليدر</span></a
+            <router-link to="/sliders" class="nav-link">
+              <span>اضافة اسليدر</span></router-link
             >
           </li>
           <li>
-            <a href="who-are-we.html" class="nav-link"> <span>من نحن</span></a>
+            <router-link to="/whoarewe" class="nav-link"> <span>من نحن</span></router-link>
           </li>
           <li>
-            <a href="Success-Partners.html" class="nav-link">
-              <span>شركاء النجاح</span></a
+            <router-link to="/success" class="nav-link">
+              <span>شركاء النجاح</span></router-link
             >
           </li>
           <li>
-            <a href="Services.html" class="nav-link"> <span>الخدمات</span></a>
+            <router-link to="/services" class="nav-link"> <span>الخدمات</span></router-link>
           </li>
           <li>
-            <a href="Teacher-application.html" class="nav-link">
-              <span>تطبيق المعلم</span></a
+            <router-link to="/teacherapp" class="nav-link">
+              <span>تطبيق المعلم</span></router-link
             >
           </li>
           <li>
-            <a href="Student-application.html" class="nav-link">
-              <span>تطبيق الطالب</span></a
+            <router-link to="/studentapp" class="nav-link">
+              <span>تطبيق الطالب</span></router-link
             >
           </li>
           <li>
-            <a href="Guardian-application.html" class="nav-link">
-              <span>تطبيق ولي الأمر</span></a
-            >
-          </li>
+            <router-link to="/guardianapp" class="nav-link">
+              <span>تطبيق ولي الأمر</span></router-link> 
+             </li>
         </ul>
       </li>
       <li class="nav-item">
@@ -342,10 +341,10 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="General-Settings.html" class="nav-link align-middle">
+        <router-link to="/generalsetting" class="nav-link align-middle">
           <!-- <img src="./media/image/icon/setting.svg" alt="icon" /> -->
           <span>الاعدادات العامة</span>
-        </a>
+        </router-link>
       </li>
     </ul>
     <!-- <script>
