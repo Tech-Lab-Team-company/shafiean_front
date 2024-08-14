@@ -24,6 +24,7 @@ import router from './router';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
 
+
 // Add all icons to the library
 // library.add(...all);
 

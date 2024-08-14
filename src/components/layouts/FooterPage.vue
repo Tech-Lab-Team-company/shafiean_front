@@ -6,7 +6,7 @@
                 <p>كل الحقوق محفوظة@شفيعا 2022</p>
                 <div class="slogn">
                   <p>بدعم من اوقاف الضحيان</p>
-                  <img src="media/logo-preview.png" alt="" />
+                  <img src="../../assets/media/logo-preview.png" alt="" />
                 </div>
               </div>
 

@@ -3,25 +3,55 @@ import HomeView from '../views/dashboard/dashboard.vue'
 import GroupsIndex from '@/views/dashboard/groups/index.vue'
 import GroupAdd from '@/views/dashboard/groups/add.vue'
 import LessonsIndex from '@/views/dashboard/lessons/index.vue'
-import addlessons from '@/views/dashboard/lessons/addlessons.vue'
+import addlessons from '@/views/dashboard/lessons/add.vue'
 import stepsIndex from '@/views/dashboard/steps/index.vue'
-import addSteps from '@/views/dashboard/steps/addSteps.vue'
+import addSteps from '@/views/dashboard/steps/add.vue'
 import subjectsindex from '@/views/dashboard/subjects/index.vue'
-import addSubject from '@/views/dashboard/subjects/addSubject.vue'
+import addSubject from '@/views/dashboard/subjects/add.vue'
 import ExamsIndex from '@/views/dashboard/exams/index.vue'
-import addExam from '@/views/dashboard/exams/addExam.vue'
+import addExam from '@/views/dashboard/exams/add.vue'
 import questionsIndex from '@/views/dashboard/questions/index.vue'
-import AddQuestion from '@/views/dashboard/questions/addQuestion.vue'
+import AddQuestion from '@/views/dashboard/questions/add.vue'
 import AssignmentIndex from '@/views/dashboard/Assignment/index.vue'
-import addAssignment from '@/views/dashboard/Assignment/addAssignment.vue'
+import addAssignment from '@/views/dashboard/Assignment/add.vue'
 import QuestionbankIndex from '@/views/dashboard/Questionbank/index.vue'
-import addnewQuestion from '@/views/dashboard/Questionbank/addnewQuestion.vue'
+import addnewQuestion from '@/views/dashboard/Questionbank/add.vue'
+import studentsIndex from '@/views/dashboard/students/index.vue'
+import addStudent from '@/views/dashboard/students/add.vue'
+import mangestudentIndex from '@/views/dashboard/mangestudent/index.vue'
+import teachersIndex from '@/views/dashboard/teachers/index.vue'
+import addTeachers from '@/views/dashboard/teachers/add.vue'
+import parentsIndex from '@/views/dashboard/parents/index.vue'
+import moderatotsIndex from '@/views/dashboard/moderatots/index.vue'
+import addSupervisor from '@/views/dashboard/moderatots/add.vue'
+import manageIndex from '@/views/dashboard/manage/index.vue'
+import addManage  from '@/views/dashboard/manage/add.vue'
+import jobsIndex  from '@/views/dashboard/jobs/index.vue'
+import addJobs from '@/views/dashboard/jobs/add.vue'
+import permations from '@/views/dashboard/permations/index.vue'
+import addpermations from '@/views/dashboard/permations/add.vue'
+import sliders from '@/views/dashboard/sliders/index.vue'
+import addslider from '@/views/dashboard/sliders/add.vue'
+import whoarewe from '@/views/dashboard/whoarewe/index.vue'
+import success from '@/views/dashboard/success/index.vue'
+import addsuccess from '@/views/dashboard/success/add.vue'
+import servicesIndex from '@/views/dashboard/services/index.vue'
+import addservices from '@/views/dashboard/services/add.vue'
+import teacherappIndex from '@/views/dashboard/teacherapp/index.vue'
+import studentappIndex from '@/views/dashboard/studentapp/index.vue'
+import guardianappIndex from '@/views/dashboard/guardianapp/index.vue'
+
+
+
+
+
 
 
 
 
 
 import archivesIndex from '@/views/dashboard/archives/index.vue'
+import generalsettingIndex from '@/views/dashboard/generalsetting/index.vue'
 
 const routes = [
   {
@@ -140,8 +170,206 @@ component : QuestionbankIndex
   path : '/addnewQuestion',
 name : 'addnewQuestion',
 component : addnewQuestion
-}
+},
 // end Questionbank
+
+// start students
+{
+  path : '/students',
+  name : 'studentsIndex',
+  component : studentsIndex
+}, {
+  path : '/addStudent',
+  name : 'addStudent',
+  component : addStudent
+},
+
+// end students
+
+// start mangestudent
+{
+
+  path: '/mangestudent',
+  name : 'mangestudent',
+  component : mangestudentIndex
+
+}
+
+// end mangestudent
+
+// start teachers 
+,{
+  path : '/teachers',
+  name : 'teachersIndex',
+  component : teachersIndex
+
+},
+{
+  path : '/addTeachers',
+  name : 'addTeachers',
+  component : addTeachers
+},
+// end teachers 
+
+
+// start parents
+{
+path: '/parents',
+name: 'parents-index',
+component: parentsIndex
+},
+
+
+
+// end parents
+
+// start moderators
+{
+  path: '/moderatots',
+  name: 'moderatots-index',
+  component: moderatotsIndex
+},
+{
+  path :'/addSupervisor',
+  name : 'addSupervisor',
+  component : addSupervisor
+},
+// end moderators
+
+
+// start manage 
+{
+  path : '/manage',
+  name : 'manage-index',
+  component : manageIndex
+},
+{
+  path : '/addManage',
+  name : 'addManage',
+  component : addManage
+},
+
+// end manage 
+
+// start jobs
+
+{
+  path: '/jobs',
+  name : 'jobsIndex',
+  component: jobsIndex
+},
+{
+  path: '/addJobs',
+  name : 'addJobs',
+  component: addJobs
+},
+
+// end jobs
+
+// start permations
+{
+  path : '/permations',
+  name : 'permations-index',
+  component : permations
+},
+{
+  path : '/permations-add',
+  name : 'permations-add',
+  component : addpermations
+}
+
+
+
+
+// end permations
+
+// start sliders
+,{
+  path : '/sliders',
+  name : 'sliders-index',
+  component : sliders
+
+},
+{
+  path : '/addslider',
+  name : 'add-slider',
+  component : addslider
+}
+// end sliders
+
+// who are we 
+,{
+  path : '/whoarewe',
+  name : 'whoarewe-index',
+  component : whoarewe
+}
+
+// end who are we
+
+,{
+  path:'/success',
+  name : 'success-index'  , 
+  component : success
+},
+{
+  path : '/addsuccess',
+  name : 'addsuccess',
+  component : addsuccess
+},
+
+
+{
+  path :'/services',
+  name: 'services-index',
+  component : servicesIndex
+},
+{
+  path : '/addservices',
+  name : 'addservices',
+  component : addservices
+},
+{
+  path:'/teacherapp',
+  name : 'teacherapp',
+  component : teacherappIndex
+},
+
+// ================
+
+{
+  path:'/studentapp',
+  name:'studentapp',
+  component : studentappIndex
+},
+
+// ==================
+
+{
+  path:'/guardianapp',
+  name : 'guardianapp',
+  component : guardianappIndex
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -214,6 +442,15 @@ component : addnewQuestion
   path: '/archives',
   name : 'archivesIndex',
   component : archivesIndex
+},
+
+// ==========================
+
+
+{
+path:'/generalsetting',
+name:'generalsetting-index',
+component : generalsettingIndex
 }
 
 

@@ -371,7 +371,7 @@
 
 <script>
 export default {
-
+  name: "exams-add",
 }
 </script>
 

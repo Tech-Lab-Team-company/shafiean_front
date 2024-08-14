@@ -1925,7 +1925,7 @@ h5.name {
     }
     svg.svg-inline--fa.fa-user {
       margin-inline-end: 10px;
-      color: #828c8d;
+      color: #828c8d !important ;
       font-size: 1rem;
     }
   }
@@ -3027,10 +3027,15 @@ h3.AS {
 .all-permisson {
   font-family: "regular"
 }
-svg.svg-inline--fa.fa-trash-can.delet-jop {
+.actions {
+  a {
+    margin: 0 0.3rem;
+  }
+}
+i.fa-trash-can.delet-jop {
   color: red !important;
 }
-svg.svg-inline--fa.fa-pen-to-square.edit-jop {
+i.fa-pen-to-square.edit-jop {
   color: #06797e !important;
 }
 table.table.job {
