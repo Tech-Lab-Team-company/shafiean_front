@@ -22,16 +22,6 @@
           />
           <span>القسم التعليمي</span>
           <i class="fa-solid fa-angle-up"></i>
-          <span>القسم التعليمي</span>
-          <i class="fa-solid fa-angle-up"></i>   <span>القسم التعليمي</span>
-          <i class="fa-solid fa-angle-up"></i>   <span>القسم التعليمي</span>
-          <i class="fa-solid fa-angle-up"></i>   <span>القسم التعليمي</span>
-          <i class="fa-solid fa-angle-up"></i>   <span>القسم التعليمي</span>
-          <i class="fa-solid fa-angle-up"></i>   <span>القسم التعليمي</span>
-          <i class="fa-solid fa-angle-up"></i>   <span>القسم التعليمي</span>
-          <i class="fa-solid fa-angle-up"></i>   <span>القسم التعليمي</span>
-          <i class="fa-solid fa-angle-up"></i>   <span>القسم التعليمي</span>
-          <i class="fa-solid fa-angle-up"></i>
         </a>
         <ul
           class="collapse flex-column"
@@ -39,6 +29,11 @@
           data-bs-parent="#menu"
         >
         <!-- <h2>djkhj</h2> -->
+          <li class="nav-item">
+            <router-link to="/steps" class="nav-link align-middle">
+              <span>المراحل الدراسية</span>
+            </router-link>
+          </li>
           <li class="nav-item">
             <router-link to="/steps" class="nav-link align-middle">
               <span>المراحل الدراسية</span>
