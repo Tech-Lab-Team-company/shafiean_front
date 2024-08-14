@@ -5,10 +5,10 @@
       id="menu"
     >
       <li class="nav-item">
-        <a href="/git " class="nav-link align-middle">
+        <router-link to="/" class="nav-link align-middle">
           <img src="../../assets/media/image/icon/home.svg" alt="" />
           <span>الرئيسية</span>
-        </a>
+        </router-link>
       </li>
       <li class="nav-item">
         <a
@@ -332,17 +332,17 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="Complaints.html" class="nav-link align-middle">
+        <router-link to="/Complaints" class="nav-link align-middle">
           <img
             src="../../assets/media/image/icon/customer-problem-svgrepo-com.svg"
             alt=""
           />
           <span>الشكاوي</span>
-        </a>
+        </router-link>
       </li>
       <li class="nav-item">
         <router-link to="/generalsetting" class="nav-link align-middle">
-          <!-- <img src="./media/image/icon/setting.svg" alt="icon" /> -->
+          <img src="../../assets/media/image/icon/setting.svg" alt="icon" />
           <span>الاعدادات العامة</span>
         </router-link>
       </li>

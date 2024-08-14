@@ -11,23 +11,17 @@
               <div class="buton-index">
                 <router-link to="/groups"   class="btn btn_title_page"> المجموعات</router-link>
                 <router-link to="/Lessons"  class="btn btn_title_page">الدروس</router-link>
-                <router-link to="/ExamsPage"  class="btn btn_title_page good">
+                <router-link to="/exams"  class="btn btn_title_page good">
                   الأختبارات</router-link
                 >
-                <a href="Assignment-details.html" class="btn btn_title_page">
-                  الواجبات</a
+                <router-link to="/Assignment" class="btn btn_title_page">
+                  الواجبات</router-link
                 >
-                <a href="students.html" class="btn btn_title_page"> الطلاب</a>
-                <a href="teachers.html" class="btn btn_title_page"> المعلمين</a>
-                <a href="parents.html" class="btn btn_title_page">
-                  أولياء الأمور</a
-                >
-                <a href="Moderators.html" class="btn btn_title_page">
-                  المشرفين</a
-                >
-                <a href="Public-reports.html" class="btn btn_title_page">
-                  التقارير العامه</a
-                >
+                <router-link to="/students" class="btn btn_title_page"> الطلاب</router-link>
+                <router-link to="/teachers" class="btn btn_title_page"> المعلمين</router-link>
+                <router-link to="/parents" class="btn btn_title_page"> أولياء الأمور</router-link>
+                <router-link to="/moderatots"  class="btn btn_title_page"> المشرفين</router-link>
+                <router-link to=""  class="btn btn_title_page"> التقارير العامه</router-link>
                 <a href="contests.html" class="btn btn_title_page"
                   >المسابقات
                 </a>

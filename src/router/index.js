@@ -52,6 +52,10 @@ import guardianappIndex from '@/views/dashboard/guardianapp/index.vue'
 
 import archivesIndex from '@/views/dashboard/archives/index.vue'
 import generalsettingIndex from '@/views/dashboard/generalsetting/index.vue'
+import ComplaintsIndex from '@/views/dashboard/Complaints/index.vue' 
+
+
+
 
 const routes = [
   {
@@ -451,6 +455,14 @@ component: parentsIndex
 path:'/generalsetting',
 name:'generalsetting-index',
 component : generalsettingIndex
+},
+
+
+// ===============
+{
+  path: '/Complaints',
+  name: 'ComplaintsIndex',
+  component: ComplaintsIndex
 }
 
 

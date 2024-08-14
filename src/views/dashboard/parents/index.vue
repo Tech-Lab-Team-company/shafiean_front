@@ -1,5 +1,5 @@
 <template>
-         <div class="container">
+         <div class="container mt-5">
             <div class="d-flex justify-content-between align-items-center">
               <h5 class="title_section">أولياء الامور</h5>
             </div>
