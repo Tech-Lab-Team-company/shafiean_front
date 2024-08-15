@@ -484,7 +484,7 @@ table tbody tr td {
         padding: 1rem 1rem;
         border-radius: 0;
 
-        svg {
+        i {
           color: #b0b9b9;
           padding-inline-end: 1rem;
         }
@@ -493,7 +493,7 @@ table tbody tr td {
           background-color: rgba(228, 170, 60, 0.1);
           color: $PrimaryText;
 
-          svg {
+          i {
             color: $SecondColor;
           }
         }
@@ -631,7 +631,7 @@ table tbody tr td {
                 }
               }
 
-              svg {
+              i {
                 color: #84818a;
                 margin-inline-end: 0.5rem;
               }
@@ -646,14 +646,14 @@ table tbody tr td {
                 &.done {
                   background-color: rgba($color: #4259cc, $alpha: 0.1);
                   color: #4259cc;
-                  svg {
+                  i {
                     color: #4259cc;
                   }
                 }
                 &.not_done {
                   background-color: rgba($color: #cc5e42, $alpha: 0.1);
                   color: #cc5e42;
-                  svg {
+                  i {
                     color: #cc5e42;
                   }
                 }
@@ -983,7 +983,7 @@ table tbody tr td {
             border-radius: 8px;
             margin-bottom: 0;
             cursor: pointer;
-            svg {
+            i {
               color: $PrimaryColor;
               font-size: 2.5rem;
             }
@@ -1103,7 +1103,7 @@ table tbody tr td {
               display: flex;
               align-items: center;
               margin-inline-end: 3rem;
-              svg {
+              i {
                 margin-inline-end: 0.5rem;
               }
               .title,
@@ -1148,7 +1148,7 @@ table tbody tr td {
           color: $PrimaryText;
           margin-bottom: 0;
           font-size: 0.8rem;
-          svg {
+          i {
             color: $PrimaryColor;
             margin-inline-end: 0.5rem;
           }
@@ -1197,7 +1197,7 @@ table tbody tr td {
           width: 45%;
           font-size: 0.7rem;
           text-align: center;
-          svg {
+          i {
             color: $PrimaryColor;
             margin-inline-end: 0.5rem;
           }
@@ -1295,7 +1295,7 @@ table tbody tr td {
           align-items: center;
           margin-bottom: 0.3rem;
 
-          svg {
+          i {
             color: #fff;
             background-color: $PrimaryColor;
             padding: 0.2rem;

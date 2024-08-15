@@ -1,7 +1,10 @@
 <template>
-         <div class="container mt-5">
+     <div class="container mt-5">
             <div class="d-flex justify-content-between align-items-center">
-              <h5 class="title_section">أولياء الامور</h5>
+              <h5 class="title_section">المسابقات</h5>
+              <router-link to="/addcontests" class="btn btn_title_page"
+                >+ اضافة مسابقة جديدة</router-link
+              >
             </div>
             <div class="table_details">
               <!-- Start filters -->
@@ -24,15 +27,30 @@
                     name="daterange"
                     value=""
                   />
-                  
-                  
+                  <!-- <script>
+                    $(function () {
+                      $('input[name="daterange"]').daterangepicker(
+                        {
+                          opens: "left",
+                        },
+                        function (start, end, label) {
+                          console.log(
+                            "A new date selection was made: " +
+                              start.format("YYYY-MM-DD") +
+                              " to " +
+                              end.format("YYYY-MM-DD")
+                          );
+                        }
+                      );
+                    });
+                  </script> -->
                 </div>
                 <div class="form-group">
                   <select
                     name=""
                     id=""
                     class="selectpicker form-control"
-                    title="كل الطلاب"
+                    title="المرحلة الدراسية"
                   >
                     <option value="">ابتدائي</option>
                     <option value="">اعدادي</option>
@@ -47,11 +65,11 @@
                   <thead>
                     <tr class="trAltCizgi">
                       <th><input class="box" type="checkbox" /></th>
-                      <th class="th">الرقم</th>
-                      <th class="th">اسم ولي الامر</th>
-                      <th class="th">رقم الهاتف</th>
-                      <th class="th">عدد الابناء</th>
-                      <th class="th">تاريخ الانضمام</th>
+                      <th class="th">رقم المسابقة</th>
+                      <th class="th">اسم المسابقة</th>
+                      <th class="th">حالة المسابقة</th>
+                      <th class="th">تاريخ البداية</th>
+                      <th class="th">تاريخ الانتهاء</th>
                       <th class="th"></th>
                     </tr>
                   </thead>
@@ -63,10 +81,12 @@
                         <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
                         1
                       </td>
-                      <td>أحمد على</td>
-                      <td>0102566544</td>
-                      <td>2</td>
-                      <td>22 مايو, 2023</td>
+                      <td>
+                        مسابقة على الجزء الأول من سورة البقرة ( 1- 25) بالتجويد
+                      </td>
+                      <td><p class="end">انتهت</p></td>
+                      <td>22 مايو ,2023</td>
+                      <td>مايو ,22 2023</td>
                       <td class="flex_mobile">
                         <div class="dropdown">
                           <a
@@ -83,18 +103,8 @@
                             <li>
                               <a
                                 class="dropdown-item"
-                                href="#"
-                                data-bs-toggle="modal"
-                                data-bs-target="#childModal"
-                                >عرض الابناء</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="#"
-                                @click="blockAlert()"
-                                >حذف</a
+                                href="Contest-details.html"
+                                >تفاصيل المسابقة</a
                               >
                             </li>
                           </ul>
@@ -110,10 +120,12 @@
                         <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
                         1
                       </td>
-                      <td>أحمد على</td>
-                      <td>0102566544</td>
-                      <td>2</td>
-                      <td>22 مايو, 2023</td>
+                      <td>
+                        مسابقة على الجزء الأول من سورة البقرة ( 1- 25) بالتجويد
+                      </td>
+                      <td><p class="cont">قائمة</p></td>
+                      <td>22 مايو ,2023</td>
+                      <td>مايو ,22 2023</td>
                       <td class="flex_mobile">
                         <div class="dropdown">
                           <a
@@ -130,18 +142,8 @@
                             <li>
                               <a
                                 class="dropdown-item"
-                                href="#"
-                                data-bs-toggle="modal"
-                                data-bs-target="#childModal"
-                                >عرض الابناء</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="#"
-                                @click="blockAlert()"
-                                >حذف</a
+                                href="Contest-details.html"
+                                >تفاصيل المسابقة</a
                               >
                             </li>
                           </ul>
@@ -157,10 +159,12 @@
                         <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
                         1
                       </td>
-                      <td>أحمد على</td>
-                      <td>0102566544</td>
-                      <td>2</td>
-                      <td>22 مايو, 2023</td>
+                      <td>
+                        مسابقة على الجزء الأول من سورة البقرة ( 1- 25) بالتجويد
+                      </td>
+                      <td><p class="end">انتهت</p></td>
+                      <td>22 مايو ,2023</td>
+                      <td>مايو ,22 2023</td>
                       <td class="flex_mobile">
                         <div class="dropdown">
                           <a
@@ -177,18 +181,8 @@
                             <li>
                               <a
                                 class="dropdown-item"
-                                href="#"
-                                data-bs-toggle="modal"
-                                data-bs-target="#childModal"
-                                >عرض الابناء</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="#"
-                                @click="blockAlert()"
-                                >حذف</a
+                                href="Contest-details.html"
+                                >تفاصيل المسابقة</a
                               >
                             </li>
                           </ul>
@@ -204,10 +198,12 @@
                         <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
                         1
                       </td>
-                      <td>أحمد على</td>
-                      <td>0102566544</td>
-                      <td>2</td>
-                      <td>22 مايو, 2023</td>
+                      <td>
+                        مسابقة على الجزء الأول من سورة البقرة ( 1- 25) بالتجويد
+                      </td>
+                      <td><p class="cont">قائمة</p></td>
+                      <td>22 مايو ,2023</td>
+                      <td>مايو ,22 2023</td>
                       <td class="flex_mobile">
                         <div class="dropdown">
                           <a
@@ -224,18 +220,8 @@
                             <li>
                               <a
                                 class="dropdown-item"
-                                href="#"
-                                data-bs-toggle="modal"
-                                data-bs-target="#childModal"
-                                >عرض الابناء</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="#"
-                                @click="blockAlert()"
-                                >حذف</a
+                                href="Contest-details.html"
+                                >تفاصيل المسابقة</a
                               >
                             </li>
                           </ul>
@@ -245,13 +231,16 @@
                     <!-- For loop this tr -->
                   </tbody>
                 </table>
-                <!-- sweetalrt -->
-             
-                <!-- sweetalrt -->
 
-             
+                <!-- <script>
+                  $(document).ready(function () {
+                    $("#table tbody").on("click", "tr", function () {
+                      $(this).toggleClass("selected");
+                    });
+                  });
+                </script> -->
               </div>
-              <button type="button" class="btn btn-danger">حذف المحدد</button>
+              <button @click="blockAlert()"   type="button" class="btn btn-danger">حذف المحدد</button>
             </div>
           </div>
 </template>
@@ -259,12 +248,12 @@
 <script>
 import Swal from "sweetalert2";
 export default {
-    name: "parents-index",
+    name :'contests-index',
     methods:{
-         blockAlert() {
+        blockAlert() {
                     Swal.fire({
                       html:
-                        '<h5 class="swal2-title">   هل أنت متأكد من حذف  ولي الامر؟ </h5>' +
+                        '<h5 class="swal2-title">   هل أنت متأكد من حذف المجموعه؟ </h5>' +
                         '<p class="swal2-html-container">  </p>',
 
                       showCancelButton: true,
@@ -274,7 +263,8 @@ export default {
                       cancelButtonText: "الغاء",
                       cancelButtonAriaLabel: "Thumbs down",
                     });
-                  }
+                  },
+                  
     }
 
 }

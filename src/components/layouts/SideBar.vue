@@ -5,10 +5,10 @@
       id="menu"
     >
       <li class="nav-item">
-        <a href="/git " class="nav-link align-middle">
+        <router-link to="/" class="nav-link align-middle">
           <img src="../../assets/media/image/icon/home.svg" alt="" />
           <span>الرئيسية</span>
-        </a>
+        </router-link>
       </li>
       <li class="nav-item">
         <a
@@ -216,19 +216,19 @@
           data-bs-parent="#menu"
         >
           <li>
-            <a href="View-blog.html" class="nav-link">
-              <span>عرض المدونه</span></a
+            <router-link to="/viewblog" class="nav-link">
+              <span>عرض المدونه</span></router-link
             >
           </li>
           <li>
-            <a href="sections.html" class="nav-link"> <span>الأقسام</span></a>
+            <router-link to="/sections" class="nav-link"> <span>الأقسام</span></router-link>
           </li>
           <li>
-            <a href="Hashtag.html" class="nav-link"> <span>الهشتاج</span></a>
+            <router-link to="/hashtags" class="nav-link"> <span>الهشتاج</span></router-link>
           </li>
           <li>
-            <a href="add-blog.html" class="nav-link">
-              <span>اضافة مدونه</span></a
+            <router-link to="/addviewblog" class="nav-link">
+              <span>اضافة مدونه</span></router-link
             >
           </li>
         </ul>
@@ -314,35 +314,35 @@
         </router-link>
       </li>
       <li class="nav-item">
-        <a href="contests.html" class="nav-link align-middle">
+        <router-link to="/contests" class="nav-link align-middle">
           <img
             src="../../assets/media/image/icon/cup-star-svgrepo-com.svg"
             alt=""
           />
           <span>المسابقات</span>
-        </a>
+        </router-link>
       </li>
       <li class="nav-item">
-        <a href="Electronic-library.html" class="nav-link align-middle">
+        <router-link to="/electronic" class="nav-link align-middle">
           <img
             src="../../assets/media/image/icon/electricity-measurement-svgrepo-com.svg"
             alt=""
           />
           <span>المكتبه الألكترونيه</span>
-        </a>
+        </router-link>
       </li>
       <li class="nav-item">
-        <a href="Complaints.html" class="nav-link align-middle">
+        <router-link to="/Complaints" class="nav-link align-middle">
           <img
             src="../../assets/media/image/icon/customer-problem-svgrepo-com.svg"
             alt=""
           />
           <span>الشكاوي</span>
-        </a>
+        </router-link>
       </li>
       <li class="nav-item">
         <router-link to="/generalsetting" class="nav-link align-middle">
-          <!-- <img src="./media/image/icon/setting.svg" alt="icon" /> -->
+          <img src="../../assets/media/image/icon/setting.svg" alt="icon" />
           <span>الاعدادات العامة</span>
         </router-link>
       </li>

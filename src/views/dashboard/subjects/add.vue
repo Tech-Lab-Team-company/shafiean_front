@@ -27,14 +27,30 @@
           <option value="">مرحلة ثانوي</option>
         </select>
       </div>
-      <button type="submit" class="btn PrimaryButton">اضافة</button>
-    </form>
+      <router-link to="/subjects">
+
+        <button @click="blockAlert()" type="submit" class="btn PrimaryButton">اضافة</button>
+      </router-link>
+      </form>
   </div>
 </template>
 
 <script>
+import Swal from "sweetalert2";
 export default {
   name: "subjects-add",
+  methods:{
+    blockAlert() {
+                    Swal.fire({
+                      html:
+                        '<h5 class="swal2-title">   لقم تمت الاضافه بنـجــاح </h5>' +
+                        '<p class="swal2-html-container">  </p>',
+
+                 
+                    });
+                  }
+  },
+ 
 };
 </script>
 

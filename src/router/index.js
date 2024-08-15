@@ -11,6 +11,9 @@ import addSubject from '@/views/dashboard/subjects/add.vue'
 import ExamsIndex from '@/views/dashboard/exams/index.vue'
 import addExam from '@/views/dashboard/exams/add.vue'
 import questionsIndex from '@/views/dashboard/questions/index.vue'
+import quesexamIndex from '@/views/dashboard/quesexam/index.vue'
+import examdetailsIndex from '@/views/dashboard/examdetails/index.vue'
+
 import AddQuestion from '@/views/dashboard/questions/add.vue'
 import AssignmentIndex from '@/views/dashboard/Assignment/index.vue'
 import addAssignment from '@/views/dashboard/Assignment/add.vue'
@@ -40,18 +43,32 @@ import addservices from '@/views/dashboard/services/add.vue'
 import teacherappIndex from '@/views/dashboard/teacherapp/index.vue'
 import studentappIndex from '@/views/dashboard/studentapp/index.vue'
 import guardianappIndex from '@/views/dashboard/guardianapp/index.vue'
-
-
-
-
-
-
+import viewblogIndex from '@/views/dashboard/viewblog/index.vue'
+import addviewblog from '@/views/dashboard/viewblog/add.vue'
+import sectionsIndex from '@/views/dashboard/sections/index.vue'
+import addsections from '@/views/dashboard/sections/add.vue'
+import hashtagsIndex from '@/views/dashboard/hashtags/index.vue'
+import addhashtags from '@/views/dashboard/hashtags/add.vue'
 
 
 
 
 import archivesIndex from '@/views/dashboard/archives/index.vue'
+import detailsarchives from '@/views/dashboard/archives/details.vue'
+import editarchives from '@/views/dashboard/archives/edits.vue'
+import detailsGroup from '@/views/dashboard/archives/detailsGroup.vue'
+import editGroups from '@/views/dashboard/archives/editGroups.vue'
+
+
+import electronicIndex from '@/views/dashboard/electronic/index.vue'
+import addelectronic from '@/views/dashboard/electronic/add.vue'
+import contestsIndex from '@/views/dashboard/contests/index.vue'
+import addcontests from '@/views/dashboard/contests/add.vue'  
 import generalsettingIndex from '@/views/dashboard/generalsetting/index.vue'
+import ComplaintsIndex from '@/views/dashboard/Complaints/index.vue' 
+
+
+
 
 const routes = [
   {
@@ -348,6 +365,65 @@ component: parentsIndex
   path:'/guardianapp',
   name : 'guardianapp',
   component : guardianappIndex
+},
+
+// ==================
+
+{
+
+  path : '/viewblog',
+  name : 'viewblog-index',
+  component : viewblogIndex
+
+},
+{
+  path : '/addviewblog',
+  name : 'addviewblog',
+  component : addviewblog
+
+
+},
+
+// =================
+
+{
+  path : '/sections',
+  name : 'sections-index',
+  component : sectionsIndex
+},
+{
+  path : '/addsections',
+  name : 'addsections',
+  component : addsections
+},
+
+// =========================
+
+{
+  path: '/hashtags',
+  name: 'hashtags-index',
+  component: hashtagsIndex
+},
+{
+  path : '/addhashtags',
+  name : 'addhashtags',
+  component : addhashtags
+},
+
+// ========quesExam=======
+{
+  path:'/quesexam',
+  name:'quesexam-index',
+  component : quesexamIndex
+},
+// ======detils question=============
+
+{
+
+path: '/examdetails',
+name: 'examdetails-index',
+component: examdetailsIndex
+
 }
 
 
@@ -425,32 +501,90 @@ component: parentsIndex
 
 
 
+,{
+
+  path:'/electronic',
+  name:'electronic-index',
+  component : electronicIndex
+},
+{
+path: '/addelectronic',
+name : 'addelectronic',
+component : addelectronic
+
+},
+// ===========contests=============
+{
+
+  path: '/contests',
+  name : 'contestsIndex',
+  component : contestsIndex
+
+},
+{
+
+  path : '/addcontests',
+  name : 'addcontests',
+  component : addcontests
+
+
+}
 
 
 
 
-
-
-
-
-
-
-
-
+// =========Arcjives===========
 
 ,{
   path: '/archives',
   name : 'archivesIndex',
   component : archivesIndex
 },
+{
+  path:'/detailsarchives',
+  name : 'detailsarchives',
+  component : detailsarchives
+},
+{
+
+  path : '/editarchives',
+  name : 'editarchives',
+  component : editarchives
+
+
+},
+
+// ====archives group=====
+
+
+{
+
+  path: '/detailsGroup',
+  name: 'detailsGroup',
+  component: detailsGroup
+},
+{
+
+  path : '/editGroups',
+  name : 'editGroups',
+  component : editGroups
+}
 
 // ==========================
 
 
-{
+,{
 path:'/generalsetting',
 name:'generalsetting-index',
 component : generalsettingIndex
+},
+
+
+// ===============
+{
+  path: '/Complaints',
+  name: 'ComplaintsIndex',
+  component: ComplaintsIndex
 }
 
 

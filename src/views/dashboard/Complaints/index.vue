@@ -1,7 +1,7 @@
 <template>
-         <div class="container mt-5">
+     <div class="container mt-5">
             <div class="d-flex justify-content-between align-items-center">
-              <h5 class="title_section">أولياء الامور</h5>
+              <h5 class="title_section">الشكاوي</h5>
             </div>
             <div class="table_details">
               <!-- Start filters -->
@@ -13,7 +13,7 @@
                     name=""
                     id=""
                     class="form-control"
-                    placeholder=".ابحث باسم السؤال , المجموعة , المدرس"
+                    placeholder="ابحث باسم الشخص...."
                   />
                 </div>
                 <div class="form-group">
@@ -24,19 +24,34 @@
                     name="daterange"
                     value=""
                   />
-                  
-                  
+                  <!-- <script>
+                    $(function () {
+                      $('input[name="daterange"]').daterangepicker(
+                        {
+                          opens: "left",
+                        },
+                        function (start, end, label) {
+                          console.log(
+                            "A new date selection was made: " +
+                              start.format("YYYY-MM-DD") +
+                              " to " +
+                              end.format("YYYY-MM-DD")
+                          );
+                        }
+                      );
+                    });
+                  </script> -->
                 </div>
                 <div class="form-group">
                   <select
                     name=""
                     id=""
                     class="selectpicker form-control"
-                    title="كل الطلاب"
+                    title="كل الطالب"
                   >
-                    <option value="">ابتدائي</option>
-                    <option value="">اعدادي</option>
-                    <option value="">ثانوي</option>
+                    <option value="">كل الطالب</option>
+                    <option value="">كل المدرسين</option>
+                    <option value="">أولياء الأمور</option>
                   </select>
                 </div>
               </div>
@@ -47,26 +62,29 @@
                   <thead>
                     <tr class="trAltCizgi">
                       <th><input class="box" type="checkbox" /></th>
-                      <th class="th">الرقم</th>
-                      <th class="th">اسم ولي الامر</th>
-                      <th class="th">رقم الهاتف</th>
-                      <th class="th">عدد الابناء</th>
-                      <th class="th">تاريخ الانضمام</th>
+                      <th class="th">اسم الشخص</th>
+                      <th class="th">التاريخ</th>
+                      <th class="th">نص الشكاوي</th>
                       <th class="th"></th>
                     </tr>
                   </thead>
                   <tbody class="tbody">
                     <!-- For loop this tr -->
+              
+                    <!-- For loop this tr -->
+
+                    <!-- For loop this tr -->
                     <tr>
                       <td class="th"><input class="box" type="checkbox" /></td>
                       <td class="id">
                         <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
-                        1
+                        محمد احمد
                       </td>
-                      <td>أحمد على</td>
-                      <td>0102566544</td>
-                      <td>2</td>
-                      <td>22 مايو, 2023</td>
+                      <td>مايو 22 , 2022 - 2:30 م</td>
+                      <td>
+                        هذا النص هو مثال لنص يمكن أن يستبدل في نفس النص أو
+                        العديد من النصوص الأخرى ... الأخرى ...
+                      </td>
                       <td class="flex_mobile">
                         <div class="dropdown">
                           <a
@@ -81,20 +99,85 @@
 
                           <ul class="dropdown-menu">
                             <li>
-                              <a
-                                class="dropdown-item"
-                                href="#"
-                                data-bs-toggle="modal"
-                                data-bs-target="#childModal"
-                                >عرض الابناء</a
-                              >
+                              <a class="dropdown-item" href="#">عرض الشكوي</a>
                             </li>
                             <li>
-                              <a
-                                class="dropdown-item"
-                                href="#"
-                                @click="blockAlert()"
-                                >حذف</a
+                              <a class="dropdown-item" href="#"
+                                >الرد علي الشكوي</a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- For loop this tr -->
+                    <tr>
+                      <td class="th"><input class="box" type="checkbox" /></td>
+                      <td class="id">
+                        <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
+                        محمد احمد
+                      </td>
+                      <td>مايو 22 , 2022 - 2:30 م</td>
+                      <td>
+                        هذا النص هو مثال لنص يمكن أن يستبدل في نفس النص أو
+                        العديد من النصوص الأخرى ... الأخرى ...
+                      </td>
+                      <td class="flex_mobile">
+                        <div class="dropdown">
+                          <a
+                            class="btn dropdown-toggle"
+                            href="#"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                          >
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                          </a>
+
+                          <ul class="dropdown-menu">
+                            <li>
+                              <a class="dropdown-item" href="#">عرض الشكوي</a>
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="#"
+                                >الرد علي الشكوي</a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- For loop this tr -->
+                    <tr>
+                      <td class="th"><input class="box" type="checkbox" /></td>
+                      <td class="id">
+                        <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
+                        محمد احمد
+                      </td>
+                      <td>مايو 22 , 2022 - 2:30 م</td>
+                      <td>
+                        هذا النص هو مثال لنص يمكن أن يستبدل في نفس النص أو
+                        العديد من النصوص الأخرى ... الأخرى ...
+                      </td>
+                      <td class="flex_mobile">
+                        <div class="dropdown">
+                          <a
+                            class="btn dropdown-toggle"
+                            href="#"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                          >
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                          </a>
+
+                          <ul class="dropdown-menu">
+                            <li>
+                              <a class="dropdown-item" href="#">عرض الشكوي</a>
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="#"
+                                >الرد علي الشكوي</a
                               >
                             </li>
                           </ul>
@@ -108,12 +191,13 @@
                       <td class="th"><input class="box" type="checkbox" /></td>
                       <td class="id">
                         <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
-                        1
+                        محمد احمد
                       </td>
-                      <td>أحمد على</td>
-                      <td>0102566544</td>
-                      <td>2</td>
-                      <td>22 مايو, 2023</td>
+                      <td>مايو 22 , 2022 - 2:30 م</td>
+                      <td>
+                        هذا النص هو مثال لنص يمكن أن يستبدل في نفس النص أو
+                        العديد من النصوص الأخرى ... الأخرى ...
+                      </td>
                       <td class="flex_mobile">
                         <div class="dropdown">
                           <a
@@ -128,114 +212,11 @@
 
                           <ul class="dropdown-menu">
                             <li>
-                              <a
-                                class="dropdown-item"
-                                href="#"
-                                data-bs-toggle="modal"
-                                data-bs-target="#childModal"
-                                >عرض الابناء</a
-                              >
+                              <a class="dropdown-item" href="#">عرض الشكوي</a>
                             </li>
                             <li>
-                              <a
-                                class="dropdown-item"
-                                href="#"
-                                @click="blockAlert()"
-                                >حذف</a
-                              >
-                            </li>
-                          </ul>
-                        </div>
-                      </td>
-                    </tr>
-                    <!-- For loop this tr -->
-
-                    <!-- For loop this tr -->
-                    <tr>
-                      <td class="th"><input class="box" type="checkbox" /></td>
-                      <td class="id">
-                        <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
-                        1
-                      </td>
-                      <td>أحمد على</td>
-                      <td>0102566544</td>
-                      <td>2</td>
-                      <td>22 مايو, 2023</td>
-                      <td class="flex_mobile">
-                        <div class="dropdown">
-                          <a
-                            class="btn dropdown-toggle"
-                            href="#"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                          </a>
-
-                          <ul class="dropdown-menu">
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="#"
-                                data-bs-toggle="modal"
-                                data-bs-target="#childModal"
-                                >عرض الابناء</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="#"
-                                @click="blockAlert()"
-                                >حذف</a
-                              >
-                            </li>
-                          </ul>
-                        </div>
-                      </td>
-                    </tr>
-                    <!-- For loop this tr -->
-
-                    <!-- For loop this tr -->
-                    <tr>
-                      <td class="th"><input class="box" type="checkbox" /></td>
-                      <td class="id">
-                        <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
-                        1
-                      </td>
-                      <td>أحمد على</td>
-                      <td>0102566544</td>
-                      <td>2</td>
-                      <td>22 مايو, 2023</td>
-                      <td class="flex_mobile">
-                        <div class="dropdown">
-                          <a
-                            class="btn dropdown-toggle"
-                            href="#"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                          </a>
-
-                          <ul class="dropdown-menu">
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="#"
-                                data-bs-toggle="modal"
-                                data-bs-target="#childModal"
-                                >عرض الابناء</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="#"
-                                @click="blockAlert()"
-                                >حذف</a
+                              <a class="dropdown-item" href="#"
+                                >الرد علي الشكوي</a
                               >
                             </li>
                           </ul>
@@ -245,13 +226,16 @@
                     <!-- For loop this tr -->
                   </tbody>
                 </table>
-                <!-- sweetalrt -->
-             
-                <!-- sweetalrt -->
 
-             
+                <!-- <script>
+                  $(document).ready(function () {
+                    $("#table tbody").on("click", "tr", function () {
+                      $(this).toggleClass("selected");
+                    });
+                  });
+                </script> -->
               </div>
-              <button type="button" class="btn btn-danger">حذف المحدد</button>
+              <button @click="blockAlert()" type="button" class="btn btn-danger">حذف المحدد</button>
             </div>
           </div>
 </template>
@@ -259,12 +243,12 @@
 <script>
 import Swal from "sweetalert2";
 export default {
-    name: "parents-index",
-    methods:{
-         blockAlert() {
+    name:'/Complaints-index',
+methods :{
+  blockAlert() {
                     Swal.fire({
                       html:
-                        '<h5 class="swal2-title">   هل أنت متأكد من حذف  ولي الامر؟ </h5>' +
+                        '<h5 class="swal2-title">   هل أنت متأكد من حذف المجموعه؟ </h5>' +
                         '<p class="swal2-html-container">  </p>',
 
                       showCancelButton: true,
@@ -275,8 +259,7 @@ export default {
                       cancelButtonAriaLabel: "Thumbs down",
                     });
                   }
-    }
-
+}
 }
 </script>
 
