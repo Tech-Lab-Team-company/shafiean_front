@@ -84,7 +84,7 @@
                   role="tab"
                   aria-controls="v-pills-signeout"
                   aria-selected="false"
-                  onclick="blockAlert()"
+                  @click="blockAlert()"
                 >
                   تسجيل الخروج
                 </button>
@@ -99,7 +99,7 @@
                 >
                   <h5 class="title_section">اعدادات الحساب</h5>
 
-                  <nav>
+                  <nav style="justify-content: start; padding-inline-start: 0;">
                     <div  class="nav nav-tabs" id="nav-tab" role="tablist" style="text-align: start;">
                       <button
                         class="nav-link active"
@@ -160,7 +160,7 @@
                         <label for="">إعادة كلمة المرور الجديدة</label>
                         <input class="form-control" type="password" />
                       </div>
-                      <button type="submit" class="btn PrimaryButton nasr">
+                      <button @click="done()" type="submit" class="btn PrimaryButton nasr">
                         حفظ التغييرات
                       </button>
                     </div>
@@ -592,7 +592,7 @@
                       وعندما تحذف حسابك ستفقد جميع الأنشطة في لوحة التحكم ،
                     </p>
                     <div class="form-group">
-                      <input type="checkbox" id="z" class="form-check-input" />
+                      <input type="checkbox" id="z" class="form-check-input m-1" />
                       <label for="z">أوافق على حذف الحساب الخاص بي</label>
                     </div>
                     <button
@@ -600,6 +600,7 @@
                       class="btn PrimaryButton dele"
                       data-bs-toggle="modal"
                       data-bs-target="#changeGroupModal"
+                     
                     >
                       حذف الآن
                     </button>
@@ -617,6 +618,25 @@
                 <!-- five tab -->
               </div>
 
+ <div
+      class="modal fade"
+      id="changeGroupModal"
+      tabindex="-1"
+      aria-labelledby="changeGroupModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body setting">
+            <h4>هل تريد حذف الحساب؟</h4>
+
+            <button type="submit" class="btn PrimaryButton m-4">تأكيد الحذف</button>
+
+            <button type="submit" class="btn PrimaryButton">الغاء</button>
+          </div>
+        </div>
+      </div>
+    </div>
               <!-- ======= Main ======= -->
             </div>
           </div>
@@ -642,6 +662,16 @@ methods:{
       });
     //   this.students.splice(index, 1);
     },
+    done(){
+               Swal.fire({
+                      html:
+                        '<h5 class="swal2-title">   لقم تمت الاضافه بنـجــاح </h5>' +
+                        '<p class="swal2-html-container">  </p>',
+
+                 
+                    });
+    }
+   
 }
 }
 </script>

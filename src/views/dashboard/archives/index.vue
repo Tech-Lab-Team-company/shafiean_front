@@ -155,11 +155,10 @@
 
                               <ul class="dropdown-menu">
                                 <li>
-                                  <a
+                                  <router-link to="/detailsarchives"
                                     class="dropdown-item"
-                                    href="details_student.html"
-                                    >عرض التفاصيل</a
-                                  >
+                                  
+                                    >عرض التفاصيل</router-link >
                                 </li>
                                 <li>
                                   <a
@@ -171,17 +170,16 @@
                                   >
                                 </li>
                                 <li>
-                                  <a
+                                  <router-link to="/editarchives"
                                     class="dropdown-item"
-                                    href="edit-student.html"
-                                    >تعديل البيانات</a
-                                  >
+                                    
+                                    >تعديل البيانات</router-link>
                                 </li>
                                 <li>
                                   <a
                                     class="dropdown-item"
                                     href="#"
-                                    onclick="blockAlert()"
+                                     @click="blockAlert()"
                                     >حذف</a
                                   >
                                 </li>
@@ -221,11 +219,10 @@
 
                               <ul class="dropdown-menu">
                                 <li>
-                                  <a
+                                  <router-link to="/detailsarchives"
                                     class="dropdown-item"
-                                    href="details_student.html"
-                                    >عرض التفاصيل</a
-                                  >
+                                  
+                                    >عرض التفاصيل</router-link >
                                 </li>
                                 <li>
                                   <a
@@ -237,17 +234,16 @@
                                   >
                                 </li>
                                 <li>
-                                  <a
+                                  <router-link to="/editarchives"
                                     class="dropdown-item"
-                                    href="edit-student.html"
-                                    >تعديل البيانات</a
-                                  >
+                                    
+                                    >تعديل البيانات</router-link>
                                 </li>
                                 <li>
                                   <a
                                     class="dropdown-item"
                                     href="#"
-                                    onclick="blockAlert()"
+                          @click="blockAlert()"
                                     >حذف</a
                                   >
                                 </li>
@@ -287,11 +283,10 @@
 
                               <ul class="dropdown-menu">
                                 <li>
-                                  <a
+                                  <router-link to="/detailsarchives"
                                     class="dropdown-item"
-                                    href="details_student.html"
-                                    >عرض التفاصيل</a
-                                  >
+                                  
+                                    >عرض التفاصيل</router-link >
                                 </li>
                                 <li>
                                   <a
@@ -303,17 +298,16 @@
                                   >
                                 </li>
                                 <li>
-                                  <a
+                                  <router-link to="/editarchives"
                                     class="dropdown-item"
-                                    href="edit-student.html"
-                                    >تعديل البيانات</a
-                                  >
+                                    
+                                    >تعديل البيانات</router-link>
                                 </li>
                                 <li>
                                   <a
                                     class="dropdown-item"
                                     href="#"
-                                    onclick="blockAlert()"
+                                    @click="blockAlert()"
                                     >حذف</a
                                   >
                                 </li>
@@ -353,11 +347,10 @@
 
                               <ul class="dropdown-menu">
                                 <li>
-                                  <a
+                                  <router-link to="/detailsarchives"
                                     class="dropdown-item"
-                                    href="details_student.html"
-                                    >عرض التفاصيل</a
-                                  >
+                                  
+                                    >عرض التفاصيل</router-link >
                                 </li>
                                 <li>
                                   <a
@@ -369,17 +362,16 @@
                                   >
                                 </li>
                                 <li>
-                                  <a
+                                  <router-link to="/editarchives"
                                     class="dropdown-item"
-                                    href="edit-student.html"
-                                    >تعديل البيانات</a
-                                  >
+                                    
+                                    >تعديل البيانات</router-link>
                                 </li>
                                 <li>
                                   <a
                                     class="dropdown-item"
                                     href="#"
-                                    onclick="blockAlert()"
+                                     @click="blockAlert()"
                                     >حذف</a
                                   >
                                 </li>
@@ -444,7 +436,7 @@
                     </script> -->
                     <!-- sweetalrt -->
                   </div>
-                  <button type="button" class="btn btn-danger">
+                  <button @click="blockAlert()" type="button" class="btn btn-danger">
                     حذف المحدد
                   </button>
                 </div>
@@ -543,24 +535,22 @@
 
                               <ul class="dropdown-menu">
                                 <li>
-                                  <a
+                                  <router-link to="/detailsGroup"
                                     class="dropdown-item"
-                                    href="details_group.html"
-                                    >تفاصيل المجموعة</a
-                                  >
+                               
+                                    >تفاصيل المجموعة</router-link>
                                 </li>
                                 <li>
-                                  <a
+                                  <router-link to="/editGroups"
                                     class="dropdown-item"
-                                    href="edit-group.html"
-                                    >تعديل</a
-                                  >
+                                    
+                                    >تعديل</router-link>
                                 </li>
                                 <li>
                                   <a
                                     class="dropdown-item"
                                     href="#"
-                                    onclick="blockAlert()"
+                                     @click="blockAlert()"
                                     >حذف
                                   </a>
                                 </li>
@@ -620,7 +610,7 @@
                                   <a
                                     class="dropdown-item"
                                     href="#"
-                                    onclick="blockAlert()"
+                                     @click="blockAlert()"
                                     >حذف
                                   </a>
                                 </li>
@@ -680,7 +670,7 @@
                                   <a
                                     class="dropdown-item"
                                     href="#"
-                                    onclick="blockAlert()"
+                                    @click="blockAlert()"
                                     >حذف
                                   </a>
                                 </li>
@@ -740,8 +730,7 @@
                                   <a
                                     class="dropdown-item"
                                     href="#"
-                                    onclick="blockAlert()"
-                                    >حذف
+                                    @click="blockAlert()"                                    >حذف
                                   </a>
                                 </li>
                               </ul>
@@ -754,7 +743,7 @@
 
                    
                   </div>
-                  <button type="button" class="btn btn-danger">
+                  <button @click="blockAlert()" type="button" class="btn btn-danger">
                     حذف المحدد
                   </button>
                 </div>
@@ -765,8 +754,25 @@
 </template>
 
 <script>
+import Swal from "sweetalert2";
 export default {
-    name : 'archives-index'
+    name : 'archives-index',
+    methods:{
+      blockAlert() {
+                    Swal.fire({
+                      html:
+                        '<h5 class="swal2-title">   هل أنت متأكد من حذف المجموعه؟ </h5>' +
+                        '<p class="swal2-html-container">  </p>',
+
+                      showCancelButton: true,
+                      focusConfirm: false,
+                      confirmButtonText: "تأكيد الحذف",
+                      confirmButtonAriaLabel: "Thumbs up, great!",
+                      cancelButtonText: "الغاء",
+                      cancelButtonAriaLabel: "Thumbs down",
+                    });
+                  }
+    }
 
 }
 </script>

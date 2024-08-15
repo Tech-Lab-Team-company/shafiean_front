@@ -1,5 +1,5 @@
 <template>
-   <div class="container">
+   <div class="container mt-5">
             <div class="d-flex justify-content-between align-items-center">
               <h5 class="title_section">إضافة اختبار جديد</h5>
             </div>
@@ -363,8 +363,10 @@
               </div>
 
               <!-- Modal add new question -->
+<router-link to="/quesexam">
+  <button type="submit" class="btn PrimaryButton mio">الحفظ</button>
 
-              <button type="submit" class="btn PrimaryButton mio">الحفظ</button>
+</router-link>
             </form>
           </div>
 </template>

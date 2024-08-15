@@ -95,12 +95,17 @@
           </div>
         </div>
       </div>
-      <button type="submit" class="btn PrimaryButton mb-5">اضافة</button>
+      <router-link to="/lessons">
+
+        <button @click="blockAlert()" type="submit" class="btn PrimaryButton mb-5">اضافة</button>
+
+      </router-link>
     </form>
   </div>
 </template>
 
 <script>
+import Swal from "sweetalert2";
 export default {
   name: "add-lessons",
 
@@ -108,6 +113,16 @@ export default {
     showNewQues() {
       document.getElementById("mycheckboxdiv").style.display = "block";
     },
+
+    blockAlert() {
+                    Swal.fire({
+                      html:
+                        '<h5 class="swal2-title">   لقم تمت الاضافه بنـجــاح </h5>' +
+                        '<p class="swal2-html-container">  </p>',
+
+                 
+                    });
+                  }
   },
 };
 </script>

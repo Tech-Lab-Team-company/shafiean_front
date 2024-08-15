@@ -1,23 +1,9 @@
 <template>
      <div class="container mt-5">
             <div class="d-flex justify-content-between align-items-center">
-              <h5 class="title_section">إضافة طالب جديد</h5>
+              <h5 class="title_section">تعديل بيانات الطالب</h5>
             </div>
             <form action="students.html" class="add_form row w-100">
-              <div class="col-lg-6 col-md-6 col-12">
-                <div class="form-group">
-                  <label for="">* اضافة مجموعه</label>
-                  <select
-                    name=""
-                    id=""
-                    class="form-control selectpicker"
-                    title="اختر مجموعه"
-                  >
-                    <option value="">1</option>
-                    <option value="">2</option>
-                  </select>
-                </div>
-              </div>
               <div class="col-12">
                 <div class="form-group">
                   <label for="">* اسم الطالب</label>
@@ -171,11 +157,11 @@
                 </div>
               </div>
               <div class="col-12">
-                <router-link to="/students">
+                <router-link to="/archives">
 
-                  <button @click="blockAlert()" type="submit" class="btn PrimaryButton w-auto">
-                    حفظ
-                  </button>
+                    <button @click="blockAlert()" type="submit" class="btn PrimaryButton w-auto">
+                        حفظ
+                    </button>
                 </router-link>
               </div>
             </form>
@@ -183,12 +169,11 @@
 </template>
 
 <script>
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2'
 export default {
-  name: "students-add",
-  methods: {
-
-    blockAlert() {
+    name : 'edit-archives',
+    methods:{
+        blockAlert() {
                     Swal.fire({
                       html:
                         '<h5 class="swal2-title">   لقم تمت الاضافه بنـجــاح </h5>' +
@@ -197,7 +182,8 @@ export default {
                  
                     });
                   }
-  }
+    }
+
 }
 </script>
 
