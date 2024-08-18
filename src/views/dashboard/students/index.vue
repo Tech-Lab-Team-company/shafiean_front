@@ -98,9 +98,8 @@
 
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="details_student.html"
-                      >عرض التفاصيل</a
-                    >
+                    <router-link to="/detailsStudent" class="dropdown-item" 
+                      >عرض التفاصيل</router-link >
                   </li>
                   <li>
                     <a
@@ -156,9 +155,8 @@
 
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="details_student.html"
-                      >عرض التفاصيل</a
-                    >
+                    <router-link to="/detailsStudent" class="dropdown-item" 
+                      >عرض التفاصيل</router-link >
                   </li>
                   <li>
                     <a
@@ -214,9 +212,8 @@
 
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="details_student.html"
-                      >عرض التفاصيل</a
-                    >
+                    <router-link to="/detailsStudent" class="dropdown-item" 
+                      >عرض التفاصيل</router-link >
                   </li>
                   <li>
                     <a
@@ -272,9 +269,8 @@
 
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="details_student.html"
-                      >عرض التفاصيل</a
-                    >
+                    <router-link to="/detailsStudent" class="dropdown-item" 
+                      >عرض التفاصيل</router-link >
                   </li>
                   <li>
                     <a

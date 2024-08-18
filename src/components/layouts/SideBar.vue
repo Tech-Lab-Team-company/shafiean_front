@@ -252,23 +252,22 @@
           data-bs-parent="#menu"
         >
           <li>
-            <a href="Public-reports.html" class="nav-link">
-              <span>التقارير العامه</span></a
+            <router-link to="/reports" class="nav-link">
+              <span>التقارير العامه</span></router-link >
+          </li>
+          <li>
+            <router-link to="/reportsachivment" class="nav-link">
+              <span>تقارير الأنجازات</span></router-link
             >
           </li>
           <li>
-            <a href="Achievements-reports.html" class="nav-link">
-              <span>تقارير الأنجازات</span></a
+            <router-link to="/attendance" class="nav-link">
+              <span>تقارير الحضور والأنصراف</span></router-link
             >
           </li>
           <li>
-            <a href="Attendance-and-departure reports.html" class="nav-link">
-              <span>تقارير الحضور والأنصراف</span></a
-            >
-          </li>
-          <li>
-            <a href="Exam-reports.html" class="nav-link">
-              <span>تقارير الأمتحانات</span></a
+            <router-link to="/examreport" class="nav-link">
+              <span>تقارير الأمتحانات</span></router-link
             >
           </li>
           <li>

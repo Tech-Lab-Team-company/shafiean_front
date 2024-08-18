@@ -7,9 +7,9 @@
                 <h5>صباح الخير 😄</h5>
               </div>
             </div>
-            <div class="col-lg-12 col-md-12 col-12" style="text-align: start; gap: 10px">
+            <div class="col-lg-12 col-md-12 col-12" style="text-align: start; ">
               <div class="buton-index">
-                <router-link to="/groups"   class="btn btn_title_page"> المجموعات</router-link>
+                <router-link  to="/groups"   class="btn btn_title_page"> المجموعات</router-link>
                 <router-link to="/Lessons"  class="btn btn_title_page">الدروس</router-link>
                 <router-link to="/exams"  class="btn btn_title_page good">
                   الأختبارات</router-link
@@ -70,9 +70,15 @@
               </div>
               <div class="percentage_jobs">
                 <h5>معدل التفاعل مع المنصة</h5>
-                <div class="chart-container">
+                <!-- <div class="chart-container">
                   <canvas id="percentageJobs"></canvas>
-                </div>
+                </div> -->
+
+                <!-- ============chart============ -->
+                <div class="card" >
+        <Chart type="bar" style="height: 700px" :data="chartData" :options="chartOptions" class="h-[30rem]"  />
+    </div>
+
              
               </div>
               <div class="last_job">
@@ -82,9 +88,9 @@
                   <div class="col-md-6 col-12">
                     <div class="card_job">
                       <div class="pict">
-                        <!-- <img src="media/Group 73024.png" alt="" /> -->
+                        <img src="../../assets/media/Group 73024.png" alt="" />
                       </div>
-                      <div class="con">
+                      <div class="con" style="text-align: right">
                         <h6 class="title">
                           درس على الجزء الأول من سورة البقرة الاية (1-25)
                           بالتجويد
@@ -108,9 +114,9 @@
                   <div class="col-md-6 col-12">
                     <div class="card_job">
                       <div class="pict">
-                        <!-- <img src="media/Group 73024.png" alt="" /> -->
+                        <img src="../../assets/media/Group 73024.png" alt="" />
                       </div>
-                      <div class="con">
+                      <div class="con" style="text-align: right">
                         <h6 class="title">
                           درس على الجزء الأول من سورة البقرة الاية (1-25)
                           بالتجويد
@@ -221,11 +227,11 @@
               <div class="team_shift">
                 <div class="d-flex justify-content-between align-items-center">
                   <h5>الطلاب المنضمين حديثا</h5>
-                  <a href="students.html" class="btn">عرض الكل</a>
+                  <router-link to="/students" class="btn">عرض الكل</router-link>
                 </div>
                 <!-- ======= table team ======= -->
                 <div class="table-responsive">
-                  <table class="table">
+                  <table class="table" style="text-align: start">
                     <thead>
                       <tr>
                         <th scope="col">الإسم</th>
@@ -395,7 +401,7 @@
                       </ul>
                     </div>
                   </div>
-                  <!-- <img src="./media/image/map.png" alt="map" /> -->
+                  <img src="../../assets/media/image/map.png" alt="map" />
                   <div>
                     <table class="table">
                       <thead>
@@ -457,7 +463,105 @@
 </template>
 
 <script>
-export default {};
+
+
+import Chart from 'primevue/chart';
+
+
+export default {
+  components: {
+    Chart
+  },
+
+  data() {
+        return {  
+            chartData: null,
+            chartOptions: null
+        };
+    },
+    mounted() {
+        this.chartData = this.setChartData();
+        this.chartOptions = this.setChartOptions();
+    },
+    methods: {
+        setChartData() {
+
+            return {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [
+                    {
+                      type: "line",
+                        label: "اجراء المهام",
+                        backgroundColor: "#3F3F44",
+                        borderColor: "#3F3F44",
+                        borderWidth: 1,
+                        data: [6, 9, 7, 3, 10, 7, 4, 6, 7, 10, 8],
+                    },
+                    {
+                        type: "bar",
+                        label: "تفاعل أولياء الامور",
+                          backgroundColor: "#21765E",
+                          borderColor: "#21765E",
+                        borderWidth: 1,
+                        data: [10, 7, 4, 6, 9, 7, 3, 10, 13, 8, 11],
+                      },
+                      {
+                        type: "bar",
+                        label: "انضمام الطلاب",
+                        backgroundColor: "#E8EFED",
+                        borderColor: "#E8EFED",
+                        borderWidth: 1,
+                        tension: 0.1,
+                        data: [6, 9, 7, 3, 10, 7, 4, 6, 7, 10, 8],
+                      },
+                ]
+            };
+        },
+        setChartOptions() {
+            const documentStyle = getComputedStyle(document.documentElement);
+            const textColor = documentStyle.getPropertyValue('--p-text-color');
+            const textColorSecondary = documentStyle.getPropertyValue('--p-text-muted-color');
+            const surfaceBorder = documentStyle.getPropertyValue('--p-content-border-color');
+
+            return {
+                maintainAspectRatio: false,
+                aspectRatio: 0.8,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: textColor
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: textColorSecondary,
+                            font: {
+                                weight: 500
+                            }
+                        },
+                        grid: {
+                            display: false,
+                            drawBorder: false
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: textColorSecondary
+                        },
+                        grid: {
+                            color: surfaceBorder,
+                            drawBorder: false
+                        }
+                    }
+                }
+            };
+        }
+    }
+
+
+};
 </script>
 
 <style>
