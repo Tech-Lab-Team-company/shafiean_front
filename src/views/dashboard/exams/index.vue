@@ -112,9 +112,9 @@
 
                   <ul class="dropdown-menu">
                     <li>
-                      <a class="dropdown-item" href="details_exam.html"
-                        >تفاصيل الاختبار</a
-                      >
+                      <router-link to="/examdetails" 
+                      class="dropdown-item"
+                        >تفاصيل الاختبار</router-link>
                     </li>
                   </ul>
                 </div>
@@ -147,9 +147,9 @@
 
                   <ul class="dropdown-menu">
                     <li>
-                      <a class="dropdown-item" href="details_exam.html"
-                        >تفاصيل الاختبار</a
-                      >
+                      <router-link to="/examdetails" 
+                      class="dropdown-item"
+                        >تفاصيل الاختبار</router-link>
                     </li>
                   </ul>
                 </div>
@@ -184,9 +184,9 @@
 
                   <ul class="dropdown-menu">
                     <li>
-                      <a class="dropdown-item" href="details_exam.html"
-                        >تفاصيل الاختبار</a
-                      >
+                      <router-link to="/examdetails" 
+                      class="dropdown-item"
+                        >تفاصيل الاختبار</router-link>
                     </li>
                   </ul>
                 </div>
