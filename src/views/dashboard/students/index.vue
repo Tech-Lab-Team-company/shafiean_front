@@ -3,7 +3,8 @@
     <div class="d-flex justify-content-between align-items-center">
       <h5 class="title_section">الطلاب</h5>
       <router-link to="/addStudent" class="btn btn_title_page"
-        >+ اضافة طالب جديد</router-link >
+        >+ اضافة طالب جديد</router-link
+      >
     </div>
   </div>
   <div class="table_details">
@@ -58,7 +59,10 @@
     <!-- End filters -->
 
     <div class="table-responsive">
-      <table class="table" id="table">
+      <table
+        class="table"
+        id="table"
+      >
         <thead>
           <tr class="trAltCizgi">
             <th><input class="box" type="checkbox" /></th>
@@ -73,17 +77,19 @@
         </thead>
         <tbody class="tbody">
           <!-- For loop this tr -->
-          <tr>
+          <tr 
+            v-for="(student, index) in students"
+            :key="index">
             <td class="th"><input class="box" type="checkbox" /></td>
             <td class="id">
               <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
               1
             </td>
-            <td>أحمد على</td>
-            <td>0102566544</td>
-            <td>إعاقة سمعية</td>
-            <td>العهد الحديث</td>
-            <td>22 مايو, 2023</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.phone }}</td>
+            <td>{{ student.group }}</td>
+            <td>{{ student.from }}</td>
+            <td>{{ student.date }}</td>
             <td class="flex_mobile">
               <div class="dropdown">
                 <a
@@ -98,8 +104,9 @@
 
                 <ul class="dropdown-menu">
                   <li>
-                    <router-link to="/detailsStudent" class="dropdown-item" 
-                      >عرض التفاصيل</router-link >
+                    <router-link to="/detailsStudent" class="dropdown-item"
+                      >عرض التفاصيل</router-link
+                    >
                   </li>
                   <li>
                     <a
@@ -116,10 +123,7 @@
                     >
                   </li>
                   <li>
-                    <a
-                      class="dropdown-item"
-                      href="#"
-                     @click="blockAlert()"
+                    <a class="dropdown-item" href="#" @click="blockAlert(index)"
                       >حذف</a
                     >
                   </li>
@@ -127,178 +131,6 @@
               </div>
             </td>
           </tr>
-          <!-- For loop this tr -->
-
-          <!-- For loop this tr -->
-          <tr>
-            <td class="th"><input class="box" type="checkbox" /></td>
-            <td class="id">
-              <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
-              1
-            </td>
-            <td>أحمد على</td>
-            <td>0102566544</td>
-            <td>إعاقة سمعية</td>
-            <td>العهد الحديث</td>
-            <td>22 مايو, 2023</td>
-            <td class="flex_mobile">
-              <div class="dropdown">
-                <a
-                  class="btn dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i class="fa-solid fa-ellipsis-vertical"></i>
-                </a>
-
-                <ul class="dropdown-menu">
-                  <li>
-                    <router-link to="/detailsStudent" class="dropdown-item" 
-                      >عرض التفاصيل</router-link >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="#"
-                      data-bs-toggle="modal"
-                      data-bs-target="#changeGroupModal"
-                      >نقل الى مجموعة اخري</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="edit-student.html"
-                      >تعديل البيانات</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="#"
-                @click="blockAlert()"
-                      >حذف</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </td>
-          </tr>
-          <!-- For loop this tr -->
-
-          <!-- For loop this tr -->
-          <tr>
-            <td class="th"><input class="box" type="checkbox" /></td>
-            <td class="id">
-              <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
-              1
-            </td>
-            <td>أحمد على</td>
-            <td>0102566544</td>
-            <td>إعاقة سمعية</td>
-            <td>العهد الحديث</td>
-            <td>22 مايو, 2023</td>
-            <td class="flex_mobile">
-              <div class="dropdown">
-                <a
-                  class="btn dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i class="fa-solid fa-ellipsis-vertical"></i>
-                </a>
-
-                <ul class="dropdown-menu">
-                  <li>
-                    <router-link to="/detailsStudent" class="dropdown-item" 
-                      >عرض التفاصيل</router-link >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="#"
-                      data-bs-toggle="modal"
-                      data-bs-target="#changeGroupModal"
-                      >نقل الى مجموعة اخري</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="edit-student.html"
-                      >تعديل البيانات</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="#"
-                    @click="blockAlert()"
-                      >حذف</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </td>
-          </tr>
-          <!-- For loop this tr -->
-
-          <!-- For loop this tr -->
-          <tr>
-            <td class="th"><input class="box" type="checkbox" /></td>
-            <td class="id">
-              <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
-              1
-            </td>
-            <td>أحمد على</td>
-            <td>0102566544</td>
-            <td>إعاقة سمعية</td>
-            <td>العهد الحديث</td>
-            <td>22 مايو, 2023</td>
-            <td class="flex_mobile">
-              <div class="dropdown">
-                <a
-                  class="btn dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i class="fa-solid fa-ellipsis-vertical"></i>
-                </a>
-
-                <ul class="dropdown-menu">
-                  <li>
-                    <router-link to="/detailsStudent" class="dropdown-item" 
-                      >عرض التفاصيل</router-link >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="#"
-                      data-bs-toggle="modal"
-                      data-bs-target="#changeGroupModal"
-                      >نقل الى مجموعة اخري</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="edit-student.html"
-                      >تعديل البيانات</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="#"
-                     @click="blockAlert()"
-                      >حذف</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </td>
-          </tr>
-          <!-- For loop this tr -->
         </tbody>
       </table>
       <!-- Modal chnage student grroup -->
@@ -357,8 +189,49 @@
 import Swal from "sweetalert2";
 export default {
   name: "students-index",
+  data() {
+    return {
+      students: [
+        {
+          name: "أحمد على",
+          phone: "0102566544",
+          group: "إعاقة سمعية",
+          from: "العهد الحديث",
+          date: "22 مايو, 2023",
+        },
+        {
+          name: "أحمد على",
+          phone: "0102566544",
+          group: "إعاقة سمعية",
+          from: "العهد الحديث",
+          date: "22 مايو, 2023",
+        },
+        {
+          name: "أحمد على",
+          phone: "0102566544",
+          group: "إعاقة سمعية",
+          from: "العهد الحديث",
+          date: "22 مايو, 2023",
+        },
+        {
+          name: "أحمد على",
+          phone: "0102566544",
+          group: "إعاقة سمعية",
+          from: "العهد الحديث",
+          date: "22 مايو, 2023",
+        },
+        {
+          name: "أحمد على",
+          phone: "0102566544",
+          group: "إعاقة سمعية",
+          from: "العهد الحديث",
+          date: "22 مايو, 2023",
+        },
+      ],
+    };
+  },
   methods: {
-    blockAlert() {
+    blockAlert(index) {
       Swal.fire({
         html:
           '<h5 class="swal2-title">   هل أنت متأكد من حذف الطالب؟ </h5>' +
@@ -370,8 +243,16 @@ export default {
         confirmButtonAriaLabel: "Thumbs up, great!",
         cancelButtonText: "الغاء",
         cancelButtonAriaLabel: "Thumbs down",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          if (this.students && this.students.length > index) {
+            this.students.splice(index, 1);
+            Swal.fire("تم الحذف!", "تم حذف الطالب بنجاح.", "success");
+          } else {
+            Swal.fire("خطأ!", "الطالب غير موجود.", "error");
+          }
+        }
       });
-    //   this.students.splice(index, 1);
     },
   },
 };

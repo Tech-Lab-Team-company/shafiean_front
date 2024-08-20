@@ -2124,33 +2124,30 @@
                 </tr>
               </tbody>
             </table>
-            <button type="submit" class="btn PrimaryButton mb-5 mt-3" @click="blockAlert()">اضافة</button>
+            <button type="submit" class="btn PrimaryButton mb-5 mt-3" @click="blockAlert(index)">اضافة</button>
           </div>
 
 
 </template>
 
 <script>
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 export default {
     name : 'permations-add',
     methods:{
-    //     blockAlert() {
-    //   Swal.fire({
-    //     html:
-    //       '<h5 class="swal2-title">   هل أنت متأكد من حذف الطالب؟ </h5>' +
-    //       '<p class="swal2-html-container">  </p>',
+      blockAlert() {
+                    Swal.fire({
+                      html:
+                        '<h5 class="swal2-title">   لقم تمت الاضافه بنـجــاح </h5>' +
+                        '<p class="swal2-html-container">  </p>',
 
-    //     showCancelButton: true,
-    //     focusConfirm: false,
-    //     confirmButtonText: "تأكيد الحذف",
-    //     confirmButtonAriaLabel: "Thumbs up, great!",
-    //     cancelButtonText: "الغاء",
-    //     cancelButtonAriaLabel: "Thumbs down",
-    //   });
-    //   this.students.splice(index, 1);
+                 
+                    });
+                  }
+      // this.students.splice( 1);
     },
     }
+
 
 
 </script>

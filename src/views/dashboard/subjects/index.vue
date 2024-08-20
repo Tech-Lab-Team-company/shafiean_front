@@ -41,9 +41,9 @@
       <div class="table-responsive">
         <table class="table" id="table">
           <thead>
-            <tr class="trAltCizgi">
+            <tr class="trAltCizgi" v-for="(student,index) in students" :key="index">
               <th><input class="box" type="checkbox" /></th>
-              <th class="th">رقم المادة</th>
+              <th class="th">رقم </th>
               <th class="th">اسم المادة</th>
               <th class="th">المرحلة الدراسية</th>
               <th class="th">تاريخ الاضافة</th>
@@ -54,10 +54,10 @@
             <!-- For loop this tr -->
             <tr>
               <td class="th"><input class="box" type="checkbox" /></td>
-              <td class="id">1</td>
-              <td>مادة الفقة</td>
-              <td>الفرقة الاولى</td>
-              <td>مايو 22 , 2022 - 2:30 م</td>
+              <td class="id">{{student.id}}</td>
+              <td>{{ student.name }} </td>
+              <td> {{ student.level }}</td>
+              <td> {{ student.date }} </td>
               <td class="flex_mobile">
                 <div class="dropdown">
                   <a
@@ -72,9 +72,8 @@
 
                   <ul class="dropdown-menu">
                     <li>
-                      <a class="dropdown-item" href="edit-subject.html"
-                        >تعديل</a
-                      >
+                      <router-link to="editSubject" class="dropdown-item"
+                        >تعديل</router-link  >
                     </li>
                     <li>
                       <a class="dropdown-item" href="#" onclick="blockAlert()"
@@ -88,147 +87,19 @@
             <!-- For loop this tr -->
 
             <!-- For loop this tr -->
-            <tr>
-              <td class="th"><input class="box" type="checkbox" /></td>
-              <td class="id">1</td>
-              <td>مادة الفقة</td>
-              <td>الفرقة الاولى</td>
-              <td>مايو 22 , 2022 - 2:30 م</td>
-              <td class="flex_mobile">
-                <div class="dropdown">
-                  <a
-                    class="btn dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                  </a>
-
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="edit-subject.html"
-                        >تعديل</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#" onclick="blockAlert()"
-                        >حذف
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
+        
             <!-- For loop this tr -->
 
             <!-- For loop this tr -->
-            <tr>
-              <td class="th"><input class="box" type="checkbox" /></td>
-              <td class="id">1</td>
-              <td>مادة الفقة</td>
-              <td>الفرقة الاولى</td>
-              <td>مايو 22 , 2022 - 2:30 م</td>
-              <td class="flex_mobile">
-                <div class="dropdown">
-                  <a
-                    class="btn dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                  </a>
-
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="edit-subject.html"
-                        >تعديل</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#" onclick="blockAlert()"
-                        >حذف
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
+      
             <!-- For loop this tr -->
 
             <!-- For loop this tr -->
-            <tr>
-              <td class="th"><input class="box" type="checkbox" /></td>
-              <td class="id">1</td>
-              <td>مادة الفقة</td>
-              <td>الفرقة الاولى</td>
-              <td>مايو 22 , 2022 - 2:30 م</td>
-              <td class="flex_mobile">
-                <div class="dropdown">
-                  <a
-                    class="btn dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                  </a>
-
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="edit-subject.html"
-                        >تعديل</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#" onclick="blockAlert()"
-                        >حذف
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
+           
             <!-- For loop this tr -->
 
             <!-- For loop this tr -->
-            <tr>
-              <td class="th"><input class="box" type="checkbox" /></td>
-              <td class="id">1</td>
-              <td>مادة الفقة</td>
-              <td>الفرقة الاولى</td>
-              <td>مايو 22 , 2022 - 2:30 م</td>
-              <td class="flex_mobile">
-                <div class="dropdown">
-                  <a
-                    class="btn dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                  </a>
-
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="edit-subject.html"
-                        >تعديل</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#" onclick="blockAlert()"
-                        >حذف
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
+            
             <!-- For loop this tr -->
           </tbody>
         </table>
@@ -242,6 +113,42 @@
 <script>
 export default {
   name: "subjects-index",
+  data(){
+    return{
+      subjects:[
+        {
+        id:1,
+        name:"مادة الفقة",
+        level:"الفرقة الاولى",
+        date:"مايو 22 , 2022 - 2:30 م"
+      },
+      {
+        id:2,
+        name:"مادة الفقة",
+        level:"الفرقة الاولى",
+        date:"مايو 22 , 2022 - 2:30 م"
+      },
+      {
+        id:3,
+        name:"مادة الفقة",
+        level:"الفرقة الاولى",
+        date:"مايو 22 , 2022 - 2:30 م"
+      },
+      {
+        id:4,
+        name:"مادة الفقة",
+        level:"الفرقة الاولى",
+        date:"مايو 22 , 2022 - 2:30 م"
+      },
+      { 
+        id:5,
+        name:"مادة الفقة",
+        level:"الفرقة الاولى",
+        date:"مايو 22 , 2022 - 2:30 م"
+      }
+    ]
+    }
+  }
 };
 </script>
 

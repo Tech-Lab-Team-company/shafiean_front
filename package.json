@@ -17,6 +17,7 @@
     "primevue": "^4.0.4",
     "sweetalert2": "^11.12.4",
     "vue": "^3.2.13",
+    "vue-circle-progress": "^0.0.2",
     "vue-router": "^4.0.3"
   },
   "devDependencies": {

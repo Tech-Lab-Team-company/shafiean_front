@@ -29,7 +29,6 @@
                    
                 </div>
 <div style="text-align: start">
-
     <router-link to="/electronic" style="text-align: start">
 
         <button @click="blockAlert()" type="submit" class="btn PrimaryButton m-3">حفظ</button>
