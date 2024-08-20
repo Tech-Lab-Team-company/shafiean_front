@@ -66,7 +66,7 @@
         />
         <label for="">انشاء رابط تسجيل</label>
       </div>
-      <button type="btn" class="btn PrimaryButton">الحفظ والمتابعة</button>
+      <button @click="add()" type="btn" class="btn PrimaryButton">الحفظ والمتابعة</button>
       <div class="modal" tabindex="-1" id="move-student">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -193,7 +193,7 @@
 </template>
 
 <script>
-
+import Swal from 'sweetalert2';
 export default {
     name: "groups-add",
     data() {
@@ -203,7 +203,15 @@ export default {
     },
     methods: {
       
-                   
+      Add() {
+                    Swal.fire({
+                      html:
+                        '<h5 class="swal2-title">   لقم تمت الاضافه بنـجــاح </h5>' +
+                        '<p class="swal2-html-container">  </p>',
+
+                 
+                    });
+                  }       
                   
     }
 }

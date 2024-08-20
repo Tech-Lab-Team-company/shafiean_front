@@ -2,8 +2,15 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/dashboard/dashboard.vue'
 import GroupsIndex from '@/views/dashboard/groups/index.vue'
 import GroupAdd from '@/views/dashboard/groups/add.vue'
+import editgroup from '@/views/dashboard/groups/edit.vue'
 import LessonsIndex from '@/views/dashboard/lessons/index.vue'
 import addlessons from '@/views/dashboard/lessons/add.vue'
+import detailslessons from '@/views/dashboard/lessons/details.vue'
+import editlessons from '@/views/dashboard/lessons/edit.vue'
+import addLessons from '@/views/dashboard/lessons/addLessons.vue'
+
+
+
 import stepsIndex from '@/views/dashboard/steps/index.vue'
 import addSteps from '@/views/dashboard/steps/add.vue'
 import editSteps from '@/views/dashboard/steps/edit.vue'
@@ -13,7 +20,8 @@ import editSubject from '@/views/dashboard/subjects/edit.vue'
 import ExamsIndex from '@/views/dashboard/exams/index.vue'
 import addExam from '@/views/dashboard/exams/add.vue'
 import questionsIndex from '@/views/dashboard/questions/index.vue'
-import quesexamIndex from '@/views/dashboard/quesexam/index.vue'
+import quesexamIndex from '@/views/dashboard/questions/index.vue'
+// import addQues from '@/views/dashboard/quesexam/add.vue'
 import examdetailsIndex from '@/views/dashboard/examdetails/index.vue'
 
 import AddQuestion from '@/views/dashboard/questions/add.vue'
@@ -101,6 +109,12 @@ const routes = [
     name: 'GroupsAdd',
     component: GroupAdd
   },
+
+  {
+    path : '/editgroup',
+    name : 'editgroup',
+    component : editgroup
+  },
   // End route Groups
 
   // Start route Lessons
@@ -116,6 +130,24 @@ const routes = [
     path: '/addLessons',
     name: 'addLessons',
     component: addlessons
+  },
+  {
+
+    path : '/detailslessons',
+    name : 'detailslessons',
+    component : detailslessons
+  },
+  {
+
+    path : '/editLessons',
+    name : 'editLessons',
+    component : editlessons
+  },
+  {
+
+    path : '/addLessons',
+    name : 'addLessons',
+    component : addLessons
   },
   // end addLessons
 
@@ -186,6 +218,13 @@ const routes = [
     component: AddQuestion
 
   },
+//   {
+
+// path:'/addQues'
+// ,name:'addQues'
+// ,component: addQues
+
+//   },
 
   // end Question
 

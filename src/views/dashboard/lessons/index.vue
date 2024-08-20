@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center">
       <h5 class="title_section">الدروس</h5>
       <router-link to="/addlessons" class="btn btn_title_page"
@@ -52,15 +52,15 @@
           </thead>
           <tbody class="tbody">
             <!-- For loop this tr -->
-            <tr>
+            <tr v-for="(lesson, index) in lessons" :key="index">
               <td class="th"><input class="box" type="checkbox" /></td>
               <td class="id">
                 <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
-                1
+                {{lesson.id}}
               </td>
-              <td>درس على الجزء الأول من سورة البقرة ( 1- 25) بالتجويد</td>
-              <td>مايو 22 , 2022 - 2:30 م</td>
-              <td>مجموعة العهد الحديث</td>
+              <td>{{ lesson.name }} </td>
+              <td>{{ lesson.data }}</td>
+              <td>{{ lesson.group }}</td>
               <td class="flex_mobile">
                 <div class="dropdown">
                   <a
@@ -75,24 +75,24 @@
 
                   <ul class="dropdown-menu">
                     <li>
-                      <a class="dropdown-item" href="details-lesson.html"
-                        >تفاصيل الدرس</a
+                      <router-link to="/detailslessons" class="dropdown-item" 
+                        >تفاصيل الدرس</router-link
                       >
                     </li>
                     <li>
-                      <a class="dropdown-item" href="edit-lesson.html"
-                        >تعديل الدرس</a
+                      <router-link to="/editlessons" class="dropdown-item"
+                        >تعديل الدرس</router-link
                       >
                     </li>
                     <li>
-                      <a
+                      <router-link to="/addLessons"
                         class="dropdown-item"
-                        href="Add-lesson-preparation.html"
-                        >تحضير الدرس</a
+                      
+                        >تحضير الدرس</router-link
                       >
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#" onclick="blockAlert()"
+                      <a class="dropdown-item" href="#" @click="blockAlert(index)"
                         >حذف الدرس
                       </a>
                     </li>
@@ -103,156 +103,7 @@
             <!-- For loop this tr -->
 
             <!-- For loop this tr -->
-            <tr>
-              <td class="th"><input class="box" type="checkbox" /></td>
-              <td class="id">
-                <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
-                1
-              </td>
-              <td>درس على الجزء الأول من سورة البقرة ( 1- 25) بالتجويد</td>
-              <td>مايو 22 , 2022 - 2:30 م</td>
-              <td>مجموعة العهد الحديث</td>
-              <td class="flex_mobile">
-                <div class="dropdown">
-                  <a
-                    class="btn dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                  </a>
-
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="details-lesson.html"
-                        >تفاصيل الدرس</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="edit-lesson.html"
-                        >تعديل الدرس</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="Add-lesson-preparation.html"
-                        >تحضير الدرس</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#" onclick="blockAlert()"
-                        >حذف الدرس
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
-            <!-- For loop this tr -->
-
-            <!-- For loop this tr -->
-            <tr>
-              <td class="th"><input class="box" type="checkbox" /></td>
-              <td class="id">
-                <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
-                1
-              </td>
-              <td>درس على الجزء الأول من سورة البقرة ( 1- 25) بالتجويد</td>
-              <td>مايو 22 , 2022 - 2:30 م</td>
-              <td>مجموعة العهد الحديث</td>
-              <td class="flex_mobile">
-                <div class="dropdown">
-                  <a
-                    class="btn dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                  </a>
-
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="details-lesson.html"
-                        >تفاصيل الدرس</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="edit-lesson.html"
-                        >تعديل الدرس</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="Add-lesson-preparation.html"
-                        >تحضير الدرس</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#" onclick="blockAlert()"
-                        >حذف الدرس
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
-            <!-- For loop this tr -->
-
-            <!-- For loop this tr -->
-            <tr>
-              <td class="th"><input class="box" type="checkbox" /></td>
-              <td class="id">
-                <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
-                1
-              </td>
-              <td>درس على الجزء الأول من سورة البقرة ( 1- 25) بالتجويد</td>
-              <td>مايو 22 , 2022 - 2:30 م</td>
-              <td>مجموعة العهد الحديث</td>
-              <td class="flex_mobile">
-                <div class="dropdown">
-                  <a
-                    class="btn dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                  </a>
-
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="details-lesson.html"
-                        >تفاصيل الدرس</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="edit-lesson.html"
-                        >تعديل الدرس</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="Add-lesson-preparation.html"
-                        >تحضير الدرس</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#" onclick="blockAlert()"
-                        >حذف الدرس
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
+    
             <!-- For loop this tr -->
           </tbody>
         </table>
@@ -263,8 +114,70 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
 export default {
   name: "lessons-index",
+
+  data(){
+    return{
+      lessons:[
+        {
+          id:1,
+          name:"درس على الجزء الأول من سورة البقرة ( 1- 25) بالتجويد",
+          date:"مايو 22 , 2022 - 2:30 م",
+          group:"مجموعة العهد الحديث",
+
+        },
+        {
+
+          id:2,
+          name:"درس على الجزء الأول من سورة البقرة ( 1- 25) بالتجويد",  
+          date:"مايو 22 , 2022 - 2:30 م",
+          group:"مجموعة العهد الحديث",
+        },
+        {
+
+          id:3,
+          name:"درس على الجزء الأول من سورة البقرة ( 1- 25) بالتجويد",
+          date:"مايو 22 , 2022 - 2:30 م",
+          group:"مجموعة العهد الحديث",
+
+        },
+        {
+
+          id:4,
+          name:"درس على الجزء الأول من سورة البقرة ( 1- 25) بالتجويد",
+          date:"مايو 22 , 2022 - 2:30 م",
+          group:"مجموعة العهد الحديث",
+        }
+      ]
+    }
+  },
+  methods:{
+    blockAlert(index) {
+      Swal.fire({
+        html:
+          '<h5 class="swal2-title">   هل أنت متأكد من حذف الطالب؟ </h5>' +
+          '<p class="swal2-html-container">  </p>',
+
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText: "تأكيد الحذف",
+        confirmButtonAriaLabel: "Thumbs up, great!",
+        cancelButtonText: "الغاء",
+        cancelButtonAriaLabel: "Thumbs down",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          if (this.lessons && this.lessons.length > index) {
+            this.lessons.splice(index, 1);
+            Swal.fire("تم الحذف!", "تم حذف الطالب بنجاح.", "success");
+          } else {
+            Swal.fire("خطأ!", "الطالب غير موجود.", "error");
+          }
+        }
+      });
+    },
+  }
 };
 </script>
 

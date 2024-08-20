@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center">
       <h5 class="title_section">المواد</h5>
       <router-link to="addSubject" class="btn btn_title_page"
@@ -41,7 +41,7 @@
       <div class="table-responsive">
         <table class="table" id="table">
           <thead>
-            <tr class="trAltCizgi" v-for="(student,index) in students" :key="index">
+            <tr class="trAltCizgi" >
               <th><input class="box" type="checkbox" /></th>
               <th class="th">رقم </th>
               <th class="th">اسم المادة</th>
@@ -52,12 +52,13 @@
           </thead>
           <tbody class="tbody">
             <!-- For loop this tr -->
-            <tr>
-              <td class="th"><input class="box" type="checkbox" /></td>
-              <td class="id">{{student.id}}</td>
-              <td>{{ student.name }} </td>
-              <td> {{ student.level }}</td>
-              <td> {{ student.date }} </td>
+            <tr v-for="(subject,index) in subjects" :key="index">
+             
+              <td class="th" ><input class="box" type="checkbox" /></td>
+              <td class="id">{{subject.id}}</td>
+              <td>{{ subject.name }} </td>
+              <td> {{ subject.level }}</td>
+              <td> {{ subject.date }} </td>
               <td class="flex_mobile">
                 <div class="dropdown">
                   <a
@@ -76,7 +77,7 @@
                         >تعديل</router-link  >
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#" onclick="blockAlert()"
+                      <a class="dropdown-item" href="#" @click="blockAlertt(index)"
                         >حذف
                       </a>
                     </li>
@@ -84,23 +85,7 @@
                 </div>
               </td>
             </tr>
-            <!-- For loop this tr -->
 
-            <!-- For loop this tr -->
-        
-            <!-- For loop this tr -->
-
-            <!-- For loop this tr -->
-      
-            <!-- For loop this tr -->
-
-            <!-- For loop this tr -->
-           
-            <!-- For loop this tr -->
-
-            <!-- For loop this tr -->
-            
-            <!-- For loop this tr -->
           </tbody>
         </table>
 
@@ -111,6 +96,7 @@
 </template>
 
 <script>
+import Swal from "sweetalert2";
 export default {
   name: "subjects-index",
   data(){
@@ -148,6 +134,31 @@ export default {
       }
     ]
     }
+  },
+  methods:{
+    blockAlertt(index) {
+      Swal.fire({
+        html:
+          '<h5 class="swal2-title">   هل أنت متأكد من حذف الطالب؟ </h5>' +
+          '<p class="swal2-html-container">  </p>',
+
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText: "تأكيد الحذف",
+        confirmButtonAriaLabel: "Thumbs up, great!",
+        cancelButtonText: "الغاء",
+        cancelButtonAriaLabel: "Thumbs down",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          if (this.subjects && this.subjects.length > index) {
+            this.subjects.splice(index, 1);
+            Swal.fire("تم الحذف!", "تم حذف الطالب بنجاح.", "success");
+          } else {
+            Swal.fire("خطأ!", "الطالب غير موجود.", "error");
+          }
+        }
+      });
+    },
   }
 };
 </script>

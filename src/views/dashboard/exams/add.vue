@@ -163,13 +163,15 @@
                 </button>
               </div>
               <button
+              
+              @click="show()"
                 type="button"
                 class="btn SecondButton ng d-block mb-3 px-5"
                 id="reprtBtn"
               >
                 اضافة سؤال
               </button>
-              <div class="sec-hidden" id="myDIV" style="display: none">
+              <div class="sec-hidden mt-5"  id="myDIV" v-if="isActive" >
                 <div class="head-sec">
                   <h4 class="sec_title">تفاصيل السؤال</h4>
                   <p class="sec_text">
@@ -260,10 +262,12 @@
                 </div>
               </div>
               <button
+              v-if="isActive"
+              @click="show(),Add()"
                 id="addNow"
                 type="button"
                 class="btn SecondButton d-block mb-3 px-5"
-                style="display: none !important"
+                
               >
                 إضافة الآن
               </button>
@@ -364,7 +368,7 @@
 
               <!-- Modal add new question -->
 <router-link to="/quesexam">
-  <button type="submit" class="btn PrimaryButton mio">الحفظ</button>
+  <button @click=" Add()" type="submit" class="btn PrimaryButton mio">الحفظ</button>
 
 </router-link>
             </form>
@@ -372,8 +376,36 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
 export default {
   name: "exams-add",
+  data() {
+
+    return {
+
+      isActive: false,
+
+    }
+
+  },
+  methods :{
+    show(){
+// document.getElementById("myDIV").style.display = "block";
+// document.getElementById("addNow").style.display = "block";
+
+this.isActive = !this.isActive
+
+    },
+    Add(){
+      Swal.fire({
+                      html:
+                        '<h5 class="swal2-title">   لقم تمت الاضافه بنـجــاح </h5>' +
+                        '<p class="swal2-html-container">  </p>',
+
+                 
+                    });
+    } 
+  }
 }
 </script>
 
