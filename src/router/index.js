@@ -6,8 +6,10 @@ import LessonsIndex from '@/views/dashboard/lessons/index.vue'
 import addlessons from '@/views/dashboard/lessons/add.vue'
 import stepsIndex from '@/views/dashboard/steps/index.vue'
 import addSteps from '@/views/dashboard/steps/add.vue'
+import editSteps from '@/views/dashboard/steps/edit.vue'
 import subjectsindex from '@/views/dashboard/subjects/index.vue'
 import addSubject from '@/views/dashboard/subjects/add.vue'
+import editSubject from '@/views/dashboard/subjects/edit.vue'
 import ExamsIndex from '@/views/dashboard/exams/index.vue'
 import addExam from '@/views/dashboard/exams/add.vue'
 import questionsIndex from '@/views/dashboard/questions/index.vue'
@@ -61,6 +63,14 @@ import detailsarchives from '@/views/dashboard/archives/details.vue'
 import editarchives from '@/views/dashboard/archives/edits.vue'
 import detailsGroup from '@/views/dashboard/archives/detailsGroup.vue'
 import editGroups from '@/views/dashboard/archives/editGroups.vue'
+import competitionReportsIndex from '@/views/dashboard/competitionReports/index.vue'
+import resultcompetitionReports from '@/views/dashboard/competitionReports/result.vue'
+import BehavioralReportsIndex from '@/views/dashboard/BehavioralReports/index.vue'
+import AcademicReportsIndex from '@/views/dashboard/AcademicReports/index.vue'
+import missedReportsIndex from '@/views/dashboard/MissedReports/index.vue'
+import detailedReportsIndex from '@/views/dashboard/detailedReports/index.vue'
+import associationReportsIndex from '@/views/dashboard/associationReports/index.vue'
+
 
 
 import electronicIndex from '@/views/dashboard/electronic/index.vue'
@@ -112,13 +122,21 @@ const routes = [
   // start grade edu
   {
     path: '/steps',
-    name: 'steps/index',
+    name: 'stepsIndex',
     component: stepsIndex
   },
   {
     path: '/addSteps',
     name: 'addSteps',
     component: addSteps
+  },
+  {
+  
+    path : '/editSteps',
+    name : 'editSteps',
+    component : editSteps
+  
+  
   }
 
   // end grade edu
@@ -133,6 +151,11 @@ const routes = [
     path: '/addSubject',
     name: 'addSubject',
     component: addSubject
+  },
+  {
+    path: '/editSubject',
+    name: 'editSubject',
+    component: editSubject
   },
   // end subjects 
 
@@ -218,12 +241,12 @@ const routes = [
     name: 'mangestudent',
     component: mangestudentIndex
 
-  }
+  },
 
   // end mangestudent
 
   // start teachers 
-  , {
+  {
     path: '/teachers',
     name: 'teachersIndex',
     component: teachersIndex
@@ -360,9 +383,9 @@ const routes = [
   },
 
   {
-    path : '/detailsTeachers',
-    name : 'detailsTeachers',
-    component : detailsTeachers
+    path: '/detailsTeachers',
+    name: 'detailsTeachers',
+    component: detailsTeachers
   },
 
   // ================
@@ -619,12 +642,58 @@ const routes = [
     component: attendance
   },
   {
-    path :'/examreport'
-    ,name : 'examreport-index'
-    ,component : examreportIndex
+    path: '/examreport'
+    , name: 'examreport-index'
+    , component: examreportIndex
+  },
+  {
+    path: '/competitionReportsIndex',
+    name: 'competitionReports-index',
+    component: competitionReportsIndex
+
+  },
+  {
+
+    path: '/resultcompetitionReports',
+    name: 'result-competitionReports',
+    component: resultcompetitionReports
+
+
+  },
+  // ==========================
+  {
+    path: '/BehavioralReportsIndex',
+    name: 'BehavioralReportsIndex',
+    component: BehavioralReportsIndex
   }
 
+  // ===============================
 
+  , {
+
+    path: '/AcademicReportsIndex',
+    name: 'AcademicReportsIndex',
+    component: AcademicReportsIndex
+
+  },
+  // =======================
+  {
+
+    path: '/missedReportsIndex',
+    name: 'missedReportsIndex',
+    component: missedReportsIndex
+  },
+
+  {
+    path :'/detailedReportsIndex' ,
+    name : 'detailedReportsIndex' ,
+    component : detailedReportsIndex
+  },
+  {
+    path: '/associationReportsIndex',
+    name: 'associationReportsIndex',
+    component: associationReportsIndex
+  }
 
 
 

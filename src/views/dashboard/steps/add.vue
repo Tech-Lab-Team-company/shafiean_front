@@ -1,9 +1,17 @@
 <template>
+
+
+
+
+
+
+
+
   <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center">
       <h5 class="title_section">إضافة مرحلة دراسية جديدة</h5>
     </div>
-    <form action="grade.html" class="add_form">
+    <form action="/steps" class="add_form">
       <div class="form-group">
         <label for="">*اسم المرحلة الدراسية</label>
         <input
@@ -27,7 +35,7 @@
           <input type="date" name="" id="" class="form-control" />
         </div>
       </div>
-      <button @click="blockAlert()" type="submit" class="btn PrimaryButton">
+      <button @click="Add()" type="submit" class="btn PrimaryButton">
         اضافة
       </button>
     </form>
@@ -53,6 +61,15 @@ export default {
         cancelButtonAriaLabel: "Thumbs down",
       });
     },
+    Add() {
+                    Swal.fire({
+                      html:
+                        '<h5 class="swal2-title">   لقم تمت الاضافه بنـجــاح </h5>' +
+                        '<p class="swal2-html-container">  </p>',
+
+                 
+                    });
+                  }
   },
 };
 </script>

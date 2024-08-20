@@ -188,14 +188,30 @@
                   </label>
                 </div>
               </div>
-              <button type="submit" class="btn PrimaryButton mb-5 mt-3">اضافة</button>
+              <router-link to="/teachers">
+
+                <button @click=" blockAlert()" type="submit" class="btn PrimaryButton mb-5 mt-3 w-100" 
+                >اضافة</button>
+              </router-link>
             </form>
           </div>
 </template>
 
 <script>
+import Swal from "sweetalert2";
 export default {
   name: "teachers-add",
+  methods : {
+    blockAlert() {
+                    Swal.fire({
+                      html:
+                        '<h5 class="swal2-title">   لقم تمت الاضافه بنـجــاح </h5>' +
+                        '<p class="swal2-html-container">  </p>',
+
+                 
+                    });
+                  }
+  }
 }
 </script>
 

@@ -244,14 +244,31 @@
                   </tbody>
                 </table>
               </div>
-              <button type="button" class="btn btn-danger">حذف المحدد</button>
+              <button @click="blockAlert()" type="button" class="btn btn-danger">حذف المحدد</button>
             </div>
           </div>
 </template>
 
 <script>
+import Swal from "sweetalert2";
 export default {
-    name: '/examreport-index'
+    name: '/examreport-index',
+    methods:{
+      blockAlert() {
+      Swal.fire({
+        html:
+          '<h5 class="swal2-title">   هل أنت متأكد من حذف المعلم؟ </h5>' +
+          '<p class="swal2-html-container">  </p>',
+
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText: "تأكيد الحذف",
+        confirmButtonAriaLabel: "Thumbs up, great!",
+        cancelButtonText: "الغاء",
+        cancelButtonAriaLabel: "Thumbs down",
+      });
+    },
+    }
 
 }
 </script>

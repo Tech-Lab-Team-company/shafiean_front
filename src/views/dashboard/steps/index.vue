@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center">
       <h5 class="title_section">المراحل الدراسية</h5>
       <router-link to="/addSteps" class="btn btn_title_page"
@@ -51,14 +51,14 @@
           </thead>
           <tbody class="tbody">
             <!-- For loop this tr -->
-            <tr>
+            <tr v-for="(student,index) in students" :key="index">
               <td class="th"><input class="box" type="checkbox" /></td>
               <td class="id">
                 <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
-                1
+                {{student.id}}
               </td>
-              <td>المرحلة الاولى</td>
-              <td>مايو 22 , 2022 - 2:30 م</td>
+              <td>{{student.name}} </td>
+              <td>{{ student.level }}</td>
               <td class="flex_mobile">
                 <div class="dropdown">
                   <a
@@ -73,10 +73,10 @@
 
                   <ul class="dropdown-menu">
                     <li>
-                      <a class="dropdown-item" href="edit-grade.html">تعديل</a>
+                      <router-link to="/editSteps" class="dropdown-item" >تعديل</router-link>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#" onclick="blockAlert()"
+                      <a class="dropdown-item" href="#" @click="blockAlertt(index)"
                         >حذف
                       </a>
                     </li>
@@ -87,135 +87,19 @@
             <!-- For loop this tr -->
 
             <!-- For loop this tr -->
-            <tr>
-              <td class="th"><input class="box" type="checkbox" /></td>
-              <td class="id">1</td>
-              <td>المرحلة الاولى</td>
-              <td>مايو 22 , 2022 - 2:30 م</td>
-              <td class="flex_mobile">
-                <div class="dropdown">
-                  <a
-                    class="btn dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                  </a>
-
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="edit-grade.html">تعديل</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#" onclick="blockAlert()"
-                        >حذف
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
+           
             <!-- For loop this tr -->
 
             <!-- For loop this tr -->
-            <tr>
-              <td class="th"><input class="box" type="checkbox" /></td>
-              <td class="id">1</td>
-              <td>المرحلة الاولى</td>
-              <td>مايو 22 , 2022 - 2:30 م</td>
-              <td class="flex_mobile">
-                <div class="dropdown">
-                  <a
-                    class="btn dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                  </a>
-
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="edit-grade.html">تعديل</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#" onclick="blockAlert()"
-                        >حذف
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
+        
             <!-- For loop this tr -->
 
             <!-- For loop this tr -->
-            <tr>
-              <td class="th"><input class="box" type="checkbox" /></td>
-              <td class="id">1</td>
-              <td>المرحلة الاولى</td>
-              <td>مايو 22 , 2022 - 2:30 م</td>
-              <td class="flex_mobile">
-                <div class="dropdown">
-                  <a
-                    class="btn dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                  </a>
-
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="edit-grade.html">تعديل</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#" onclick="blockAlert()"
-                        >حذف
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
+            
             <!-- For loop this tr -->
 
             <!-- For loop this tr -->
-            <tr>
-              <td class="th"><input class="box" type="checkbox" /></td>
-              <td class="id">1</td>
-              <td>المرحلة الاولى</td>
-              <td>مايو 22 , 2022 - 2:30 م</td>
-              <td class="flex_mobile">
-                <div class="dropdown">
-                  <a
-                    class="btn dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                  </a>
-
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="edit-grade.html">تعديل</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#" onclick="blockAlert()"
-                        >حذف
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
+         
             <!-- For loop this tr -->
           </tbody>
         </table>
@@ -244,14 +128,83 @@
                 </script> -->
         <!-- sweetalrt -->
       </div>
-      <button type="button" class="btn btn-danger">حذف المحدد</button>
+      <button @click=" blockAlertt(index)" type="button" class="btn btn-danger">حذف المحدد</button>
     </div>
   </div>
 </template>
 
 <script>
+import Swal from "sweetalert2";
 export default {
+  data(){
+    return{
+
+      students: [
+        
+      {
+        id: 1,
+        name: "مايو 22 , 2022 - 2:30 م",
+        level: "المرحلة الاولى",
+      },
+      {
+        id: 2,
+        name: "مايو 22 , 2022 - 2:30 م",
+        level: "المرحلة الثانية",
+      },
+      {
+        id: 3,
+        name: "مايو 22 , 2022 - 2:30 م",
+        level: "المرحلة الثالثة",
+      },
+      {
+        id: 4,
+        name: "مايو 22 , 2022 - 2:30 م",
+        level: "المرحلة الرابعة",
+      },
+      {
+        id: 5,
+        name: "مايو 22 , 2022 - 2:30 م",
+        level: "المرحلة الخامسة",
+    }
+
+    ],
+    }
+  },
   name: "steps-index",
+  methods:{
+    blockAlertt(index) {
+      Swal.fire({
+        html:
+          '<h5 class="swal2-title">   هل أنت متأكد من حذف الطالب؟ </h5>' +
+          '<p class="swal2-html-container">  </p>',
+
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText: "تأكيد الحذف",
+        confirmButtonAriaLabel: "Thumbs up, great!",
+        cancelButtonText: "الغاء",
+        cancelButtonAriaLabel: "Thumbs down",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          if (this.students && this.students.length > index) {
+            this.students.splice(index, 1);
+            Swal.fire("تم الحذف!", "تم حذف الطالب بنجاح.", "success");
+          } else {
+            Swal.fire("خطأ!", "الطالب غير موجود.", "error");
+          }
+        }
+      });
+    },
+    Add() {
+                    Swal.fire({
+                      html:
+                        '<h5 class="swal2-title">   لقم تمت الاضافه بنـجــاح </h5>' +
+                        '<p class="swal2-html-container">  </p>',
+
+                 
+                    });
+                  }
+  }
 };
 </script>
 

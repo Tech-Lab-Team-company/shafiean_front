@@ -141,11 +141,8 @@
                               >
                             </li>
                             <li>
-                              <a
-                                class="dropdown-item"
-                                href="details_student.html"
-                                >عرض تفاصيل الطالب</a
-                              >
+                              <router-link to="/detailsStudent"
+                                class="dropdown-item">عرض تفاصيل الطالب</router-link  >
                             </li>
                           </ul>
                         </div>
@@ -187,11 +184,8 @@
                               >
                             </li>
                             <li>
-                              <a
-                                class="dropdown-item"
-                                href="details_student.html"
-                                >عرض تفاصيل الطالب</a
-                              >
+                              <router-link to="/detailsStudent"
+                                class="dropdown-item">عرض تفاصيل الطالب</router-link  >
                             </li>
                           </ul>
                         </div>
@@ -235,11 +229,8 @@
                               >
                             </li>
                             <li>
-                              <a
-                                class="dropdown-item"
-                                href="details_student.html"
-                                >عرض تفاصيل الطالب</a
-                              >
+                              <router-link to="/detailsStudent"
+                                class="dropdown-item">عرض تفاصيل الطالب</router-link  >
                             </li>
                           </ul>
                         </div>
@@ -281,11 +272,8 @@
                               >
                             </li>
                             <li>
-                              <a
-                                class="dropdown-item"
-                                href="details_student.html"
-                                >عرض تفاصيل الطالب</a
-                              >
+                              <router-link to="/detailsStudent"
+                                class="dropdown-item">عرض تفاصيل الطالب</router-link  >
                             </li>
                           </ul>
                         </div>

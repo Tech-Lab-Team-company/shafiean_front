@@ -271,33 +271,33 @@
             >
           </li>
           <li>
-            <a href="Competition-reports.html" class="nav-link">
-              <span>تقارير المسابقات</span></a
+            <router-link to="/competitionReportsIndex" class="nav-link">
+              <span>تقارير المسابقات</span></router-link
             >
           </li>
           <li>
-            <a href="Behavioral-reports.html" class="nav-link">
-              <span>تقارير السلوكيه</span></a
+            <router-link to="/BehavioralReportsIndex" class="nav-link">
+              <span>تقارير السلوكيه</span></router-link
             >
           </li>
           <li>
-            <a href="Academic-reports.html" class="nav-link">
-              <span>تقارير الاكادميه</span></a
+            <router-link to="/AcademicReportsIndex" class="nav-link">
+              <span>تقارير الاكادميه</span></router-link
             >
           </li>
           <li>
-            <a href="Missed-reports.html" class="nav-link">
-              <span>التقارير الفائته</span></a
+            <router-link to="/missedReportsIndex" class="nav-link">
+              <span>التقارير الفائته</span></router-link
             >
           </li>
           <li>
-            <a href="Detailed_reports.html" class="nav-link">
-              <span>التقارير التفصيليه</span></a
+            <router-link to="/detailedReportsIndex" class="nav-link">
+              <span>التقارير التفصيليه</span></router-link
             >
           </li>
           <li>
-            <a href="Association_reports.html" class="nav-link">
-              <span>التقارير الجمعيه أو المدرسه</span></a
+            <router-link to="/associationReportsIndex" class="nav-link">
+              <span>التقارير الجمعيه أو المدرسه</span></router-link
             >
           </li>
         </ul>
