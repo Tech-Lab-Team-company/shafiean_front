@@ -55,15 +55,21 @@
           </thead>
           <tbody class="tbody">
             <!-- For loop this tr -->
-            <tr>
+            <tr 
+            v-for="(teacher, index) in teachers"
+            :key="index">
               <td class="th"><input class="box" type="checkbox" /></td>
               <td class="id">
                 <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
-                1
+                {{ teacher.id }}
               </td>
-              <td>أحمد خالد</td>
-              <td>قرأن كريم</td>
-              <td>ah@gmail.com</td>
+              <td> {{ teacher.name }}</td>
+              <td>{{ teacher.phone }} </td>
+              <td>{{ teacher.email }} </td>
+              <td>{{ teacher.age }} </td>
+              <td>{{ teacher.gender }} </td>
+        
+              
               <td>مايو 22 , 2022 - 2:30 م</td>
               <td class="flex_mobile">
                 <div class="dropdown">
@@ -99,172 +105,6 @@
             </tr>
             <!-- For loop this tr -->
 
-            <!-- For loop this tr -->
-            <tr>
-              <td class="th"><input class="box" type="checkbox" /></td>
-              <td class="id">1</td>
-              <td>أحمد خالد</td>
-              <td>قرأن كريم</td>
-              <td>ah@gmail.com</td>
-              <td>مايو 22 , 2022 - 2:30 م</td>
-              <td class="flex_mobile">
-                <div class="dropdown">
-                  <a
-                    class="btn dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                  </a>
-
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="details_teacher.html"
-                        >تفاصيل المعلم</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="edit-teacher.html"
-                        >تعديل</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#" @click="blockAlert()"
-                        >حذف
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
-            <!-- For loop this tr -->
-
-            <!-- For loop this tr -->
-            <tr>
-              <td class="th"><input class="box" type="checkbox" /></td>
-              <td class="id">1</td>
-              <td>أحمد خالد</td>
-              <td>قرأن كريم</td>
-              <td>ah@gmail.com</td>
-              <td>مايو 22 , 2022 - 2:30 م</td>
-              <td class="flex_mobile">
-                <div class="dropdown">
-                  <a
-                    class="btn dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                  </a>
-
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="details_teacher.html"
-                        >تفاصيل المعلم</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="edit-teacher.html"
-                        >تعديل</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#" @click="blockAlert()"
-                        >حذف
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
-            <!-- For loop this tr -->
-
-            <!-- For loop this tr -->
-            <tr>
-              <td class="th"><input class="box" type="checkbox" /></td>
-              <td class="id">1</td>
-              <td>أحمد خالد</td>
-              <td>قرأن كريم</td>
-              <td>ah@gmail.com</td>
-              <td>مايو 22 , 2022 - 2:30 م</td>
-              <td class="flex_mobile">
-                <div class="dropdown">
-                  <a
-                    class="btn dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                  </a>
-
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="details_teacher.html"
-                        >تفاصيل المعلم</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="edit-teacher.html"
-                        >تعديل</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#" @click="blockAlert()"
-                        >حذف
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
-            <!-- For loop this tr -->
-
-            <!-- For loop this tr -->
-            <tr>
-              <td class="th"><input class="box" type="checkbox" /></td>
-              <td class="id">1</td>
-              <td>أحمد خالد</td>
-              <td>قرأن كريم</td>
-              <td>ah@gmail.com</td>
-              <td>مايو 22 , 2022 - 2:30 م</td>
-              <td class="flex_mobile">
-                <div class="dropdown">
-                  <a
-                    class="btn dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                  </a>
-
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="details_teacher.html"
-                        >تفاصيل المعلم</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="edit-teacher.html"
-                        >تعديل</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#" @click="blockAlert()"
-                        >حذف
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
             <!-- For loop this tr -->
           </tbody>
         </table>
@@ -281,21 +121,88 @@
 import Swal from "sweetalert2";
 export default {
   name: "teachers-index",
+  data() {
+    return {
+      teachers: [], // Array to hold the fetched data
+    };
+  },
   methods: {
-    blockAlert() {
+    // Fetch users data from the API
+    async fetchTeachers() {
+      try {
+        const response = await fetch(
+          "https://api.shafean.x-coders.net/api/teachers",
+
+
+{
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        const result = await response.json();
+
+        if (response.ok) {
+          this.teachers = result.data; // Assign the fetched data to the users array
+          console.log(this.teachers); // Debugging: Log the fetched data
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "خطأ",
+            text:
+              result.message ||
+              "فشل في جلب البيانات. يرجى المحاولة مرة أخرى لاحقًا.",
+          });
+        }
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: "خطأ",
+          text: "حدث خطأ ما. يرجى المحاولة مرة أخرى لاحقًا.",
+        });
+      }
+    },
+
+    // Delete student confirmation
+    blockAlert(index) {
       Swal.fire({
         html:
-          '<h5 class="swal2-title">   هل أنت متأكد من حذف المعلم؟ </h5>' +
+          '<h5 class="swal2-title">   هل أنت متأكد من حذف الطالب؟ </h5>' +
           '<p class="swal2-html-container">  </p>',
-
         showCancelButton: true,
         focusConfirm: false,
         confirmButtonText: "تأكيد الحذف",
-        confirmButtonAriaLabel: "Thumbs up, great!",
         cancelButtonText: "الغاء",
-        cancelButtonAriaLabel: "Thumbs down",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          if (this.users && this.users.length > index) {
+            this.users.splice(index, 1);
+            Swal.fire("تم الحذف!", "تم حذف الطالب بنجاح.", "success");
+          } else {
+            Swal.fire("خطأ!", "الطالب غير موجود.", "error");
+          }
+        }
       });
     },
+  },
+  // blockAlert() {
+  //   Swal.fire({
+  //     html:
+  //       '<h5 class="swal2-title">   هل أنت متأكد من حذف المعلم؟ </h5>' +
+  //       '<p class="swal2-html-container">  </p>',
+
+  //     showCancelButton: true,
+  //     focusConfirm: false,
+  //     confirmButtonText: "تأكيد الحذف",
+  //     confirmButtonAriaLabel: "Thumbs up, great!",
+  //     cancelButtonText: "الغاء",
+  //     cancelButtonAriaLabel: "Thumbs down",
+  //   });
+  // },
+  created() {
+    this.fetchTeachers();
   },
 };
 </script>
