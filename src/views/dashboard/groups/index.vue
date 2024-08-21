@@ -1,8 +1,6 @@
 <template>
   <div class="container">
-    <div
-      class="d-flex justify-content-between align-items-center"
-    >
+    <div class="d-flex justify-content-between align-items-center">
       <h5 class="title_section">المجموعات</h5>
       <router-link to="/group/add" class="btn btn_title_page"
         >+ اضافة مجموعة جديدة</router-link
@@ -143,7 +141,8 @@
                     </li>
                     <li>
                       <a class="dropdown-item" href="details_group.html"
-                        >تفاصيل المجموعة</a
+                        > test تفاصيل المجموعة</a
+                        
                       >
                     </li>
                     <li>
