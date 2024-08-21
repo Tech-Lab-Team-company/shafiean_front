@@ -61,7 +61,7 @@ import sectionsIndex from '@/views/dashboard/sections/index.vue'
 import addsections from '@/views/dashboard/sections/add.vue'
 import hashtagsIndex from '@/views/dashboard/hashtags/index.vue'
 import addhashtags from '@/views/dashboard/hashtags/add.vue'
-
+// bjhgjkk
 import reportsIndex from '@/views/dashboard/reports/index.vue'
 import reportsachivment from '@/views/dashboard/reports/reportsAchivment/achivment.vue'
 import examreportIndex from '@/views/dashboard/examreport/index.vue'
