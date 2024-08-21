@@ -49,16 +49,19 @@
               <th class="th"></th>
             </tr>
           </thead>
+          
           <tbody class="tbody">
             <!-- For loop this tr -->
-            <tr v-for="(student,index) in students" :key="index">
-              <td class="th"><input class="box" type="checkbox" /></td>
+            <tr v-for="(item, index) in stages" :key="index">
+              <td class="th"><input class="box" type="checkbox" :value="stages.id" v-model="selectedStudents"  /></td>
+              <td>{{ item.id }}</td>
               <td class="id">
+
                 <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
-                {{student.id}}
+                {{ item.title }}
               </td>
-              <td>{{student.name}} </td>
-              <td>{{ student.level }}</td>
+              <td>{{ item.type }}</td>
+              <td>{{ item.order }}</td>
               <td class="flex_mobile">
                 <div class="dropdown">
                   <a
@@ -73,10 +76,15 @@
 
                   <ul class="dropdown-menu">
                     <li>
-                      <router-link to="/editSteps" class="dropdown-item" >تعديل</router-link>
+                      <router-link to="/editSteps" class="dropdown-item"
+                        >تعديل</router-link
+                      >
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#" @click="blockAlertt(index)"
+                      <a
+                        class="dropdown-item"
+                        href="#"
+                        @click="blockAlertt(index)"
                         >حذف
                       </a>
                     </li>
@@ -86,127 +94,99 @@
             </tr>
             <!-- For loop this tr -->
 
-            <!-- For loop this tr -->
-           
-            <!-- For loop this tr -->
-
-            <!-- For loop this tr -->
-        
-            <!-- For loop this tr -->
-
-            <!-- For loop this tr -->
-            
-            <!-- For loop this tr -->
-
-            <!-- For loop this tr -->
-         
-            <!-- For loop this tr -->
+    
           </tbody>
         </table>
-        <!-- sweetalrt -->
-        <!-- <script
-                  src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.22/sweetalert2.min.js"
-                  integrity="sha512-pQdCIGAWAwzEHgw7boqX3wRNUqyaj7ta8qHsZ2yZtJofKqwSsh98Q+NJn96MAYCMcMnoZhdUo771JzaJCbrJMg=="
-                  crossorigin="anonymous"
-                  referrerpolicy="no-referrer"
-                ></script>
-                <script>
-                  function blockAlert() {
-                    Swal.fire({
-                      html:
-                        '<h5 class="swal2-title">   هل أنت متأكد من حذف المراحله؟ </h5>' +
-                        '<p class="swal2-html-container">  </p>',
-
-                      showCancelButton: true,
-                      focusConfirm: false,
-                      confirmButtonText: "تأكيد الحذف",
-                      confirmButtonAriaLabel: "Thumbs up, great!",
-                      cancelButtonText: "الغاء",
-                      cancelButtonAriaLabel: "Thumbs down",
-                    });
-                  }
-                </script> -->
-        <!-- sweetalrt -->
+       
       </div>
-      <button @click=" blockAlertt(index)" type="button" class="btn btn-danger">حذف المحدد</button>
+      <button @click="deleteSelectedStudents" type="button" class="btn btn-danger">
+        حذف المحدد
+      </button>
     </div>
   </div>
 </template>
 
 <script>
 import Swal from "sweetalert2";
+
 export default {
-  data(){
-    return{
-
-      students: [
-        
-      {
-        id: 1,
-        name: "مايو 22 , 2022 - 2:30 م",
-        level: "المرحلة الاولى",
-      },
-      {
-        id: 2,
-        name: "مايو 22 , 2022 - 2:30 م",
-        level: "المرحلة الثانية",
-      },
-      {
-        id: 3,
-        name: "مايو 22 , 2022 - 2:30 م",
-        level: "المرحلة الثالثة",
-      },
-      {
-        id: 4,
-        name: "مايو 22 , 2022 - 2:30 م",
-        level: "المرحلة الرابعة",
-      },
-      {
-        id: 5,
-        name: "مايو 22 , 2022 - 2:30 م",
-        level: "المرحلة الخامسة",
-    }
-
-    ],
-    }
-  },
   name: "steps-index",
-  methods:{
-    blockAlertt(index) {
-      Swal.fire({
-        html:
-          '<h5 class="swal2-title">   هل أنت متأكد من حذف الطالب؟ </h5>' +
-          '<p class="swal2-html-container">  </p>',
+  data() {
+    return {
+      stages: [], // Initialize stages array
+      selectedStages: [], // Array for selected stages
+    };
+  },
+  methods: {
+    // Fetch stages data from the API
+    async fetchStages() {
+      try {
+        const response = await fetch(
+          "https://api.shafean.x-coders.net/api/stages",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
+        const result = await response.json();
+
+        if (response.ok) {
+          this.stages = result.data; // Assign the fetched data to the stages array
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "خطأ",
+            text: result.message || "فشل في جلب البيانات. يرجى المحاولة مرة أخرى لاحقًا.",
+          });
+        }
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: "خطأ",
+          text: "حدث خطأ ما. يرجى المحاولة مرة أخرى لاحقًا.",
+        });
+      }
+    },
+
+    // Delete a single stage confirmation
+    blockAlert(index) {
+      Swal.fire({
+        html: '<h5 class="swal2-title">هل أنت متأكد من حذف المرحلة الدراسية؟</h5>',
         showCancelButton: true,
-        focusConfirm: false,
         confirmButtonText: "تأكيد الحذف",
-        confirmButtonAriaLabel: "Thumbs up, great!",
         cancelButtonText: "الغاء",
-        cancelButtonAriaLabel: "Thumbs down",
       }).then((result) => {
         if (result.isConfirmed) {
-          if (this.students && this.students.length > index) {
-            this.students.splice(index, 1);
-            Swal.fire("تم الحذف!", "تم حذف الطالب بنجاح.", "success");
+          if (this.stages.length > index) {
+            this.stages.splice(index, 1);
+            Swal.fire("تم الحذف!", "تم حذف المرحلة الدراسية بنجاح.", "success");
           } else {
-            Swal.fire("خطأ!", "الطالب غير موجود.", "error");
+            Swal.fire("خطأ!", "المرحلة الدراسية غير موجودة.", "error");
           }
         }
       });
     },
-    Add() {
-                    Swal.fire({
-                      html:
-                        '<h5 class="swal2-title">   لقم تمت الاضافه بنـجــاح </h5>' +
-                        '<p class="swal2-html-container">  </p>',
 
-                 
-                    });
-                  }
-  }
+    // Delete selected stages
+    deleteSelectedStages() {
+      if (this.selectedStages.length > 0) {
+        this.stages = this.stages.filter(
+          (stage) => !this.selectedStages.includes(stage.id)
+        );
+        Swal.fire("تم الحذف!", "تم حذف المرحلة/المراحل بنجاح.", "success");
+      } else {
+        Swal.fire("خطأ!", "لم يتم تحديد أي مرحلة.", "error");
+      }
+      this.selectedStages = []; // Clear selection after deletion
+    },
+  },
+  created() {
+    this.fetchStages(); // Ensure the fetchStages method is called here
+  },
 };
 </script>
-
 <style>
 </style>

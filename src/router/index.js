@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import registerLogin from '@/components/register/login.vue'
 import HomeView from '../views/dashboard/dashboard.vue'
 import GroupsIndex from '@/views/dashboard/groups/index.vue'
 import GroupAdd from '@/views/dashboard/groups/add.vue'
@@ -28,6 +29,7 @@ import AddQuestion from '@/views/dashboard/questions/add.vue'
 import AssignmentIndex from '@/views/dashboard/Assignment/index.vue'
 import addAssignment from '@/views/dashboard/Assignment/add.vue'
 import QuestionbankIndex from '@/views/dashboard/Questionbank/index.vue'
+import questionbankedit from '@/views/dashboard/Questionbank/edit.vue'
 import addnewQuestion from '@/views/dashboard/Questionbank/add.vue'
 import studentsIndex from '@/views/dashboard/students/index.vue'
 import addStudent from '@/views/dashboard/students/add.vue'
@@ -94,6 +96,11 @@ import ComplaintsIndex from '@/views/dashboard/Complaints/index.vue'
 const routes = [
   {
     path: '/',
+    name: 'register-login',
+    component: registerLogin
+  },
+  {
+    path: '/HomeView',
     name: 'home',
     component: HomeView
   },
@@ -252,6 +259,11 @@ const routes = [
     path: '/addnewQuestion',
     name: 'addnewQuestion',
     component: addnewQuestion
+  },
+  {
+    path: '/questionbankedit',
+    name: 'questionbankedit',
+    component: questionbankedit
   },
   // end Questionbank
 

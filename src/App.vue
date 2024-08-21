@@ -1,13 +1,13 @@
 <template>
-  <div class="d-flex sidemobile p-0">
+  <div class="sidemobile p-0">
     <!-- ======= Start Sidebar ======= -->
-    <side-bar></side-bar>
+    <side-bar v-if="!isLoginPage "></side-bar>
     <!-- ======= End Sidebar ======= -->
 
     <!-- ======= Main ======= -->
     <section class="index_cards">
       <!-- ======= Start navbar ======= -->
-      <nav-bar></nav-bar>
+      <nav-bar v-if="!isLoginPage"></nav-bar>
       <!-- ======= End navbar ======= -->
 
       <!-- ======= Start Content ======= -->
@@ -16,9 +16,9 @@
       </section>
       <!-- ======= End Content ======= -->
 
-      <!--start footer -->
-      <footer-page></footer-page>
-      <!--End footer -->
+      <!-- Start Footer -->
+      <footer-page v-if="!isLoginPage"></footer-page>
+      <!-- End Footer -->
     </section>
   </div>
   <!-- ======= Main ======= -->
@@ -28,20 +28,29 @@
 import NavBar from "./components/layouts/NavBar.vue";
 import SideBar from "./components/layouts/SideBar.vue";
 import FooterPage from "./components/layouts/FooterPage.vue";
+import { computed } from "vue";
+import { useRoute } from "vue-router";
+
 export default {
   components: {
     NavBar,
     SideBar,
     FooterPage,
   },
+  setup() {
+    const route = useRoute();
+
+    const isLoginPage = computed(() => route.name === "register-login"); // Ensure your login route is named 'login'
+
+    return {
+      isLoginPage,
+    };
+  },
 };
 </script>
 
 <style lang="scss">
-/* @import url("../src/assets/sass/style.scss"); */
-/* @import url("../src/assets/css/nasra.css"); */
 @import url("../src/assets/sass/style.min.css");
-// @import url("../src/assets/css/nasra.css");
 
 #app {
   font-family: "Avenir", "Helvetica", "Arial", sans-serif;

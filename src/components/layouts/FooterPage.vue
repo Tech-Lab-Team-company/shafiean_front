@@ -11,7 +11,7 @@
               </div>
 
               <p>
-                Made with by <img src="assets/media/hurt.png" alt="" /><a
+                Made with by <a
                   href="https://crazyideaco.com/"
                   >Crazy Idea</a
                 >

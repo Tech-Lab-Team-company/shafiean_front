@@ -57,7 +57,7 @@
           <tbody class="tbody">
            
             <tr v-for="(group,index) in groups" :key="index">
-              <td class="th"><input class="box" type="checkbox" /></td>
+              <td class="th"><input class="box" type="checkbox" :value="group.id" v-model="selectedGroups" /></td>
               <td class="id">
                 <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
                 {{ group.id }}
@@ -144,7 +144,7 @@
 
         <!-- sweetalrt -->
       </div>
-      <button @click="blockAlertt()" type="button" class="btn btn-danger">حذف المحدد</button>
+      <button @click="deleteSelectedStudents" type="button" class="btn btn-danger">حذف المحدد</button>
     </div>
   </div>
 </template>
@@ -155,6 +155,7 @@ export default {
   name: "groups-index",
   data() {
     return {
+      selectedGroups: [],
       groups: [
         {
           id: 1,
@@ -210,6 +211,18 @@ export default {
           }
         }
       });
+    },
+    deleteSelectedStudents() {
+      if (this.selectedGroups.length > 0) {
+        this.groups = this.groups.filter(
+          (group) => !this.selectedGroups.includes(group.id)
+        );
+        Swal.fire("تم الحذف!", "تم حذف الطالب/الطلاب بنجاح.", "success");
+      } else {
+        Swal.fire("خطأ!", "لم يتم تحديد أي طالب.", "error");
+      }
+      // Clear the selection
+      this.selectedGroups = [];
     },
   },
 };
