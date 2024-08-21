@@ -54,7 +54,7 @@
             <!-- For loop this tr -->
             <tr v-for="(subject,index) in subjects" :key="index">
              
-              <td class="th" ><input class="box" type="checkbox" /></td>
+              <td class="th" ><input class="box" type="checkbox" :value="subject.id" v-model="selectedSubject" /></td>
               <td class="id">{{subject.id}}</td>
               <td>{{ subject.name }} </td>
               <td> {{ subject.level }}</td>
@@ -89,7 +89,7 @@
           </tbody>
         </table>
 
-        <button type="button" class="btn btn-danger">حذف المحدد</button>
+        <button @click="deleteSelectedStudents" type="button" class="btn btn-danger">حذف المحدد</button>
       </div>
     </div>
   </div>
@@ -101,6 +101,7 @@ export default {
   name: "subjects-index",
   data(){
     return{
+      selectedSubject : [],
       subjects:[
         {
         id:1,
@@ -158,6 +159,17 @@ export default {
           }
         }
       });
+    },
+    deleteSelectedStudents() {
+      if (this.selectedSubject.length > 0) {
+        this.subjects = this.subjects.filter(
+          (subject) => !this.selectedSubject.includes(subject.id)
+        );
+        Swal.fire("تم الحذف!", "تم حذف الطالب/الطلاب بنجاح.", "success");
+      } else {
+        Swal.fire("خطأ!", "لم يتم تحديد أي طالب.", "error");
+      }
+      this.selectedSubject = [];
     },
   }
 };

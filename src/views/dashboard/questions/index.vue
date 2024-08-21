@@ -72,14 +72,14 @@
                   </thead>
                   <tbody class="tbody">
                     <!-- For loop this tr -->
-                    <tr>
-                      <td class="th"><input class="box" type="checkbox" /></td>
-                      <td class="id">1</td>
+                    <tr v-for="(question , index) in questions" :key="index">
+                      <td class="th"><input class="box" type="checkbox" :value="question.id" v-model="selectedQuestions" /></td>
+                      <td class="id">{{ question.id }}</td>
                       <td>
-                        اختبار على الجزء الأول من سورة البقرة ( 1- 25) بالتجويد
-                      </td>
-                      <td>القرآن الكريم</td>
-                      <td>الفرقة الاولى</td>
+                      {{ question.name }} 
+                       </td>
+                      <td>{{ question.subject }} </td>
+                      <td> {{ question.level }}</td>
                       <td class="flex_mobile">
                         <div class="dropdown">
                           <a
@@ -96,15 +96,16 @@
                             <li>
                               <a
                                 class="dropdown-item"
-                                href="Add-new-interactive-question-1.html"
+                                
                                 >تعديل البيانات</a
                               >
                             </li>
                             <li>
                               <a
                                 class="dropdown-item"
-                                href="#"
-                                onclick="blockAlert()"
+
+                                
+                                @click="blockAlertt(index)"
                                 >حذف
                               </a>
                             </li>
@@ -112,214 +113,94 @@
                         </div>
                       </td>
                     </tr>
-                    <!-- For loop this tr -->
-
-                    <!-- For loop this tr -->
-                    <tr>
-                      <td class="th"><input class="box" type="checkbox" /></td>
-                      <td class="id">1</td>
-                      <td>
-                        اختبار على الجزء الأول من سورة البقرة ( 1- 25) بالتجويد
-                      </td>
-                      <td>القرآن الكريم</td>
-                      <td>الفرقة الاولى</td>
-                      <td class="flex_mobile">
-                        <div class="dropdown">
-                          <a
-                            class="btn dropdown-toggle"
-                            href="#"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                          </a>
-
-                          <ul class="dropdown-menu">
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="Add-new-interactive-question-1.html"
-                                >تعديل البيانات</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="#"
-                                onclick="blockAlert()"
-                                >حذف
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </td>
-                    </tr>
-                    <!-- For loop this tr -->
-
-                    <!-- For loop this tr -->
-                    <tr>
-                      <td class="th"><input class="box" type="checkbox" /></td>
-                      <td class="id">1</td>
-                      <td>
-                        اختبار على الجزء الأول من سورة البقرة ( 1- 25) بالتجويد
-                      </td>
-                      <td>القرآن الكريم</td>
-                      <td>الفرقة الاولى</td>
-                      <td class="flex_mobile">
-                        <div class="dropdown">
-                          <a
-                            class="btn dropdown-toggle"
-                            href="#"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                          </a>
-
-                          <ul class="dropdown-menu">
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="Add-new-interactive-question-1.html"
-                                >تعديل البيانات</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="#"
-                                onclick="blockAlert()"
-                                >حذف
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </td>
-                    </tr>
-                    <!-- For loop this tr -->
-
-                    <!-- For loop this tr -->
-                    <tr>
-                      <td class="th"><input class="box" type="checkbox" /></td>
-                      <td class="id">1</td>
-                      <td>
-                        اختبار على الجزء الأول من سورة البقرة ( 1- 25) بالتجويد
-                      </td>
-                      <td>القرآن الكريم</td>
-                      <td>الفرقة الاولى</td>
-                      <td class="flex_mobile">
-                        <div class="dropdown">
-                          <a
-                            class="btn dropdown-toggle"
-                            href="#"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                          </a>
-
-                          <ul class="dropdown-menu">
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="Add-new-interactive-question-1.html"
-                                >تعديل البيانات</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="#"
-                                onclick="blockAlert()"
-                                >حذف
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </td>
-                    </tr>
-                    <!-- For loop this tr -->
-
-                    <!-- For loop this tr -->
-                    <tr>
-                      <td class="th"><input class="box" type="checkbox" /></td>
-                      <td class="id">1</td>
-                      <td>
-                        اختبار على الجزء الأول من سورة البقرة ( 1- 25) بالتجويد
-                      </td>
-                      <td>القرآن الكريم</td>
-                      <td>الفرقة الاولى</td>
-                      <td class="flex_mobile">
-                        <div class="dropdown">
-                          <a
-                            class="btn dropdown-toggle"
-                            href="#"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                          </a>
-
-                          <ul class="dropdown-menu">
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="Add-new-interactive-question-1.html"
-                                >تعديل البيانات</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="#"
-                                onclick="blockAlert()"
-                                >حذف
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </td>
-                    </tr>
-                    <!-- For loop this tr -->
+                
+                 
                   </tbody>
                 </table>
-                <!-- sweetalrt -->
               
-                <!-- <script>
-                  function blockAlert() {
-                    Swal.fire({
-                      html:
-                        '<h5 class="swal2-title">   هل أنت متأكد من حذف السؤال؟ </h5>' +
-                        '<p class="swal2-html-container">  </p>',
-
-                      showCancelButton: true,
-                      focusConfirm: false,
-                      confirmButtonText: "تأكيد الحذف",
-                      confirmButtonAriaLabel: "Thumbs up, great!",
-                      cancelButtonText: "الغاء",
-                      cancelButtonAriaLabel: "Thumbs down",
-                    });
-                  }
-                </script> -->
-                <!-- sweetalrt -->
-             
               </div>
-              <button type="button" class="btn btn-danger">حذف المحدد</button>
+              <button @click="deleteSelected" type="button" class="btn btn-danger">حذف المحدد</button>
             </div>
           </div>
 </template>
 
 <script>
+import Swal from "sweetalert2";
 export default {
-    name : 'questions-index'
+  name: "questions-index",
+  data() {
+    return {
+      selectedQuestions: [],
+      questions: [
+        {
+          id: 1,
+          name: "اختبار على الجزء الأول من سورة البقرة ( 1- 25) بالتجويد",
+          teacher: "القرآن الكريم",
+          level: "الفرقة الاولى",
+        },
+        {
+          id: 2,
+          name: "اختبار على الجزء الأول من سورة البقرة ( 1- 25) بالتجويد",
+          teacher: "القرآن الكريم",
+          level: "الفرقة الاولى",
+        },
+        {
+          id: 3,
+          name: "اختبار على الجزء الأول من سورة البقرة ( 1- 25) بالتجويد",
+          teacher: "القرآن الكريم",
+          level: "الفرقة الاولى",
+        },
+        {
+          id: 4,
+          name: "اختبار على الجزء الأول من سورة البقرة ( 1- 25) بالتجويد",
+          teacher: "القرآن الكريم",
+          level: "الفرقة الاولى", 
 
-}
+        },
+        {
+          id: 5,
+          name: "اختبار على الجزء الأول من سورة البقرة ( 1- 25) بالتجويد",
+          teacher: "القرآن الكريم",
+          level: "الفرقة الاولى",
+        }
+      ],
+    };
+  },
+  methods: {
+    blockAlertt(index) {
+      Swal.fire({
+        html:
+          '<h5 class="swal2-title">   هل أنت متأكد من حذف الطالب؟ </h5>' +
+          '<p class="swal2-html-container"></p>',
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText: "تأكيد الحذف",
+        cancelButtonText: "الغاء",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          if (this.questions.length > index) {
+            this.questions.splice(index, 1);
+            Swal.fire("تم الحذف!", "تم حذف الطالب بنجاح.", "success");
+          } else {
+            Swal.fire("خطأ!", "الطالب غير موجود.", "error");
+          }
+        }
+      });
+    },
+    deleteSelected() {
+      if (this.selectedQuestions.length > 0) {
+        this.questions = this.questions.filter(
+          (question) => !this.selectedQuestions.includes(question.id)
+        );
+        Swal.fire("تم الحذف!", "تم حذف الطالب/الطلاب بنجاح.", "success");
+      } else {
+        Swal.fire("خطأ!", "لم يتم تحديد أي طالب.", "error");
+      }
+      this.selectedQuestions = [];
+    },
+  },
+};
 </script>
 
 <style>
-
 </style>

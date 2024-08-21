@@ -78,18 +78,19 @@
         <tbody class="tbody">
           <!-- For loop this tr -->
           <tr 
-            v-for="(student, index) in students"
+            v-for="(item, index) in users"
             :key="index">
             <td class="th"><input class="box" type="checkbox" /></td>
             <td class="id">
               <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
-              1
+             {{item.id}}
             </td>
-            <td>{{ student.name }}</td>
-            <td>{{ student.phone }}</td>
-            <td>{{ student.group }}</td>
-            <td>{{ student.from }}</td>
-            <td>{{ student.date }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.phone }}</td>
+            <td>{{ item.gender }}</td>
+            <!-- <td>{{ item.image }}</td> -->
+            <td>{{ item.created_at }}</td>
+            <td>{{ item.updated_at }}</td>
             <td class="flex_mobile">
               <div class="dropdown">
                 <a
@@ -187,66 +188,65 @@
 
 <script>
 import Swal from "sweetalert2";
+
 export default {
   name: "students-index",
   data() {
     return {
-      students: [
-        {
-          name: "أحمد على",
-          phone: "0102566544",
-          group: "إعاقة سمعية",
-          from: "العهد الحديث",
-          date: "22 مايو, 2023",
-        },
-        {
-          name: "أحمد على",
-          phone: "0102566544",
-          group: "إعاقة سمعية",
-          from: "العهد الحديث",
-          date: "22 مايو, 2023",
-        },
-        {
-          name: "أحمد على",
-          phone: "0102566544",
-          group: "إعاقة سمعية",
-          from: "العهد الحديث",
-          date: "22 مايو, 2023",
-        },
-        {
-          name: "أحمد على",
-          phone: "0102566544",
-          group: "إعاقة سمعية",
-          from: "العهد الحديث",
-          date: "22 مايو, 2023",
-        },
-        {
-          name: "أحمد على",
-          phone: "0102566544",
-          group: "إعاقة سمعية",
-          from: "العهد الحديث",
-          date: "22 مايو, 2023",
-        },
-      ],
+      users: [], // Array to hold the fetched data
     };
   },
   methods: {
+    // Fetch users data from the API
+    async fetchUsers() {
+      try {
+        const response = await fetch(
+          "https://api.shafean.x-coders.net/api/users",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        const result = await response.json();
+
+        if (response.ok) {
+          this.users = result.data; // Assign the fetched data to the users array
+          console.log(this.users); // Debugging: Log the fetched data
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "خطأ",
+            text:
+              result.message ||
+              "فشل في جلب البيانات. يرجى المحاولة مرة أخرى لاحقًا.",
+          });
+        }
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: "خطأ",
+          text: "حدث خطأ ما. يرجى المحاولة مرة أخرى لاحقًا.",
+        });
+      }
+    },
+
+    // Delete student confirmation
     blockAlert(index) {
       Swal.fire({
         html:
           '<h5 class="swal2-title">   هل أنت متأكد من حذف الطالب؟ </h5>' +
           '<p class="swal2-html-container">  </p>',
-
         showCancelButton: true,
         focusConfirm: false,
         confirmButtonText: "تأكيد الحذف",
-        confirmButtonAriaLabel: "Thumbs up, great!",
         cancelButtonText: "الغاء",
-        cancelButtonAriaLabel: "Thumbs down",
       }).then((result) => {
         if (result.isConfirmed) {
-          if (this.students && this.students.length > index) {
-            this.students.splice(index, 1);
+          if (this.users && this.users.length > index) {
+            this.users.splice(index, 1);
             Swal.fire("تم الحذف!", "تم حذف الطالب بنجاح.", "success");
           } else {
             Swal.fire("خطأ!", "الطالب غير موجود.", "error");
@@ -254,6 +254,11 @@ export default {
         }
       });
     },
+  },
+
+  // Fetch users when the component is created
+  created() {
+    this.fetchUsers();
   },
 };
 </script>

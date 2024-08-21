@@ -53,7 +53,7 @@
           <tbody class="tbody">
             <!-- For loop this tr -->
             <tr v-for="(lesson, index) in lessons" :key="index">
-              <td class="th"><input class="box" type="checkbox" /></td>
+              <td class="th"><input class="box" type="checkbox" :value="lesson.id" v-model="selectedLessons" /></td>
               <td class="id">
                 <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
                 {{lesson.id}}
@@ -108,7 +108,7 @@
           </tbody>
         </table>
       </div>
-      <button type="button" class="btn btn-danger">حذف المحدد</button>
+      <button @click="deleteSelectedStudents" type="button" class="btn btn-danger">حذف المحدد</button>
     </div>
   </div>
 </template>
@@ -120,6 +120,7 @@ export default {
 
   data(){
     return{
+      selectedLessons:[],
       lessons:[
         {
           id:1,
@@ -176,6 +177,17 @@ export default {
           }
         }
       });
+    },
+    deleteSelectedStudents() {
+      if (this.selectedLessons.length > 0) {
+        this.lessons = this.lessons.filter(
+          (lesson) => !this.selectedLessons.includes(lesson.id)
+        );
+        Swal.fire("تم الحذف!", "تم حذف الدرس بنجاح.", "success");
+      } else {
+        Swal.fire("خطأ!", "لم يتم تحديد أي درس.", "error");
+      }
+      this.selectedLessons = [];
     },
   }
 };

@@ -399,7 +399,7 @@ this.isActive = !this.isActive
     Add(){
       Swal.fire({
                       html:
-                        '<h5 class="swal2-title">   لقم تمت الاضافه بنـجــاح </h5>' +
+                        '<h5 class="swal2-title">   لقد تمت الاضافه بنـجــاح </h5>' +
                         '<p class="swal2-html-container">  </p>',
 
                  

@@ -371,15 +371,26 @@ import Swal from "sweetalert2";
 export default {
     name : 'quesexam-index',
 methods :{
-  blockAlert() {
-                    Swal.fire({
-                      html:
-                        '<h5 class="swal2-title">   لقم تمت الاضافه بنـجــاح </h5>' +
-                        '<p class="swal2-html-container">  </p>',
-
-                 
-                    });
-                  }
+  blockAlert(index) {
+      Swal.fire({
+        html:
+          '<h5 class="swal2-title">   هل أنت متأكد من حذف الطالب؟ </h5>' +
+          '<p class="swal2-html-container"></p>',
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText: "تأكيد الحذف",
+        cancelButtonText: "الغاء",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          if (this.students.length > index) {
+            this.students.splice(index, 1);
+            Swal.fire("تم الحذف!", "تم حذف الطالب بنجاح.", "success");
+          } else {
+            Swal.fire("خطأ!", "الطالب غير موجود.", "error");
+          }
+        }
+      });
+    },
         
 }
 }
