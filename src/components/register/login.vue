@@ -151,7 +151,7 @@ h2 {
 }
 .forgot {
   text-decoration: none;
-  margin-right: 70%;
+  margin-right: 65%;
   color: #06797e;
   display: block;
   margin-top: 2%;

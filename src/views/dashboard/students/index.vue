@@ -78,19 +78,19 @@
         <tbody class="tbody">
           <!-- For loop this tr -->
           <tr 
-            v-for="(item, index) in users"
+            v-for="(user, index) in users"
             :key="index">
             <td class="th"><input class="box" type="checkbox" /></td>
             <td class="id">
               <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
-             {{item.id}}
+             {{user.id}}
             </td>
-            <td>{{ item.name }}</td>
-            <td>{{ item.phone }}</td>
-            <td>{{ item.gender }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.gender }}</td>
             <!-- <td>{{ item.image }}</td> -->
-            <td>{{ item.created_at }}</td>
-            <td>{{ item.updated_at }}</td>
+            <td>{{ user.created_at }}</td>
+            <td>{{ user.updated_at }}</td>
             <td class="flex_mobile">
               <div class="dropdown">
                 <a
@@ -124,7 +124,7 @@
                     >
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#" @click="blockAlert(index)"
+                    <a class="dropdown-item" href="#" @click="blockAlert(index , user.id)"
                       >حذف</a
                     >
                   </li>
@@ -234,22 +234,36 @@ export default {
     },
 
     // Delete student confirmation
-    blockAlert(index) {
+    blockAlert(index, userId) {
       Swal.fire({
         html:
-          '<h5 class="swal2-title">   هل أنت متأكد من حذف الطالب؟ </h5>' +
+          '<h5 class="swal2-title">   هل أنت متأكد من حذف المعلم؟ </h5>' +
           '<p class="swal2-html-container">  </p>',
         showCancelButton: true,
         focusConfirm: false,
         confirmButtonText: "تأكيد الحذف",
         cancelButtonText: "الغاء",
-      }).then((result) => {
+      }).then(async (result) => {
         if (result.isConfirmed) {
-          if (this.users && this.users.length > index) {
-            this.users.splice(index, 1);
-            Swal.fire("تم الحذف!", "تم حذف الطالب بنجاح.", "success");
-          } else {
-            Swal.fire("خطأ!", "الطالب غير موجود.", "error");
+          try {
+            const response = await fetch(
+              `https://api.shafean.x-coders.net/api/teachers/${userId}`,
+              {
+                method: "DELETE",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+
+            if (response.ok) {
+              this.users.splice(index, 1);
+              Swal.fire("تم الحذف!", "تم حذف المعلم بنجاح.", "success");
+            } else {
+              Swal.fire("خطأ!", "حدث خطأ أثناء حذف المعلم.", "error");
+            }
+          } catch (error) {
+            Swal.fire("خطأ!", "حدث خطأ أثناء الاتصال بالخادم.", "error");
           }
         }
       });
