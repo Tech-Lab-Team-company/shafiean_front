@@ -3,7 +3,7 @@
             <div class="d-flex justify-content-between align-items-center">
               <h5 class="title_section">إضافة معلم جديد</h5>
             </div>
-            <form action="teachers.html" class="add_form w-100 row">
+            <form @submit.prevent="addTeacher()" class="add_form w-100 row">
               <div class="col-12">
                 <div class="avatar-upload">
                   <div class="avatar-edit">
@@ -44,6 +44,7 @@
                   <label for="">* اسم المعلم</label>
                   <input
                     type="text"
+                    v-model="teacher.name"
                     name=""
                     id=""
                     class="form-control"
@@ -68,12 +69,13 @@
                   <label for="">* الجنس</label>
                   <select
                     name=""
+                    v-model="teacher.gender"
                     id=""
                     class="form-control selectpicker"
                     title="الجنس"
                   >
-                    <option value="">ذكر</option>
-                    <option value="">انثى</option>
+                    <option value="male">male</option>
+                    <option value="female">female</option>
                   </select>
                 </div>
               </div>
@@ -93,13 +95,14 @@
               </div>
               <div class="col-lg-6 col-md-6 col-12">
                 <div class="form-group">
-                  <label for="">* رقم الهوية</label>
+                  <label for="">* رقم الهاتف</label>
                   <input
                     type="text"
                     name=""
+                    v-model="teacher.phone"
                     id=""
                     class="form-control"
-                    placeholder="اكتب رقم الهوية"
+                    placeholder="اكتب رقم الهاتف"
                   />
                 </div>
               </div>
@@ -108,6 +111,7 @@
                   <label for="">* الحالة الاجتماعية</label>
                   <select
                     name=""
+                  
                     id=""
                     class="form-control selectpicker"
                     title="الحالة الاجتماعية"
@@ -115,6 +119,46 @@
                     <option value="">متزوج</option>
                     <option value="">اعزب</option>
                   </select>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-12">
+                <div class="form-group">
+                  <label for="">* العمر</label>
+                  <input
+                    v-model="teacher.age"
+                    type="text"
+                    name=""
+                    id=""
+                    class="form-control"
+                    placeholder="ادخل العمر"
+                  />
+                </div>
+              </div>
+         
+              <div class="col-lg-6 col-md-6 col-12">
+                <div class="form-group">
+                  <label for="">*البريد الالكترونى</label>
+                  <input
+                    v-model="teacher.email"
+                    type="text"
+                    name=""
+                    id=""
+                    class="form-control"
+                    placeholder="البريد الالكترونى"
+                  />
+                </div>
+              </div>
+              
+              <div class="col-lg-6 col-md-6 col-12">
+                <div class="form-group">
+                  <label for="">*كلمة المرور</label>
+                  <input
+                    type="text"
+                    name=""
+                    id=""
+                    class="form-control"
+                    placeholder="*******"
+                  />
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-12">
@@ -129,30 +173,6 @@
                     <option value="">بطاقة</option>
                     <option value="">اقامة</option>
                   </select>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-12">
-                <div class="form-group">
-                  <label for="">*البريد الالكترونى</label>
-                  <input
-                    type="text"
-                    name=""
-                    id=""
-                    class="form-control"
-                    placeholder="البريد الالكترونى"
-                  />
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-12">
-                <div class="form-group">
-                  <label for="">*كلمة المرور</label>
-                  <input
-                    type="text"
-                    name=""
-                    id=""
-                    class="form-control"
-                    placeholder="*******"
-                  />
                 </div>
               </div>
               <div class="col-12">
@@ -188,11 +208,11 @@
                   </label>
                 </div>
               </div>
-              <router-link to="/teachers">
+           
 
-                <button @click=" blockAlert()" type="submit" class="btn PrimaryButton mb-5 mt-3 w-100" 
+                <button  type="submit" class="btn PrimaryButton mb-5 mt-3 w-100" 
                 >اضافة</button>
-              </router-link>
+           
             </form>
           </div>
 </template>
@@ -201,20 +221,77 @@
 import Swal from "sweetalert2";
 export default {
   name: "teachers-add",
-  methods : {
-    blockAlert() {
-                    Swal.fire({
-                      html:
-                      '<h5 class="swal2-title">   لقد تمت الاضافه بنـجــاح </h5>' +
-                      '<p class="swal2-html-container">  </p>',
+  data() {
+    return {
+      teacher: {
+        id:"",
+        name: "",
+        email: "",
+        phone: "",
+        age: "",
+        gender: "",
+      },
+    };
+  },
+  methods: {
+    async addTeacher() {
+     
+      if(!this.teacher.name || !this.teacher.email || !this.teacher.phone || !this.teacher.age || !this.teacher.gender){
+        Swal.fire({
+          icon: "error",
+          title: "خطأ",
+          text: "يجب عليك ملء جميع الحقول",
+        });
+        return
+      }
+      if(this.teacher.phone.length != 11){
+        Swal.fire({
+          icon: "error",
+          title: "خطأ",
+          text: "رقم الهاتف غير صحيح",
+        });
+        return
+      }
+      try {
+        const response = await fetch(
+          "https://api.shafean.x-coders.net/api/teachers",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(this.teacher),
+          }
+        );
 
-                 
-                    });
-                  }
-  }
-}
+        if (response.ok) {
+          Swal.fire({
+            icon: "success",
+            title: "نجاح",
+            text: "لقد تمت الاضافه بنـجــاح",
+          });
+          this.$router.push("/teachers");
+        } else {
+          const result = await response.json();
+          Swal.fire({
+            icon: "error",
+            title: "خطأ",
+            text: result.message || "حدث خطأ ما. يرجى المحاولة لاحقًا.",
+          });
+        }
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: "خطأ",
+          text: "حدث خطأ ما. يرجى المحاولة لاحقًا.",
+        });
+      }
+      this.$router.push("/teachers");
+    },
+  },
+
+};
 </script>
-
 <style>
 
 </style>

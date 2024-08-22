@@ -47,29 +47,29 @@
               <th><input class="box" type="checkbox" /></th>
               <th class="th">رقم المعلم</th>
               <th class="th">اسم المعلم</th>
-              <th class="th">التخصص</th>
+              <th class="th">رقم الموبايل</th>
               <th class="th">البريد الالكتروني</th>
+              <th class="th">العمر</th>
+              <th class="th">الجنس</th>
               <th class="th">تاريخ الاضافة</th>
               <th class="th"></th>
             </tr>
           </thead>
           <tbody class="tbody">
             <!-- For loop this tr -->
-            <tr 
-            v-for="(teacher, index) in teachers"
-            :key="index">
-              <td class="th"><input class="box" type="checkbox" /></td>
+            <tr v-for="(teacher, index) in teachers" :key="index">
+              <td class="th"><input class="box" type="checkbox"   v-model="teacher.isSelected" /></td>
               <td class="id">
                 <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
                 {{ teacher.id }}
               </td>
-              <td> {{ teacher.name }}</td>
-              <td>{{ teacher.phone }} </td>
-              <td>{{ teacher.email }} </td>
-              <td>{{ teacher.age }} </td>
-              <td>{{ teacher.gender }} </td>
-        
-              
+              <td>{{ teacher.name }}</td>
+              <td>{{ teacher.phone }}</td>
+              <td>{{ teacher.email }}</td>
+              <td>{{ teacher.age }}</td>
+              <td>{{ teacher.gender }}</td>
+              <td>{{ teacher.created_at }}</td>
+
               <td>مايو 22 , 2022 - 2:30 م</td>
               <td class="flex_mobile">
                 <div class="dropdown">
@@ -95,7 +95,10 @@
                       >
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#" @click="blockAlert()"
+                      <a
+                        class="dropdown-item"
+                        href="#"
+                        @click="blockAlert(index, teacher.id)"
                         >حذف
                       </a>
                     </li>
@@ -112,7 +115,13 @@
 
         <!-- sweetalrt -->
       </div>
-      <button type="button" class="btn btn-danger">حذف المحدد</button>
+      <button
+        @click="deleteSelectedTeachers"
+        type="button"
+        class="btn btn-danger"
+      >
+        حذف المحدد
+      </button>
     </div>
   </div>
 </template>
@@ -123,18 +132,17 @@ export default {
   name: "teachers-index",
   data() {
     return {
-      teachers: [], // Array to hold the fetched data
+      teachers: [],
+      selectedTeachers: [],
     };
   },
   methods: {
-    // Fetch users data from the API
     async fetchTeachers() {
       try {
         const response = await fetch(
           "https://api.shafean.x-coders.net/api/teachers",
 
-
-{
+          {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
@@ -165,28 +173,94 @@ export default {
       }
     },
 
-    // Delete student confirmation
-    blockAlert(index) {
+    blockAlert(index, teacherId) {
       Swal.fire({
         html:
-          '<h5 class="swal2-title">   هل أنت متأكد من حذف الطالب؟ </h5>' +
+          '<h5 class="swal2-title">   هل أنت متأكد من حذف المعلم؟ </h5>' +
           '<p class="swal2-html-container">  </p>',
         showCancelButton: true,
         focusConfirm: false,
         confirmButtonText: "تأكيد الحذف",
         cancelButtonText: "الغاء",
-      }).then((result) => {
+      }).then(async (result) => {
         if (result.isConfirmed) {
-          if (this.users && this.users.length > index) {
-            this.users.splice(index, 1);
-            Swal.fire("تم الحذف!", "تم حذف الطالب بنجاح.", "success");
-          } else {
-            Swal.fire("خطأ!", "الطالب غير موجود.", "error");
+          try {
+            const response = await fetch(
+              `https://api.shafean.x-coders.net/api/teachers/${teacherId}`,
+              {
+                method: "DELETE",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+
+            if (response.ok) {
+              this.teachers.splice(index, 1);
+              Swal.fire("تم الحذف!", "تم حذف المعلم بنجاح.", "success");
+            } else {
+              Swal.fire("خطأ!", "حدث خطأ أثناء حذف المعلم.", "error");
+            }
+          } catch (error) {
+            Swal.fire("خطأ!", "حدث خطأ أثناء الاتصال بالخادم.", "error");
           }
         }
       });
     },
+    async deleteSelectedTeachers() {
+  // Find the selected teachers by checking which checkboxes are checked
+  const selectedTeachers = this.teachers.filter(
+    (teacher) => teacher.isSelected
+  );
+
+  // Check if no teachers are selected
+  if (selectedTeachers.length === 0) {
+    Swal.fire({
+      icon: "warning",
+      title: "تحذير",
+      text: "الرجاء اختيار معلمين للحذف.",
+    });
+    return;
+  }
+
+  // Confirm deletion
+  const result = await Swal.fire({
+    html: '<h5 class="swal2-title">هل أنت متأكد من حذف المعلمين المحددين؟</h5>',
+    showCancelButton: true,
+    confirmButtonText: "تأكيد الحذف",
+    cancelButtonText: "الغاء",
+  });
+
+  if (result.isConfirmed) {
+    try {
+      for (const teacher of selectedTeachers) {
+        // Make DELETE request to API for each selected teacher
+        const response = await fetch(
+          `https://api.shafean.x-coders.net/api/teachers/${teacher.id}`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to delete teacher");
+        }
+      }
+
+      // After successful deletion, refresh the teachers list
+      this.fetchTeachers();
+      Swal.fire("تم الحذف!", "تم حذف المعلمين بنجاح.", "success");
+    } catch (error) {
+      Swal.fire("خطأ!", "حدث خطأ أثناء حذف المعلمين.", "error");
+    }
+  }
+},
+
   },
+
   // blockAlert() {
   //   Swal.fire({
   //     html:
@@ -201,7 +275,7 @@ export default {
   //     cancelButtonAriaLabel: "Thumbs down",
   //   });
   // },
-  created() {
+  mounted() {
     this.fetchTeachers();
   },
 };

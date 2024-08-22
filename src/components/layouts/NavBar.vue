@@ -72,7 +72,7 @@
           <li>
             <a class="dropdown-item" href="General-Settings.html">Setting</a>
           </li>
-          <li><a class="dropdown-item" href="#">Logout</a></li>
+          <li><router-link to="/" @click="logout()" class="dropdown-item">Logout</router-link></li>
         </ul>
       </div>
     </div>
@@ -80,7 +80,28 @@
 </template>
 
 <script>
-export default {};
+// import Swal from "sweetalert2";
+export default {
+  data(){
+    return{
+
+    }
+  },
+  methods:{
+    // logout(){
+    //   Swal.fire({
+    //                   html:
+    //                   '<h5 class="swal2-title"> هل انت متاكد من تسجيل الخروج </h5>' + 
+    //                   '<p class="swal2-html-container">  </p>',
+
+
+                
+
+                 
+    //                 });
+    
+  }
+};
 </script>
 
 <style>
