@@ -36,7 +36,7 @@
           <label for="">* اسم المعلم</label>
           <input
             type="text"
-            v-model="teacher.name"
+            v-model="name"
             name=""
             id=""
             class="form-control"
@@ -61,7 +61,7 @@
           <label for="">* الجنس</label>
           <select
             name=""
-            v-model="teacher.gender"
+            v-model="gender"
             id=""
             class="form-control selectpicker"
             title="الجنس"
@@ -89,9 +89,9 @@
         <div class="form-group">
           <label for="">* رقم الهاتف</label>
           <input
-            type="text"
+            type="tel"
             name=""
-            v-model="teacher.phone"
+            v-model="phone"
             id=""
             class="form-control"
             placeholder="اكتب رقم الهاتف"
@@ -116,8 +116,8 @@
         <div class="form-group">
           <label for="">* العمر</label>
           <input
-            v-model="teacher.age"
-            type="text"
+            v-model="age"
+            type="number"
             name=""
             id=""
             class="form-control"
@@ -130,8 +130,8 @@
         <div class="form-group">
           <label for="">*البريد الالكترونى</label>
           <input
-            v-model="teacher.email"
-            type="text"
+            v-model="email"
+            type="email"
             name=""
             id=""
             class="form-control"
@@ -213,24 +213,22 @@ export default {
   name: "teachers-add",
   data() {
     return {
-      teacher: {
-        id: "",
-        name: "",
-        email: "",
-        phone: "",
-        age: "",
-        gender: "",
-      },
+      id: "",
+      name: "",
+      email: "",
+      phone: "",
+      age: "",
+      gender: "",
     };
   },
   methods: {
     async addTeacher() {
       if (
-        !this.teacher.name ||
-        !this.teacher.email ||
-        !this.teacher.phone ||
-        !this.teacher.age ||
-        !this.teacher.gender
+        !this.name ||
+        !this.email ||
+        !this.phone ||
+        !this.age ||
+        !this.gender
       ) {
         Swal.fire({
           icon: "error",
@@ -239,24 +237,24 @@ export default {
         });
         return;
       }
-      if (this.teacher.phone.length != 11) {
-        Swal.fire({
-          icon: "error",
-          title: "خطأ",
-          text: "رقم الهاتف غير صحيح",
-        });
-        return;
-      }
+      // if (this.phone.length != 11) {
+      //   Swal.fire({
+      //     icon: "error",
+      //     title: "خطأ",
+      //     text: "رقم الهاتف غير صحيح",
+      //   });
+      //   return;
+      // }
       try {
         const response = await axios.post("/teachers", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(this.teacher),
+          name: this.name,
+          email: this.email,
+          phone: this.phone,
+          age: this.age,
+          gender: this.gender,
         });
 
-        if (response.ok) {
+        if (response.data.status == true) {
           Swal.fire({
             icon: "success",
             title: "نجاح",

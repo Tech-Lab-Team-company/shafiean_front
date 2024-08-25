@@ -49,14 +49,20 @@
               <th class="th"></th>
             </tr>
           </thead>
-          
+
           <tbody class="tbody">
             <!-- For loop this tr -->
             <tr v-for="(item, index) in stages" :key="index">
-              <td class="th"><input class="box" type="checkbox" :value="stages.id" v-model="selectedStudents"  /></td>
+              <td class="th">
+                <input
+                  class="box"
+                  type="checkbox"
+                  :value="stages.id"
+                  v-model="selectedStudents"
+                />
+              </td>
               <td>{{ item.id }}</td>
               <td class="id">
-
                 <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
                 {{ item.title }}
               </td>
@@ -93,13 +99,14 @@
               </td>
             </tr>
             <!-- For loop this tr -->
-
-    
           </tbody>
         </table>
-       
       </div>
-      <button @click="deleteSelectedStudents" type="button" class="btn btn-danger">
+      <button
+        @click="deleteSelectedStudents"
+        type="button"
+        class="btn btn-danger"
+      >
         حذف المحدد
       </button>
     </div>
@@ -108,6 +115,7 @@
 
 <script>
 import Swal from "sweetalert2";
+import axios from "axios";
 
 export default {
   name: "steps-index",
@@ -121,25 +129,17 @@ export default {
     // Fetch stages data from the API
     async fetchStages() {
       try {
-        const response = await fetch(
-          "https://api.shafean.x-coders.net/api/stages",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        const response = await axios.get("/stages");
 
-        const result = await response.json();
-
-        if (response.ok) {
-          this.stages = result.data; // Assign the fetched data to the stages array
+        if (response.data.status == true) {
+          this.stages = response.data.data; // Assign the fetched data to the stages array
         } else {
           Swal.fire({
             icon: "error",
             title: "خطأ",
-            text: result.message || "فشل في جلب البيانات. يرجى المحاولة مرة أخرى لاحقًا.",
+            text:
+              response.message ||
+              "فشل في جلب البيانات. يرجى المحاولة مرة أخرى لاحقًا.",
           });
         }
       } catch (error) {
@@ -188,5 +188,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

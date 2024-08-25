@@ -6,7 +6,7 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 import PrimeVue from "primevue/config";
 
-axios.defaults.baseURL = "https://api.shafean.x-coders.net/api/admin";
+axios.defaults.baseURL = "https://api.shafean.x-coders.net/api";
 axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem(
   "token"
 )}`;
