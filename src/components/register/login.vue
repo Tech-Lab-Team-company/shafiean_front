@@ -138,7 +138,7 @@ export default {
       } else {
         try {
           // console.log(response)
-          if (response.data.code == 200) {
+          if (response.data.status == true) {
             // console.log("true", response);
             Swal.fire({
               position: "center",
