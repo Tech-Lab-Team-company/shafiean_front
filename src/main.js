@@ -1,39 +1,23 @@
-// import { createApp } from 'vue'
-// import App from './App.vue'
-// import router from './router'
-// import { library } from '@fortawesome/fontawesome-svg-core'
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
+import axios from "axios";
+import VueAxios from "vue-axios";
+import PrimeVue from "primevue/config";
 
-// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+axios.defaults.baseURL = "https://api.shafean.x-coders.net/api";
+axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem(
+  "token"
+)}`;
+axios.defaults.headers.common["accept"] = "application/json";
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "normalize.css";
 
-// import { all } from '@awesome.me/kit-KIT_CODE/icons'
-
-// library.add(...all)
-// import 'bootstrap/dist/css/bootstrap.css';
-// import "bootstrap";
-// createApp(App).use(router).mount('#app').component('font-awesome-icon', FontAwesomeIcon)
-
-
-
-import { createApp } from 'vue';
-import App from './App.vue';
-import router from './router';
-import PrimeVue from 'primevue/config';
-
-// import { library } from '@fortawesome/fontawesome-svg-core';
-// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-// import { all } from '@awesome.me/kit-KIT_CODE/icons';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap';
-
-
-// Add all icons to the library
-// library.add(...all);
-
-// Create the Vue app
-const app = createApp(App);
-
-// Register the FontAwesomeIcon component globally
-// app.component('font-awesome-icon', FontAwesomeIcon);
-
-// Use router and mount the app
-app.use(router).use(PrimeVue).mount('#app');
+createApp(App)
+  .use(store)
+  .use(router)
+  .use(PrimeVue)
+  .use(VueAxios, axios)
+  .mount("#app");

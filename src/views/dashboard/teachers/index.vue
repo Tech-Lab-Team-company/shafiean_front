@@ -58,7 +58,13 @@
           <tbody class="tbody">
             <!-- For loop this tr -->
             <tr v-for="(teacher, index) in teachers" :key="index">
-              <td class="th"><input class="box" type="checkbox"   v-model="teacher.isSelected" /></td>
+              <td class="th">
+                <input
+                  class="box"
+                  type="checkbox"
+                  v-model="teacher.isSelected"
+                />
+              </td>
               <td class="id">
                 <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
                 {{ teacher.id }}
@@ -208,57 +214,53 @@ export default {
       });
     },
     async deleteSelectedTeachers() {
-  // Find the selected teachers by checking which checkboxes are checked
-  const selectedTeachers = this.teachers.filter(
-    (teacher) => teacher.isSelected
-  );
+      // Find the selected teachers by checking which checkboxes are checked
+      const selectedTeachers = this.teachers.filter(
+        (teacher) => teacher.isSelected
+      );
 
-  // Check if no teachers are selected
-  if (selectedTeachers.length === 0) {
-    Swal.fire({
-      icon: "warning",
-      title: "تحذير",
-      text: "الرجاء اختيار معلمين للحذف.",
-    });
-    return;
-  }
-
-  // Confirm deletion
-  const result = await Swal.fire({
-    html: '<h5 class="swal2-title">هل أنت متأكد من حذف المعلمين المحددين؟</h5>',
-    showCancelButton: true,
-    confirmButtonText: "تأكيد الحذف",
-    cancelButtonText: "الغاء",
-  });
-
-  if (result.isConfirmed) {
-    try {
-      for (const teacher of selectedTeachers) {
-        // Make DELETE request to API for each selected teacher
-        const response = await fetch(
-          `https://api.shafean.x-coders.net/api/teachers/${teacher.id}`,
-          {
-            method: "DELETE",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to delete teacher");
-        }
+      // Check if no teachers are selected
+      if (selectedTeachers.length === 0) {
+        Swal.fire({
+          icon: "warning",
+          title: "تحذير",
+          text: "الرجاء اختيار معلمين للحذف.",
+        });
+        return;
       }
 
-      // After successful deletion, refresh the teachers list
-      this.fetchTeachers();
-      Swal.fire("تم الحذف!", "تم حذف المعلمين بنجاح.", "success");
-    } catch (error) {
-      Swal.fire("خطأ!", "حدث خطأ أثناء حذف المعلمين.", "error");
-    }
-  }
-},
+      // Confirm deletion
+      const result = await Swal.fire({
+        html: '<h5 class="swal2-title">هل أنت متأكد من حذف المعلمين المحددين؟</h5>',
+        showCancelButton: true,
+        confirmButtonText: "تأكيد الحذف",
+        cancelButtonText: "الغاء",
+      });
 
+      if (result.isConfirmed) {
+        try {
+          for (const teacher of selectedTeachers) {
+            // Make DELETE request to API for each selected teacher
+            const response = await fetch(`/teachers/${teacher.id}`, {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+
+            if (!response.ok) {
+              throw new Error("Failed to delete teacher");
+            }
+          }
+
+          // After successful deletion, refresh the teachers list
+          this.fetchTeachers();
+          Swal.fire("تم الحذف!", "تم حذف المعلمين بنجاح.", "success");
+        } catch (error) {
+          Swal.fire("خطأ!", "حدث خطأ أثناء حذف المعلمين.", "error");
+        }
+      }
+    },
   },
 
   // blockAlert() {
@@ -281,5 +283,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

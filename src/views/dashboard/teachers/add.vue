@@ -254,7 +254,7 @@ export default {
       }
       try {
         const response = await fetch(
-          "https://api.shafean.x-coders.net/api/teachers",
+          "/teachers",
           {
             method: "POST",
             headers: {

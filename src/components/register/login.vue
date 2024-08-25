@@ -82,7 +82,7 @@ export default {
     
     try {
       // Send the POST request to the API
-      const response = await fetch("https://api.shafean.x-coders.net/api/login", {
+      const response = await fetch("/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
