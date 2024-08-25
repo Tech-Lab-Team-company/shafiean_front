@@ -1,51 +1,12 @@
 <template>
-  <div class="sidemobile p-0">
-    <!-- ======= Start Sidebar ======= -->
-    <side-bar v-if="!isLoginPage "></side-bar>
-    <!-- ======= End Sidebar ======= -->
-
-    <!-- ======= Main ======= -->
-    <section class="index_cards">
-      <!-- ======= Start navbar ======= -->
-      <nav-bar v-if="!isLoginPage"></nav-bar>
-      <!-- ======= End navbar ======= -->
-
-      <!-- ======= Start Content ======= -->
-      <section class="content">
-        <router-view />
-      </section>
-      <!-- ======= End Content ======= -->
-
-      <!-- Start Footer -->
-      <footer-page v-if="!isLoginPage"></footer-page>
-      <!-- End Footer -->
-    </section>
+  <div id="app">
+    <router-view></router-view>
   </div>
-  <!-- ======= Main ======= -->
 </template>
 
 <script>
-import NavBar from "./components/layouts/NavBar.vue";
-import SideBar from "./components/layouts/SideBar.vue";
-import FooterPage from "./components/layouts/FooterPage.vue";
-import { computed } from "vue";
-import { useRoute } from "vue-router";
-
 export default {
-  components: {
-    NavBar,
-    SideBar,
-    FooterPage,
-  },
-  setup() {
-    const route = useRoute();
-
-    const isLoginPage = computed(() => route.name === "register-login"); // Ensure your login route is named 'login'
-
-    return {
-      isLoginPage,
-    };
-  },
+  name: "app"
 };
 </script>
 

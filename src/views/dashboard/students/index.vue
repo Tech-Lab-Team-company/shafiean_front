@@ -198,38 +198,23 @@ export default {
   methods: {
     // Fetch users data from the API
     async fetchUsers() {
-      try {
-        const response = await axios.get(
-          "https://api.shafean.x-coders.net/api/users",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-
-        const result = await response.json();
-
-        if (response.ok) {
-          this.users = result.data; // Assign the fetched data to the users array
-          console.log(this.users); // Debugging: Log the fetched data
-        } else {
-          Swal.fire({
-            icon: "error",
-            title: "خطأ",
-            text:
-              result.message ||
-              "فشل في جلب البيانات. يرجى المحاولة مرة أخرى لاحقًا.",
-          });
-        }
-      } catch (error) {
-        Swal.fire({
-          icon: "error",
-          title: "خطأ",
-          text: "حدث خطأ ما. يرجى المحاولة مرة أخرى لاحقًا.",
+      axios
+        .get("/users")
+        .then(({ data }) => {
+          this.users = data.data;
+        })
+        .catch((error) => {
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: error.response.data.message,
+                timer: 1500,
+            });
+            return error;
+        })
+        .finally(() => {
+            //Perform action in always
         });
-      }
     },
 
     // Delete student confirmation

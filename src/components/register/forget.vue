@@ -23,7 +23,7 @@
           placeholder="Enter Your Password"
         />
         <router-link to="/forget" class="forgot">هل نسيت كلمه المرور؟</router-link>
-        <router-link to="/HomeView">
+        <router-link to="/">
           <button @click="blockAlert()" type="button" class="btn btn-primary">تسجيل الدخول</button>
         </router-link>
   

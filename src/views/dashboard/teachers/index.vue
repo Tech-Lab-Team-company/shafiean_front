@@ -192,14 +192,10 @@ export default {
       }).then(async (result) => {
         if (result.isConfirmed) {
           try {
-            const response = await axios.delete(`/teachers/${teacherId}`, {
-              method: "DELETE",
-              headers: {
-                "Content-Type": "application/json",
-              },
-            });
+            const response = await axios.delete(`/teachers/${teacherId}`, {});
+            console.log(response);
 
-            if (response.ok) {
+            if (response.data.status == true) {
               this.teachers.splice(index, 1);
               Swal.fire("تم الحذف!", "تم حذف المعلم بنجاح.", "success");
             } else {
@@ -212,53 +208,43 @@ export default {
       });
     },
     async deleteSelectedTeachers() {
-      // Find the selected teachers by checking which checkboxes are checked
-      const selectedTeachers = this.teachers.filter(
-        (teacher) => teacher.isSelected
-      );
+  const selectedTeachers = this.teachers.filter((teacher) => teacher.isSelected);
 
-      // Check if no teachers are selected
-      if (selectedTeachers.length === 0) {
-        Swal.fire({
-          icon: "warning",
-          title: "تحذير",
-          text: "الرجاء اختيار معلمين للحذف.",
-        });
-        return;
-      }
+  if (selectedTeachers.length === 0) {
+    Swal.fire({
+      icon: "warning",
+      title: "تحذير",
+      text: "الرجاء اختيار معلمين للحذف.",
+    });
+    return;
+  }
 
-      // Confirm deletion
-      const result = await Swal.fire({
-        html: '<h5 class="swal2-title">هل أنت متأكد من حذف المعلمين المحددين؟</h5>',
-        showCancelButton: true,
-        confirmButtonText: "تأكيد الحذف",
-        cancelButtonText: "الغاء",
-      });
+  const result = await Swal.fire({
+    html: '<h5 class="swal2-title">هل أنت متأكد من حذف المعلمين المحددين؟</h5>',
+    showCancelButton: true,
+    confirmButtonText: "تأكيد الحذف",
+    cancelButtonText: "الغاء",
+  });
 
-      if (result.isConfirmed) {
-        try {
-          for (const teacher of selectedTeachers) {
-            // Make DELETE request to API for each selected teacher
-            const response = await fetch(`/teachers/${teacher.id}`, {
-              method: "DELETE",
-              headers: {
-                "Content-Type": "application/json",
-              },
-            });
+  if (result.isConfirmed) {
+    try {
+      for (const teacher of selectedTeachers) {
+        const response = await axios.delete(`/teachers/${teacher.id}`); 
 
-            if (!response.ok) {
-              throw new Error("Failed to delete teacher");
-            }
-          }
-
-          // After successful deletion, refresh the teachers list
-          this.fetchTeachers();
-          Swal.fire("تم الحذف!", "تم حذف المعلمين بنجاح.", "success");
-        } catch (error) {
-          Swal.fire("خطأ!", "حدث خطأ أثناء حذف المعلمين.", "error");
+        if (!response.data.status) {
+          throw new Error("Failed to delete teacher");
         }
       }
-    },
+
+
+      this.fetchTeachers();
+      Swal.fire("تم الحذف!", "تم حذف المعلمين بنجاح.", "success");
+    } catch (error) {
+      Swal.fire("خطأ!", "حدث خطأ أثناء حذف المعلمين.", "error");
+    }
+  }
+}
+
   },
 
   // blockAlert() {

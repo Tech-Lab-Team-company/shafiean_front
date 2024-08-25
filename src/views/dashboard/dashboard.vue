@@ -1,33 +1,42 @@
 <template>
-  <!-- ======= Start Sidebar ======= -->
-  <!-- ======= End Sidebar ======= -->
+  <div class="sidemobile p-0">
+    <!-- ======= Start Sidebar ======= -->
+    <side-bar></side-bar>
+    <!-- ======= End Sidebar ======= -->
 
-  <!-- ======= Main ======= -->
-  <section class="index_cards">
-    <!-- ======= Start navbar ======= -->
-    <!-- ======= End navbar ======= -->
+    <!-- ======= Main ======= -->
+    <section class="index_cards">
+      <!-- ======= Start navbar ======= -->
+      <nav-bar></nav-bar>
+      <!-- ======= End navbar ======= -->
 
-    <!-- ======= Start Content ======= -->
-    <section class="content">
-      <HomePage></HomePage>
-      <router-view />
+      <!-- ======= Start Content ======= -->
+      <section class="content">
+        <router-view></router-view>
+      </section>
+      <!-- ======= End Content ======= -->
+
+      <!-- Start Footer -->
+      <footer-page></footer-page>
+      <!-- End Footer -->
     </section>
-    <!-- ======= End Content ======= -->
-
-    <!--start footer -->
-    <!--End footer -->
-  </section>
+  </div>
   <!-- ======= Main ======= -->
 </template>
 
 <script>
-import HomePage from "../../components/layouts/HomePage.vue";
+import NavBar from "@/components/layouts/NavBar.vue";
+import SideBar from "@/components/layouts/SideBar.vue";
+import FooterPage from "@/components/layouts/FooterPage.vue";
+// import { computed } from "vue";
+// import { useRoute } from "vue-router";
 
 export default {
-  name: "HomeView",
+  name: "dashboard-page",
   components: {
-  
-    HomePage,
+    NavBar,
+    SideBar,
+    FooterPage,
   },
 };
 </script>

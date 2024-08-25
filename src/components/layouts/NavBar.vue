@@ -80,7 +80,8 @@
 </template>
 
 <script>
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
+
 export default {
   data(){
     return{
@@ -88,18 +89,23 @@ export default {
     }
   },
   methods:{
-    // logout(){
-    //   Swal.fire({
-    //                   html:
-    //                   '<h5 class="swal2-title"> هل انت متاكد من تسجيل الخروج </h5>' + 
-    //                   '<p class="swal2-html-container">  </p>',
-
-
-                
-
-                 
-    //                 });
-    
+    logout() {
+      Swal.fire({
+        title: "logout",
+        text: "are_you_sure_logout",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        cancelButtonText: "back",
+        confirmButtonText: "confirm_logout",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          localStorage.clear();
+          this.$router.go("/login");
+        }
+      });
+    }
   }
 };
 </script>
