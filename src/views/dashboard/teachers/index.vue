@@ -133,6 +133,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import Swal from "sweetalert2";
 export default {
   name: "teachers-index",
@@ -191,15 +192,12 @@ export default {
       }).then(async (result) => {
         if (result.isConfirmed) {
           try {
-            const response = await fetch(
-              `https://api.shafean.x-coders.net/api/teachers/${teacherId}`,
-              {
-                method: "DELETE",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-              }
-            );
+            const response = await axios.delete(`/teachers/${teacherId}`, {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
 
             if (response.ok) {
               this.teachers.splice(index, 1);
