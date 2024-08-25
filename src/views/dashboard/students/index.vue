@@ -59,10 +59,7 @@
     <!-- End filters -->
 
     <div class="table-responsive">
-      <table
-        class="table"
-        id="table"
-      >
+      <table class="table" id="table">
         <thead>
           <tr class="trAltCizgi">
             <th><input class="box" type="checkbox" /></th>
@@ -77,13 +74,11 @@
         </thead>
         <tbody class="tbody">
           <!-- For loop this tr -->
-          <tr 
-            v-for="(user, index) in users"
-            :key="index">
+          <tr v-for="(user, index) in users" :key="index">
             <td class="th"><input class="box" type="checkbox" /></td>
             <td class="id">
               <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
-             {{user.id}}
+              {{ user.id }}
             </td>
             <td>{{ user.name }}</td>
             <td>{{ user.phone }}</td>
@@ -124,7 +119,10 @@
                     >
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#" @click="blockAlert(index , user.id)"
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                      @click="blockAlert(index, user.id)"
                       >حذف</a
                     >
                   </li>
@@ -188,6 +186,7 @@
 
 <script>
 import Swal from "sweetalert2";
+import axios from "axios";
 
 export default {
   name: "students-index",
@@ -200,7 +199,7 @@ export default {
     // Fetch users data from the API
     async fetchUsers() {
       try {
-        const response = await fetch(
+        const response = await axios.get(
           "https://api.shafean.x-coders.net/api/users",
           {
             method: "GET",
@@ -277,5 +276,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
