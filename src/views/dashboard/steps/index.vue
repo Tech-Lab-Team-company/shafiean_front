@@ -53,14 +53,18 @@
           <tbody class="tbody">
             <!-- For loop this tr -->
             <tr v-for="(item, index) in stages" :key="index">
+
+              <td class="th"><input class="box" type="checkbox" :value="stages.id" v-model="selectedStages"  /></td>
+
               <td class="th">
                 <input
                   class="box"
                   type="checkbox"
                   :value="stages.id"
-                  v-model="selectedStudents"
+                  v-model="selectedStages"
                 />
               </td>
+
               <td>{{ item.id }}</td>
               <td class="id">
                 <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->

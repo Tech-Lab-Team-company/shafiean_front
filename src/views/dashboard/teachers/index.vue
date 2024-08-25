@@ -208,48 +208,43 @@ export default {
       });
     },
     async deleteSelectedTeachers() {
-      // Find the selected teachers by checking which checkboxes are checked
-      const selectedTeachers = this.teachers.filter(
-        (teacher) => teacher.isSelected
-      );
+  const selectedTeachers = this.teachers.filter((teacher) => teacher.isSelected);
 
-      // Check if no teachers are selected
-      if (selectedTeachers.length === 0) {
-        Swal.fire({
-          icon: "warning",
-          title: "تحذير",
-          text: "الرجاء اختيار معلمين للحذف.",
-        });
-        return;
-      }
+  if (selectedTeachers.length === 0) {
+    Swal.fire({
+      icon: "warning",
+      title: "تحذير",
+      text: "الرجاء اختيار معلمين للحذف.",
+    });
+    return;
+  }
 
-      // Confirm deletion
-      const result = await Swal.fire({
-        html: '<h5 class="swal2-title">هل أنت متأكد من حذف المعلمين المحددين؟</h5>',
-        showCancelButton: true,
-        confirmButtonText: "تأكيد الحذف",
-        cancelButtonText: "الغاء",
-      });
+  const result = await Swal.fire({
+    html: '<h5 class="swal2-title">هل أنت متأكد من حذف المعلمين المحددين؟</h5>',
+    showCancelButton: true,
+    confirmButtonText: "تأكيد الحذف",
+    cancelButtonText: "الغاء",
+  });
 
-      if (result.isConfirmed) {
-        try {
-          for (const teacher of selectedTeachers) {
-            // Make DELETE request to API for each selected teacher
-            const response = await axios.delete(`/teachers/${teacher.id}`, {});
+  if (result.isConfirmed) {
+    try {
+      for (const teacher of selectedTeachers) {
+        const response = await axios.delete(`/teachers/${teacher.id}`); 
 
-            if (response.data.status == true) {
-              throw new Error("Failed to delete teacher");
-            }
-          }
-
-          // After successful deletion, refresh the teachers list
-          this.fetchTeachers();
-          Swal.fire("تم الحذف!", "تم حذف المعلمين بنجاح.", "success");
-        } catch (error) {
-          Swal.fire("خطأ!", "حدث خطأ أثناء حذف المعلمين.", "error");
+        if (!response.data.status) {
+          throw new Error("Failed to delete teacher");
         }
       }
-    },
+
+
+      this.fetchTeachers();
+      Swal.fire("تم الحذف!", "تم حذف المعلمين بنجاح.", "success");
+    } catch (error) {
+      Swal.fire("خطأ!", "حدث خطأ أثناء حذف المعلمين.", "error");
+    }
+  }
+}
+
   },
 
   // blockAlert() {

@@ -78,7 +78,7 @@
             <td class="th"><input class="box" type="checkbox" /></td>
             <td class="id">
               <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
-              {{ user.id }}
+              {{ use                                                                                                             }}
             </td>
             <td>{{ user.name }}</td>
             <td>{{ user.phone }}</td>
