@@ -192,14 +192,10 @@ export default {
       }).then(async (result) => {
         if (result.isConfirmed) {
           try {
-            const response = await axios.delete(`/teachers/${teacherId}`, {
-              method: "DELETE",
-              headers: {
-                "Content-Type": "application/json",
-              },
-            });
+            const response = await axios.delete(`/teachers/${teacherId}`, {});
+            console.log(response);
 
-            if (response.ok) {
+            if (response.data.status == true) {
               this.teachers.splice(index, 1);
               Swal.fire("تم الحذف!", "تم حذف المعلم بنجاح.", "success");
             } else {
@@ -239,14 +235,9 @@ export default {
         try {
           for (const teacher of selectedTeachers) {
             // Make DELETE request to API for each selected teacher
-            const response = await fetch(`/teachers/${teacher.id}`, {
-              method: "DELETE",
-              headers: {
-                "Content-Type": "application/json",
-              },
-            });
+            const response = await axios.delete(`/teachers/${teacher.id}`, {});
 
-            if (!response.ok) {
+            if (response.data.status == true) {
               throw new Error("Failed to delete teacher");
             }
           }

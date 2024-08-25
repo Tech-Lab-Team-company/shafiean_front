@@ -46,8 +46,8 @@
 
 <script>
 import Swal from "sweetalert2";
-import axios from "axios";
-import { mapActions } from "vuex";
+// import axios from "axios";
+// import { mapActions } from "vuex";
 
 export default {
   name: "LoginView",
@@ -63,61 +63,110 @@ export default {
       this.passwordType =
         this.passwordType === "password" ? "text" : "password";
     },
-    ...mapActions(["saveToken"]),
-    LoginNow() {
-      axios
-        .post("/login", {
-          email: this.email,
-          password: this.password,
-        })
-        .then((response) => {
-          if (response.status === 200) {
-            Swal.fire({
-              icon: "success",
-              title: "Login successful",
-              text: "You have successfully logged in!",
-            }).then(() => {
-              const token = response.data.data.token;
-              this.$store.dispatch("saveToken", token);
-              console.log(token);
-              this.$router.push({ name: "products" });
-            });
-          } else {
-            Swal.fire({
-              icon: "error",
-              title: "Unexpected Error",
-              text: `Unexpected status code: ${response.status}`,
-            });
-          }
-        })
-        .catch((error) => {
-          let errorMessage = "The provided credentials are incorrect.";
-          if (error.response) {
-            switch (error.response.status) {
-              case 400:
-                errorMessage = error.response.data.message;
-                break;
-              case 401:
-                errorMessage = error.response.data.message;
-                break;
-              default:
-                errorMessage = `Error ${error.response.status}: ${
-                  error.response.data.message || "An unexpected error occurred."
-                }`;
-            }
-          } else if (error.request) {
-            errorMessage =
-              "No response received from the server. Please check your network connection.";
-          } else {
-            errorMessage = `Error: ${error.message}`;
-          }
+    // ...mapActions(["saveToken"]),
+    // LoginNow() {
+    //   axios
+    //     .post("/login", {
+    //       email: this.email,
+    //       password: this.password,
+    //     })
+    //     .then((response) => {
+    //       if (response.status === 200) {
+    //         Swal.fire({
+    //           icon: "success",
+    //           title: "Login successful",
+    //           text: "You have successfully logged in!",
+    //         }).then(() => {
+    //           const token = response.data.data.token;
+    //           this.$store.dispatch("saveToken", token);
+    //           console.log(token);
+    //           this.$router.push({ name: "home" });
+    //         });
+    //       } else {
+    //         Swal.fire({
+    //           icon: "error",
+    //           title: "Unexpected Error",
+    //           text: `Unexpected status code: ${response.status}`,
+    //         });
+    //       }
+    //     })
+    //     .catch((error) => {
+    //       let errorMessage = "The provided credentials are incorrect.";
+    //       if (error.response) {
+    //         switch (error.response.status) {
+    //           case 400:
+    //             errorMessage = error.response.data.message;
+    //             break;
+    //           case 401:
+    //             errorMessage = error.response.data.message;
+    //             break;
+    //           default:
+    //             errorMessage = `Error ${error.response.status}: ${
+    //               error.response.data.message || "An unexpected error occurred."
+    //             }`;
+    //         }
+    //       } else if (error.request) {
+    //         errorMessage =
+    //           "No response received from the server. Please check your network connection.";
+    //       } else {
+    //         errorMessage = `Error: ${error.message}`;
+    //       }
 
-          Swal.fire({
-            icon: "error",
-            title: "Login Failed",
-            text: errorMessage,
-          });
+    //       Swal.fire({
+    //         icon: "error",
+    //         title: "Login Failed",
+    //         text: errorMessage,
+    //       });
+    //     });
+    // },
+
+    async LoginNow() {
+      // this.disableButton = true; //the disableButton begin
+      const formData = new FormData();
+      formData.append("email", this.email);
+      formData.append("password", this.password);
+
+      let response = await this.$store.dispatch("Login", formData);
+      // console.log(this.phone.replace(/\s+/g, ''));
+      if (this.email === "" || this.password === "") {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: this.$t("Please dictate all fields"),
         });
+        // this.disableButton = false;
+      } else {
+        try {
+          // console.log(response)
+          if (response.data.code == 200) {
+            // console.log("true", response);
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: response.data.message,
+            });
+            this.$router.go("/");
+            (this.password = ""), (this.email = ""), this.$router.go("/");
+          } else {
+            console.log("false", response);
+            Swal.fire({
+              position: "center",
+              icon: "error",
+              title: response.data.message,
+            });
+            // this.disableButton = false;
+          }
+        } catch (err) {
+          console.log("test");
+          console.log(err.response);
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: err.response.data.message,
+          });
+          // this.disableButton = false;
+        }
+      }
     },
   },
 };
