@@ -1,37 +1,44 @@
 <template>
   <div class="container login">
-    <form @submit.prevent="handleLogin">
+    <form @submit.prevent="LoginNow">
       <img
         src="../../assets/media/pngtree-user-login-or-authenticate-icon-on-gray-background-flat-icon-ve-png-image_5089976.jpg"
         width="150px"
         alt=""
       />
-      <h2>تسجيل الدخول</h2>
-      <p>
+      <h2 class="font">تسجيل الدخول</h2>
+      <p class="font">
         يرجى إدخال كلمة مرور قوية تحتوي على الأقل 8 رموز <br />
         مكونة من حروف وأرقام
       </p>
       <input
-        type="text"
+        type="email"
         class="form-control"
         placeholder="Enter Your Email or Phone"
-        v-model="emailOrPhone"
+        v-model="email"
       />
-      <input
-        type="password"
-        class="form-control mt-3"
-        placeholder="Enter Your Password"
-        v-model="password"
-      />
-      <router-link to="/registerforget" class="forgot">هل نسيت كلمة المرور؟</router-link>
+      <div class="password">
+        <input
+          id="password"
+          :type="passwordType"
+          placeholder="Enter your password"
+          class="form-control"
+          v-model="password"
+        />
+        <i class="fa-solid fa-lock" @click="togglePasswordVisibility"></i>
+      </div>
+      <router-link to="/registerforget" class="forgot"
+        >هل نسيت كلمة المرور؟</router-link
+      >
       <button type="submit" class="btn btn-primary">تسجيل الدخول</button>
 
-      <h5>
+      <h5 class="font">
         ليس لديك حساب بعد؟
         <router-link
           style="text-decoration: none; color: #06797e"
           to="/register"
-        >إنشاء حساب</router-link>
+          >إنشاء حساب</router-link
+        >
       </h5>
     </form>
   </div>
@@ -39,96 +46,80 @@
 
 <script>
 import Swal from "sweetalert2";
+import axios from "axios";
+import { mapActions } from "vuex";
 
 export default {
-  name: "register-login",
-   
-
+  name: "LoginView",
   data() {
     return {
-      emailOrPhone: "",
+      passwordType: "password",
+      email: "",
       password: "",
     };
   },
-  
   methods: {
-  async handleLogin() {
-    
-    // Validate email/phone and password
-    if (!this.emailOrPhone || !this.password) {
-      Swal.fire({
-        icon: "error",
-        title: "خطأ",
-        text: "يرجى إدخال البريد الإلكتروني/الهاتف وكلمة المرور!",
-      });
-      return;
-    }
-  
-    // Check if password is at least 8 characters long
-    if (this.password.length < 8) {
-      Swal.fire({
-        icon: "error",
-        title: "خطأ",
-        text: "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل!",
-      });
-      return;
-    }
+    togglePasswordVisibility() {
+      this.passwordType =
+        this.passwordType === "password" ? "text" : "password";
+    },
+    ...mapActions(["saveToken"]),
+    LoginNow() {
+      axios
+        .post("/login", {
+          email: this.email,
+          password: this.password,
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            Swal.fire({
+              icon: "success",
+              title: "Login successful",
+              text: "You have successfully logged in!",
+            }).then(() => {
+              const token = response.data.data.token;
+              this.$store.dispatch("saveToken", token);
+              console.log(token);
+              this.$router.push({ name: "products" });
+            });
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Unexpected Error",
+              text: `Unexpected status code: ${response.status}`,
+            });
+          }
+        })
+        .catch((error) => {
+          let errorMessage = "The provided credentials are incorrect.";
+          if (error.response) {
+            switch (error.response.status) {
+              case 400:
+                errorMessage = error.response.data.message;
+                break;
+              case 401:
+                errorMessage = error.response.data.message;
+                break;
+              default:
+                errorMessage = `Error ${error.response.status}: ${
+                  error.response.data.message || "An unexpected error occurred."
+                }`;
+            }
+          } else if (error.request) {
+            errorMessage =
+              "No response received from the server. Please check your network connection.";
+          } else {
+            errorMessage = `Error: ${error.message}`;
+          }
 
-    // Prepare the payload
-    const payload = {
-      email: this.emailOrPhone,
-      password: this.password,
-    };
-    
-    try {
-      // Send the POST request to the API
-      const response = await fetch("/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      // Parse the JSON response only once
-      const result = await response.json();
-
-      if (response.ok) {
-        Swal.fire({
-          icon: "success",
-          html: '<h5 class="swal2-title">لقد تم تسجيل دخولك بنجاح</h5>',
+          Swal.fire({
+            icon: "error",
+            title: "Login Failed",
+            text: errorMessage,
+          });
         });
-
-        // Store necessary data in localStorage
-        localStorage.setItem("token", JSON.stringify(result.data.token));
-        localStorage.setItem("gender", JSON.stringify(result.data.gender));
-        localStorage.setItem("image", JSON.stringify(result.data.image));
-
-        localStorage.setItem("name", JSON.stringify(result.data.name));
-        localStorage.setItem("email", JSON.stringify(result.data.email));
-        localStorage.setItem("phone", JSON.stringify(result.data.phone));
-       
-
-        // Redirect to the home page or another page
-        this.$router.push("/HomeView");
-      } else {
-        // Show error message if login fails
-        Swal.fire({
-          icon: "error",
-          title: "خطأ",
-          text: result.message || "فشل تسجيل الدخول. يرجى التحقق من بيانات الاعتماد الخاصة بك.",
-        });
-      }
-    } catch (error) {
-      // Handle network errors or unexpected issues
-      Swal.fire({
-        icon: "error",
-        title: "خطأ",
-        text: "حدث خطأ ما. يرجى المحاولة مرة أخرى لاحقًا.",
-      });
-    }
+    },
   },
-},
 };
 </script>
 
@@ -161,5 +152,27 @@ button {
   margin-top: 5%;
   margin-bottom: 5%;
   width: 40%;
+}
+.password {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e8f0fe;
+  border-radius: 30px;
+  margin-top: 1rem;
+  padding: 0 0.5rem;
+}
+.password input {
+  background-color: unset !important;
+}
+.password i {
+  color: #06797e;
+  cursor: pointer;
+}
+.font {
+  font-family: "regular";
+}
+a {
+  font-family: "regular";
 }
 </style>
