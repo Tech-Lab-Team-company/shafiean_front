@@ -76,13 +76,13 @@ export default {
         Swal.fire({
           position: "center",
           icon: "error",
-          title: this.$t("Please dictate all fields"),
+          title:  response.data.message,
         });
         // this.disableButton = false;
       } else {
         try {
           // console.log(response)
-          if (response.data.code == 200) {
+          if (response.status == 200) {
             // console.log("true", response);
             Swal.fire({
               position: "center",

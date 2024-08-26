@@ -160,8 +160,8 @@ export default {
         const result = await response.json();
 
         if (response.ok) {
-          this.teachers = result.data; // Assign the fetched data to the users array
-          console.log(this.teachers); // Debugging: Log the fetched data
+          this.teachers = result.data; 
+          // console.log(this.teachers); 
         } else {
           Swal.fire({
             icon: "error",

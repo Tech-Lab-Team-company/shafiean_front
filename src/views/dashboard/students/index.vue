@@ -75,7 +75,8 @@
         <tbody class="tbody">
           <!-- For loop this tr -->
           <tr v-for="(user, index) in users" :key="index">
-            <td class="th"><input class="box" type="checkbox" /></td>
+            <td class="th">
+              <input class="box" type="checkbox"  v-model="user.isSelected" /></td>
             <td class="id">
               <!-- <input class="form-check-input" type="checkbox" value="" name="table">  -->
               {{ use                                                                                                             }}
@@ -171,7 +172,7 @@
       <!-- sweetalrt -->
     </div>
     <div class="cc">
-      <button type="button" class="btn btn-danger">حذف المحدد</button>
+      <button @click="deleteSelectedUsers" type="button" class="btn btn-danger">حذف المحدد</button>
       <button
         type="button"
         class="btn btn-success"
@@ -192,11 +193,11 @@ export default {
   name: "students-index",
   data() {
     return {
-      users: [], // Array to hold the fetched data
+      users: [], 
+      selectedUsers: [],
     };
   },
   methods: {
-    // Fetch users data from the API
     async fetchUsers() {
       axios
         .get("/users")
@@ -213,7 +214,6 @@ export default {
             return error;
         })
         .finally(() => {
-            //Perform action in always
         });
     },
 
@@ -231,16 +231,13 @@ export default {
         if (result.isConfirmed) {
           try {
             const response = await fetch(
-              `https://api.shafean.x-coders.net/api/teachers/${userId}`,
+              `https://api.shafean.x-coders.net/api/users/${userId}`,
               {
-                method: "DELETE",
-                headers: {
-                  "Content-Type": "application/json",
-                },
+              
               }
             );
 
-            if (response.ok) {
+            if (response.data.status == true) {
               this.users.splice(index, 1);
               Swal.fire("تم الحذف!", "تم حذف المعلم بنجاح.", "success");
             } else {
@@ -252,9 +249,46 @@ export default {
         }
       });
     },
+    async deleteSelectedUsers() {
+  const selectedUsers = this.users.filter((user) => user.isSelected);
+
+  if (selectedUsers.length === 0) {
+    Swal.fire({
+      icon: "warning",
+      title: "تحذير",
+      text: "الرجاء اختيار معلمين للحذف.",
+    });
+    return;
+  }
+
+  const result = await Swal.fire({
+    html: '<h5 class="swal2-title">هل أنت متأكد من حذف المعلمين المحددين؟</h5>',
+    showCancelButton: true,
+    confirmButtonText: "تأكيد الحذف",
+    cancelButtonText: "الغاء",
+  });
+
+  if (result.isConfirmed) {
+    try {
+      for (const user of selectedUsers) {
+        const response = await axios.delete(`/users/${user.id}`); 
+
+        if (!response.data.status) {
+          throw new Error("Failed to delete users");
+        }
+      }
+
+
+      this.fetchUsers();
+      Swal.fire("تم الحذف!", "تم حذف المعلمين بنجاح.", "success");
+    } catch (error) {
+      Swal.fire("خطأ!", "حدث خطأ أثناء حذف المعلمين.", "error");
+    }
+  }
+}
   },
 
-  // Fetch users when the component is created
+
   created() {
     this.fetchUsers();
   },
