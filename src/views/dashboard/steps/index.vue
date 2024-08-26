@@ -7,7 +7,6 @@
       >
     </div>
     <div class="table_details">
-      <!-- Start filters -->
       <div class="filters">
         <div class="form-group">
           <i class="fa-solid fa-magnifying-glass"></i>
@@ -36,7 +35,6 @@
           </select>
         </div>
       </div>
-      <!-- End filters -->
 
       <div class="table-responsive">
         <table class="table" id="table">
@@ -54,14 +52,14 @@
             <!-- For loop this tr -->
             <tr v-for="(item, index) in stages" :key="index">
 
-              <td class="th"><input class="box" type="checkbox" :value="stages.id" v-model="selectedStages"  /></td>
+              <!-- <td class="th"><input class="box" type="checkbox" :value="stages.id" v-model="selectedStages"  /></td> -->
 
               <td class="th">
                 <input
                   class="box"
                   type="checkbox"
-                  :value="stages.id"
-                  v-model="selectedStages"
+               
+                  v-model="item.isSelected"
                 />
               </td>
 
@@ -94,7 +92,7 @@
                       <a
                         class="dropdown-item"
                         href="#"
-                        @click="blockAlertt(index)"
+                        @click="blockAlert(index , item.id)"
                         >حذف
                       </a>
                     </li>
@@ -107,7 +105,7 @@
         </table>
       </div>
       <button
-        @click="deleteSelectedStudents"
+        @click="deleteSelectedStages"
         type="button"
         class="btn btn-danger"
       >
@@ -125,18 +123,18 @@ export default {
   name: "steps-index",
   data() {
     return {
-      stages: [], // Initialize stages array
-      selectedStages: [], // Array for selected stages
+      stages: [], 
+      selectedStages: [], 
     };
   },
   methods: {
-    // Fetch stages data from the API
+    
     async fetchStages() {
       try {
         const response = await axios.get("/stages");
 
         if (response.data.status == true) {
-          this.stages = response.data.data; // Assign the fetched data to the stages array
+          this.stages = response.data.data; 
         } else {
           Swal.fire({
             icon: "error",
@@ -155,40 +153,76 @@ export default {
       }
     },
 
-    // Delete a single stage confirmation
-    blockAlert(index) {
+    
+    blockAlert(index, itemId) {
       Swal.fire({
-        html: '<h5 class="swal2-title">هل أنت متأكد من حذف المرحلة الدراسية؟</h5>',
+        html:
+          '<h5 class="swal2-title">   هل أنت متأكد من حذف المعلم؟ </h5>' +
+          '<p class="swal2-html-container">  </p>',
         showCancelButton: true,
+        focusConfirm: false,
         confirmButtonText: "تأكيد الحذف",
         cancelButtonText: "الغاء",
-      }).then((result) => {
+      }).then(async (result) => {
         if (result.isConfirmed) {
-          if (this.stages.length > index) {
-            this.stages.splice(index, 1);
-            Swal.fire("تم الحذف!", "تم حذف المرحلة الدراسية بنجاح.", "success");
-          } else {
-            Swal.fire("خطأ!", "المرحلة الدراسية غير موجودة.", "error");
+          try {
+            const response = await axios.delete(`/stages/${itemId}`, {});
+            console.log(response);
+
+            if (response.data.status == true) {
+              this.stages.splice(index, 1);
+              Swal.fire("تم الحذف!", "تم حذف المعلم بنجاح.", "success");
+            } else {
+              Swal.fire("خطأ!", "حدث خطأ أثناء حذف المعلم.", "error");
+            }
+          } catch (error) {
+            Swal.fire("خطأ!", "حدث خطأ أثناء الاتصال بالخادم.", "error");
           }
         }
       });
     },
 
-    // Delete selected stages
-    deleteSelectedStages() {
-      if (this.selectedStages.length > 0) {
-        this.stages = this.stages.filter(
-          (stage) => !this.selectedStages.includes(stage.id)
-        );
-        Swal.fire("تم الحذف!", "تم حذف المرحلة/المراحل بنجاح.", "success");
-      } else {
-        Swal.fire("خطأ!", "لم يتم تحديد أي مرحلة.", "error");
+ 
+    async deleteSelectedStages() {
+  const selectedStages = this.stages.filter((item) => item.isSelected);
+
+  if (selectedStages.length === 0) {
+    Swal.fire({
+      icon: "warning",
+      title: "تحذير",
+      text: "الرجاء اختيار معلمين للحذف.",
+    });
+    return;
+  }
+
+  const result = await Swal.fire({
+    html: '<h5 class="swal2-title">هل أنت متأكد من حذف المعلمين المحددين؟</h5>',
+    showCancelButton: true,
+    confirmButtonText: "تأكيد الحذف",
+    cancelButtonText: "الغاء",
+  });
+
+  if (result.isConfirmed) {
+    try {
+      for (const item of selectedStages) {
+        const response = await axios.delete(`/stages/${item.id}`); 
+
+        if (!response.data.status) {
+          throw new Error("Failed to delete stages");
+        }
       }
-      this.selectedStages = []; // Clear selection after deletion
-    },
+
+
+      this.fetchStages();
+      Swal.fire("تم الحذف!", "تم حذف المعلمين بنجاح.", "success");
+    } catch (error) {
+      Swal.fire("خطأ!", "حدث خطأ أثناء حذف المعلمين.", "error");
+    }
+  }
+}
   },
   created() {
-    this.fetchStages(); // Ensure the fetchStages method is called here
+    this.fetchStages(); 
   },
 };
 </script>

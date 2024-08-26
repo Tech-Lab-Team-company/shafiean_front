@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-between align-items-center">
       <h5 class="title_section">إضافة طالب جديد</h5>
     </div>
-    <form @submit.prevent="addStudent()" class="add_form row w-100">
+    <form @submit.prevent="addStudent" class="add_form row w-100">
       <div class="col-lg-6 col-md-6 col-12">
         <div class="form-group">
           <label for="">* اضافة مجموعه</label>
@@ -46,16 +46,16 @@
       <div class="col-lg-6 col-md-6 col-12">
         <div class="form-group">
           <label for="">* الجنس</label>
-          <select
+          <input type="text" name="" id="" class="form-control" placeholder="" v-model="gender" />">
+          <!-- <select
             name=""
             id=""
-            v-model="gender"
             class="form-control selectpicker"
             title="الجنس"
           >
             <option value="">ذكر</option>
             <option value="">انثى</option>
-          </select>
+          </select> -->
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-12">
@@ -76,7 +76,7 @@
         <div class="form-group">
           <label for="">* رقم الهوية</label>
           <input
-            type="text"
+            type="number"
             name=""
             id=""
             class="form-control"
@@ -153,7 +153,7 @@
         <div class="form-group">
           <label for="">* رقم الجوال</label>
           <input
-            type="text"
+            type="tel"
             name=""
             v-model="phone"
             id=""
@@ -166,7 +166,7 @@
         <div class="form-group">
           <label for="">*كلمة المرور</label>
           <input
-            type="text"
+            type="password"
             name=""
             id=""
             class="form-control"
@@ -179,12 +179,12 @@
         <div class="form-group">
           <label for="">*تأكيد كلمة المرور</label>
           <input
-            type="text"
+            type="password"
             name=""
             id=""
             class="form-control"
             placeholder="*******"
-            v-model="passwordconfirm"
+            v-model="password_confirmation"
           />
         </div>
       </div>
@@ -215,51 +215,83 @@ export default {
   name: "students-add",
   data() {
     return {
-      
-        name: "",
-        address: "",
-        phone: "",
-        gender: "",
-        email : "",
-        password : "",
-        passwordconfirm:"",
-      
+      name: "",
+      phone: "",
+      gender: "",
+      email: "",
+      password: "",
+      password_confirmation: "",
+    
     };
   },
 
   methods: {
     async addStudent() {
-      const res = await axios.post("https://api.shafean.x-coders.net/api/users", {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        name: this.name,
-        address: this.address,
-        phone: this.phone,
-        gender: this.gender,
-        email : this.email,
-        password : this.password,
-        password_confirmation:this.passwordconfirm
-      });
-      if(res.status == true){
-        Swal.fire({
-          icon: "success",
-          title: res.message,
-          showConfirmButton: false,
-          
-        });
-        this.$router.push({ name: "students" });
+      console.log(this.name);
+      console.log(this.phone);
+      console.log(this.gender);
 
+      console.log(this.email);
+      console.log(this.password);
+      console.log(this.password_confirmation);
 
-      }else{
+      if (
+        !this.name ||
+        !this.phone ||
+        !this.gender ||
+        !this.email ||
+        !this.password ||
+        !this.password_confirmation
+
+      ) {
         Swal.fire({
           icon: "error",
-          title: res.message,
-          showConfirmButton: false,
+          title: "خطأ",
+          text: "يجب عليك ملء جميع الحقول",
+        });
+        return;
+      }
+
+      if (this.password !== this.password_confirmation) {
+        Swal.fire({
+          icon: "error",
+          title: "خطأ",
+          text: "كلمة المرور وتأكيد كلمة المرور غير متطابقتين",
+        });
+        return;
+      }
+
+      try {
+        const response = await axios.post("/users", {
+          name: this.name,
+          phone: this.phone,
+          gender: this.gender,
+          email: this.email,
+          password:this.password,
+          passwordconfirm:this.password_confirmation
+        });
+
+        if (response.data.status == true) {
+          Swal.fire({
+            icon: "success",
+            title: "نجاح",
+            text: "لقد تمت الاضافه بنـجــاح",
+          });
+          this.$router.push("/users");
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "خطأ",
+            text: response.data.message || "حدث خطأ ما. يرجى المحاولة لاحقًا.",
+          });
+        }
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: "خطأ",
+          text: "حدث خطأ ما. يرجى المحاولة لاحقًا.",
         });
       }
-      
-   
     },
   },
 };

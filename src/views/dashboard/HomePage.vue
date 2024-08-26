@@ -32,10 +32,10 @@
           <router-link to="/moderatots" class="btn btn_title_page">
             المشرفين</router-link
           >
-          <router-link to="" class="btn btn_title_page">
+          <router-link to="/reports" class="btn btn_title_page">
             التقارير العامه</router-link
           >
-          <a href="contests.html" class="btn btn_title_page">المسابقات </a>
+          <router-link to="/contests"  class="btn btn_title_page">المسابقات </router-link>
         </div>
       </div>
       <div class="col-lg-8 col-md-12 col-12 px-4">

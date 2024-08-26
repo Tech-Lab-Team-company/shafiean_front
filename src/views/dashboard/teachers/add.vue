@@ -237,14 +237,14 @@ export default {
         });
         return;
       }
-      // if (this.phone.length != 11) {
-      //   Swal.fire({
-      //     icon: "error",
-      //     title: "خطأ",
-      //     text: "رقم الهاتف غير صحيح",
-      //   });
-      //   return;
-      // }
+      if (this.phone.length != 11) {
+        Swal.fire({
+          icon: "error",
+          title: "خطأ",
+          text: "رقم الهاتف غير صحيح",
+        });
+        return;
+      }
       try {
         const response = await axios.post("/teachers", {
           name: this.name,
