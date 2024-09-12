@@ -144,7 +144,7 @@
         <div class="form-group">
           <label for="">*كلمة المرور</label>
           <input
-            type="text"
+            type="password"
             name=""
             id=""
             class="form-control"
@@ -276,8 +276,11 @@ export default {
           text: "حدث خطأ ما. يرجى المحاولة لاحقًا.",
         });
       }
-      this.$router.push("/teachers");
+      // this.$router.push("/teachers");
     },
+  },
+  crated() {
+    this.fetchTeachers();
   },
 };
 </script>

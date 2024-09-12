@@ -22,9 +22,12 @@ $SecondText: #828c8d;
   font-family: "bold";
   src: url("../fonts/alfont_com_Somar-Bold.otf");
 }
-
 @import "./_auth.scss";
 
+:root {
+  --main: #06797e;
+  --primary: #cde382;
+}
 body {
   overflow-x: hidden;
   direction: rtl;

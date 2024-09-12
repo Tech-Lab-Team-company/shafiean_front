@@ -1,12 +1,14 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
-import store from "./store";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import PrimeVue from "primevue/config";
+import { createPinia } from "pinia";
 
-axios.defaults.baseURL = "https://api.shafean.x-coders.net/api";
+const pinia = createPinia();
+
+axios.defaults.baseURL = "http://192.168.1.10:8000/api/";
 axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem(
   "token"
 )}`;
@@ -16,8 +18,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "normalize.css";
 
 createApp(App)
-  .use(store)
   .use(router)
+  .use(pinia)
   .use(PrimeVue)
   .use(VueAxios, axios)
   .mount("#app");

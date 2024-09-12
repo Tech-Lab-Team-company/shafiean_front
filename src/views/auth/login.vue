@@ -1,168 +1,159 @@
 <template>
-  <div class="container login">
-    <form @submit.prevent="LoginNow">
-      <img
-        src="../../assets/media/pngtree-user-login-or-authenticate-icon-on-gray-background-flat-icon-ve-png-image_5089976.jpg"
-        width="150px"
-        alt=""
-      />
-      <h2 class="font">تسجيل الدخول</h2>
-      <p class="font">
-        يرجى إدخال كلمة مرور قوية تحتوي على الأقل 8 رموز <br />
-        مكونة من حروف وأرقام
-      </p>
-      <input
-        type="email"
-        class="form-control"
-        placeholder="Enter Your Email or Phone"
-        v-model="email"
-      />
-      <div class="password">
-        <input
-          id="password"
-          :type="passwordType"
-          placeholder="Enter your password"
-          class="form-control"
-          v-model="password"
-        />
-        <i class="fa-solid fa-lock" @click="togglePasswordVisibility"></i>
+  <div class="naim-login">
+    <form @submit.prevent="login">
+      <div class="logo">
+        <img src="../../assets/media/logo.png" alt="" />
       </div>
-      <router-link to="/registerforget" class="forgot"
-        >هل نسيت كلمة المرور؟</router-link
-      >
-      <button type="submit" class="btn btn-primary">تسجيل الدخول</button>
-
-      <h5 class="font">
-        ليس لديك حساب بعد؟
-        <router-link
-          style="text-decoration: none; color: #06797e"
-          to="/register"
-          >إنشاء حساب</router-link
-        >
-      </h5>
+      <label for="email">ادخل البريد الألكتروني</label>
+      <div class="input">
+        <input
+          type="email"
+          id="email"
+          v-model="email"
+          placeholder="ادخل البريد الألكتروني"
+          required
+        />
+      </div>
+      <label for="password">ادخل كلمة المرور</label>
+      <div class="input">
+        <input
+          type="password"
+          id="password"
+          v-model="password"
+          placeholder="ادخل كلمة المرور"
+          required
+        />
+      </div>
+      <button type="submit">تسجيل الدخول</button>
     </form>
+    <div class="forget">
+      <router-link to="/forget-password">
+        <h6>هل نسيت كلمة المرور؟</h6>
+      </router-link>
+    </div>
   </div>
 </template>
 
 <script>
-import Swal from "sweetalert2";
-// import axios from "axios";
-// import { mapActions } from "vuex";
+import { useAuthStore } from "../../store/Auth/AuthStore";
 
 export default {
   name: "LoginView",
+  computed: {
+    authStore() {
+      return useAuthStore();
+    },
+  },
   data() {
     return {
-      passwordType: "password",
       email: "",
       password: "",
     };
   },
   methods: {
-    togglePasswordVisibility() {
-      this.passwordType =
-        this.passwordType === "password" ? "text" : "password";
-    },
+    async login() {
+      await this.authStore.login({
+        email: this.email,
+        password: this.password,
+      });
 
-    async LoginNow() {
-      // this.disableButton = true; //the disableButton begin
-      const formData = new FormData();
-      formData.append("email", this.email);
-      formData.append("password", this.password);
-
-      let response = await this.$store.dispatch("Login", formData);
-      // console.log(this.phone.replace(/\s+/g, ''));
-      if (this.email === "" || this.password === "") {
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title:  response.data.message,
-        });
-        // this.disableButton = false;
-      } else {
-        try {
-          // console.log(response)
-          if (response.status == 200) {
-            // console.log("true", response);
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: response.data.message,
-            });
-            this.$router.go("/");
-            (this.password = ""), (this.email = ""), this.$router.go("/");
-          } else {
-            Swal.fire({
-              position: "center",
-              icon: "error",
-              title: response.data.message,
-            });
-            // this.disableButton = false;
-          }
-        } catch (err) {
-          Swal.fire({
-            position: "center",
-            icon: "error",
-            title: err.response.data.message,
-          });
-          // this.disableButton = false;
-        }
-      }
+      this.$router.push("/");
     },
   },
 };
 </script>
 
-<style scoped>
+
+
+<style scoped lang="scss">
 * {
   font-family: "Cairo", sans-serif;
   font-weight: bold;
 }
-h2 {
-  text-align: center;
-}
-.login {
-  width: 30%;
-  margin: 0 auto;
-  margin-top: 10rem;
-  padding: 2rem;
-  border-radius: 10px;
-  background-color: #f5f5f5;
-  box-shadow: 0px 0px 10px 0px #ccc;
-}
-.forgot {
-  text-decoration: none;
-  margin-right: 65%;
-  color: #06797e;
-  display: block;
-  margin-top: 2%;
-}
-button {
-  margin: auto;
-  margin-top: 5%;
-  margin-bottom: 5%;
-  width: 40%;
-}
-.password {
+.naim-login {
+  width: 100%;
+  height: 100vh;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  background-color: #e8f0fe;
-  border-radius: 30px;
-  margin-top: 1rem;
-  padding: 0 0.5rem;
+  flex-direction: column;
+  background: linear-gradient(to top, #06797e, #cde382);
+  form {
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    label {
+      font-size: 15px;
+      margin-bottom: 0.5rem;
+      font-family: "regular";
+      text-align: start;
+    }
+
+    .input {
+      position: relative;
+
+      input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 0.875rem;
+        outline: none;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+          border-color: #cde382;
+          box-shadow: 0 0 0 3px #cde382;
+        }
+      }
+    }
+
+    button {
+      padding: 0.75rem;
+      border: none;
+      border-radius: 6px;
+      background: #06797e;
+      color: #ffffff;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-family: "regular";
+
+      &:hover {
+        background: #cde382;
+        color: var(--main);
+      }
+    }
+  }
+
+  .forget {
+    margin-top: 1rem;
+a{
+  text-decoration: none;  
 }
-.password input {
-  background-color: unset !important;
+    h6 {
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 16px;
+      transition: color 0.3s ease;
+      font-family: "regular";
+
+      &:hover {
+        color: #cde382;
+      }
+    }
+  }
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
-.password i {
-  color: #06797e;
-  cursor: pointer;
-}
-.font {
-  font-family: "regular";
-}
-a {
-  font-family: "regular";
-}
+
 </style>
