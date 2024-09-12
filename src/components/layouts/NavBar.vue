@@ -102,7 +102,7 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           localStorage.clear();
-          this.$router.go("/login");
+          this.$router.push("/login");
         }
       });
     }
